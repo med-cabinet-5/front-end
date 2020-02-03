@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { axiosWithAuth, useWindowWidth } from '../utils/'
 
 //images
-import desktopImage from './images/-desktop.jpg';
-import mobileImage from './images/-mobile.jpg';
+import desktopImage from './images/infodesktop.jpg';
+import mobileImage from './images/infomobile.jpg';
 
 //styling
 import styled from 'styled-components';
