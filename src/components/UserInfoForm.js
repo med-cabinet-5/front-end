@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { axiosWithAuth, useWindowWidth } from '../utils/'
 
 //images
-import desktopImage from './pineapple-desktop.jpg';
-import mobileImage from './pineapple-mobile.jpg';
+import desktopImage from './images/-desktop.jpg';
+import mobileImage from './images/-mobile.jpg';
 
 //styling
 import styled from 'styled-components';
@@ -74,12 +74,19 @@ border-radius: 8px;
                     value={props.age}
                     onChange={handleChange}
                 />
+                <p>Preferred Intake Method:</p>
+                <input
+                    label="age:"
+                    type=""
+                    name="intake"
+                    value={props.intake}
+                    onChange={handleChange}
+                />
                 <p>Symptoms:</p>
                 <input
                     label="name"
                     type="text"
-                    name="name"
-                    placeholder="First Name, Last Name"
+                    name="Symptoms"
                     value={props.symptoms}
                     onChange={handleChange}
                 />
