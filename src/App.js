@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
 
 //Private Route
 import PrivateRoute from "./utils/PrivateRoute";
@@ -19,30 +18,28 @@ import './App.css';
 function App() {
   return (
     <Router>
+
+
     <div className="App">
       <header className="App-header">
-
-        <nav>
-          <Link to="/"> Home </Link>
-          <Link to="/login"> Log-in</Link>
-          <Link to="/signup"> Sign-Up</Link>
-        </nav>
-
-        <p>
+        <h1>
           Med Cabinet 5
-          <MarketingLanding />
-        </p>
+        </h1>
       </header>
+
       <Switch>
-        <Route exact path="/" component={MarketingLanding} />
-        <Route path="/login" component={FormikLoginForm} />
-        <Route path="/signup" component={FormikSignupForm} />
-        <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
-        <PrivateRoute path="/userinfo/:id" component={UserInfoForm} />
-        <PrivateRoute path="/strains/:id" component={StrainSelector} />
-      </Switch>
+          <Route exact path ="/"/>
+          <Route path="/home" component={MarketingLanding} />
+          <Route path="/login" component={FormikLoginForm} />
+          <Route path="/signup" component={FormikSignupForm} />
+
+          <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
+          <PrivateRoute path="/userinfo/:id" component={UserInfoForm} />
+          <PrivateRoute path="/strains/:id" component={StrainSelector} />
+        </Switch>
     </div>
-    </Router>
+    </Router> 
+
   );
 }
 
