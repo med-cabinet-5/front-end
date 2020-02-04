@@ -1,5 +1,5 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React, { useState, useEffect } from 'react';
+import { Form, Field, ErrorMessage, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
@@ -9,53 +9,31 @@ display: flex;
 flex-direction: column;
 `;
 
-function LoginForm() {
+function LoginForm({values, errors, touched, status}) {
+  const [user, setUser]= useState([])
 
-  const [credentials, setCredentials] = useState({username:'', password:''})
-
-  const handleChange = e => {
-      setCredentials(
-          {
-              ...credentials,
-              [e.target.name]: e.target.value
-          }
-      );
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    axios
-    .post('https://med-cabinet-server.herokuapp.com/api/auth/login', credentials)
-    .then(res => {
-        console.log(res);
-        localStorage.setItem('token', res.data.payload);
-        props.history.push('/userinfo/:id');
-    })
-    .catch(err => console.log(err));
-};
-  
+  useEffect (()=>{
+  console.log('status', status)
+  status && setUser(users =>[...users, status])
+  },[status])
 
 
   return (
     <div className="LoginForm">
-      <h1>Login Form</h1>
-      <Formik
-        onSubmit={handleSubmit}
-        initialValues={initialState}
-        validationSchema={validationSchema}
-      >
+      <h1>Login</h1>
         <FormContainerDiv>
         <Form>
-        
           <div className="user-username">
           <label htmlFor="user_username">Username</label>
           <Field
             type="text"
-            id="user_username"
             name="username"
             placeholder="Enter your username here"
+          
           />
+            {touched.username && errors.username && (
+              <p className="errors"> {errors.username}</p>
+            )}
           <ErrorMessage name="username" component="div" className="error"/>
           </div>
 
@@ -63,42 +41,45 @@ function LoginForm() {
           <label htmlFor="user_password">Password</label>
           <Field
             type="password"
-            id="user_password"
             name="password"
             placeholder="Enter your password here"
-          />
+            />
+              {touched.password && errors.password && (
+                <p className="errors"> {errors.password}</p>
+              )}
+          
           <ErrorMessage name="password" component="div" className="error"/>
-          </div>
-
-          <div className="user_remember_pass">
-          <label htmlFor="user_remember_pass">Remember password?</label>
-          <Field
-            type="checkbox"
-            id="user_remember_pass"
-            name="remember_pass"
-          />
-          <ErrorMessage name="remember_pass" component="div" className="error"/>
           </div>
 
           <button type="submit">Submit</button>
         </Form>
         </FormContainerDiv>
-      </Formik>
     </div>
-    
   );
-}
+};
 
-const validationSchema = Yup.object().shape({
+const FormikLoginForm = withFormik({
+  mapPropsToValues({ username, password}) {
+      return {
+          username: username || "",
+          password: password || ""  
+      };
+  },
+  validationSchema: Yup.object().shape({
   username: Yup.string().required('Please enter a username'),
   password: Yup.string().required('Please enter a password'),
-  remember_pass: Yup.boolean()
-});
-
-const initialState = {
-  username: '',
-  password: '',
-  remember_pass: false
+}),
+handleSubmit(values, { setStatus, props }) {
+  axios
+      .post("https://med-cabinet-server.herokuapp.com/api/auth/login", values)
+      .then(response => {
+          console.log(response);
+          setStatus(response.data);
+          props.history.push('/login')
+      })
+      .catch(err => console.log(err.response));
 }
+})(LoginForm);
+
 
 export default FormikLoginForm
