@@ -28,8 +28,7 @@ function App() {
       </header>
 
       <Switch>
-          <Route exact path ="/"/>
-          <Route path="/home" component={MarketingLanding} />
+          <Route exact path ="/" component={MarketingLanding} />
           <Route path="/login" component={FormikLoginForm} />
           <Route path="/signup" component={FormikSignupForm} />
 
