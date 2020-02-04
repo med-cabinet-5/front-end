@@ -4,23 +4,38 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 
-const formContainerDiv = styled.div`
+const FormContainerDiv = styled.div`
 display: flex;
 flex-direction: column;
 `;
 
-export default function LoginForm() {
-  function handleSubmit(values, actions) {
-    console.log(values);
+function LoginForm() {
 
-  axios
-      .post('https://reqres.in/api/users/', values)
-      .then(res => {
-        console.log(res.data);
-        actions.resetForm();
-      })
-      .catch(e => console.log(e)) 
-  }
+  const [credentials, setCredentials] = useState({username:'', password:''})
+
+  const handleChange = e => {
+      setCredentials(
+          {
+              ...credentials,
+              [e.target.name]: e.target.value
+          }
+      );
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    axios
+    .post('https://med-cabinet-server.herokuapp.com/api/auth/login', credentials)
+    .then(res => {
+        console.log(res);
+        localStorage.setItem('token', res.data.payload);
+        props.history.push('/userinfo/:id');
+    })
+    .catch(err => console.log(err));
+};
+  
+
 
   return (
     <div className="LoginForm">
@@ -30,7 +45,7 @@ export default function LoginForm() {
         initialValues={initialState}
         validationSchema={validationSchema}
       >
-          <formContainerDiv>
+        <FormContainerDiv>
         <Form>
         
           <div className="user-username">
@@ -43,6 +58,7 @@ export default function LoginForm() {
           />
           <ErrorMessage name="username" component="div" className="error"/>
           </div>
+
           <div className="user-password">
           <label htmlFor="user_password">Password</label>
           <Field
@@ -53,7 +69,8 @@ export default function LoginForm() {
           />
           <ErrorMessage name="password" component="div" className="error"/>
           </div>
-          <div className="user_emember_pass">
+
+          <div className="user_remember_pass">
           <label htmlFor="user_remember_pass">Remember password?</label>
           <Field
             type="checkbox"
@@ -62,9 +79,10 @@ export default function LoginForm() {
           />
           <ErrorMessage name="remember_pass" component="div" className="error"/>
           </div>
+
           <button type="submit">Submit</button>
         </Form>
-        </formContainerDiv>
+        </FormContainerDiv>
       </Formik>
     </div>
     
@@ -78,9 +96,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialState = {
-  first_name: '',
-  last_name: '',
   username: '',
   password: '',
   remember_pass: false
 }
+
+export default FormikLoginForm
