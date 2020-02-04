@@ -31,26 +31,7 @@ export default function LoginForm() {
       >
           <formContainerDiv>
         <Form>
-        <div className="user-first-name">
-          <label htmlFor="user_first_name">First Name</label>
-          <Field
-            type="text"
-            id="user_first_name"
-            name="first_name"
-            placeholder="Enter your first name here"
-          />
-          <ErrorMessage name="first_name" component="div" className="error"/>
-          </div>
-          <div className="user-last-name">
-          <label htmlFor="user_last_name">Last Name</label>
-          <Field
-            type="text"
-            id="user_last_name"
-            name="last_name"
-            placeholder="Enter your last name here"
-          />
-          <ErrorMessage name="last_name" component="div" className="error"/>
-          </div>
+        
           <div className="user-username">
           <label htmlFor="user_username">Username</label>
           <Field
