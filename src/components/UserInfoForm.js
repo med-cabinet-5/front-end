@@ -14,7 +14,8 @@ const InfoForm = styled.form`
 display: flex;
 flex-direction: column;
 width: 50%;
-border-top: 2px solid #282c34;
+border-top: 2px solid #323232;
+background-color: #918383;
 `
 
 const InfoButton = styled.button`
@@ -50,7 +51,7 @@ border-radius: 8px;
         .then(res => {
             console.log('success', res);
             localStorage.setItem( newUserInfo, res.data.payload );
-            props.history.push('/dashboard/:id');
+            props.history.push('/dashboard/${id}');
         })
         .catch(err => console.log(err));
     };
