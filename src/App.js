@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 
 //Components
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
+import FormikLoginForm from "./components/LoginForm";
+import FormikSignupForm from "./components/SignupForm";
 import MarketingLanding from "./components/MarketingLanding";
 import UserDashboard from "./components/UserDashboard";
 import UserInfoForm from "./components/UserInfoForm";
@@ -35,8 +35,8 @@ function App() {
       </header>
       <Switch>
         <Route exact path="/" component={MarketingLanding} />
-        <Route path="/login" component={LoginForm} />
-        <Route path="/signup" component={SignupForm} />
+        <Route path="/login" component={FormikLoginForm} />
+        <Route path="/signup" component={FormikSignupForm} />
         <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
         <PrivateRoute path="/userinfo/:id" component={UserInfoForm} />
         <PrivateRoute path="/strains/:id" component={StrainSelector} />
