@@ -4,23 +4,23 @@ import React, { useState } from 'react';
 import { axiosWithAuth, useWindowWidth } from '../utils/'
 
 //images
-import desktopImage from './images/infodesktop.jpg';
-import mobileImage from './images/infomobile.jpg';
+import desktopImage from "../images/infodesktop.jpg";
+import mobileImage from "../images/infomobile.jpg";
 
 //styling
-import styled from 'styled-components';
-const Body = styled.div`
+import styled from "styled-components";
+const InfoBody = styled.div`
 margin: 5%;
 `
 
-const Form = styled.form`
+const InfoForm = styled.form`
 display: flex;
 flex-direction: column;
 width: 50%;
 border-top: 2px solid #282c34;
 `
 
-const Button = styled.button`
+const InfoButton = styled.button`
 margin: 5%;
 width: 35%;
 background-color: #323232;
@@ -62,9 +62,9 @@ border-radius: 8px;
     const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
 
         return (
-            <Body style={{backgroundImage: `url(${imageUrl})` }}>
+            <InfoBody style={{backgroundImage: `url(${imageUrl})` }}>
                 <h2>User Information</h2>
-                <Form onSubmit={addUserInfo}>
+                <InfoForm onSubmit={addUserInfo}>
                 <p>Age:</p>
                 <input
                     label="age:"
@@ -90,9 +90,9 @@ border-radius: 8px;
                     value={props.symptoms}
                     onChange={handleChange}
                 />
-                <Button> Submit </Button>
-                </Form>
-            </Body>
+                <InfoButton> Submit </InfoButton>
+                </InfoForm>
+            </InfoBody>
             );
     };
     
