@@ -3,34 +3,37 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components"
 
-const Container = styled.div`
+const LandingContainer = styled.div`
+margin-top: 5%; 
 display: flex;
+flex-direction: column;
 justify-content: center;
-width: 100%;
+align-items: center;
+color: white;
+justify-content: center;
 `
 
-
 const LandingBody = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #D9F9FD;
-    min-height: 500px;
-    max-width: 300px;
-    min-width: 300px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color: #918383;
+min-height: 500px;
+max-width: 400px;
+min-width: 400px;
 `
 
 function MarketingLanding () {
     return(
-    <Container>
+    <LandingContainer>
     <LandingBody>
-        
-        <Link to="/login"> Login</Link>
+        <h1>Welcome!</h1>
     
         <Link to="/signup"> Sign-Up</Link>
+        <Link to="/login"> Login</Link>
         
     </LandingBody>
-    </Container>
+    </LandingContainer>
     )
 };
 

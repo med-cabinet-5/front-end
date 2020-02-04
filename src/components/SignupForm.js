@@ -1,15 +1,42 @@
 import React, {useState, useEffect} from 'react'
 import {withFormik, Form, Field} from 'formik'
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as Yup from 'yup'
 import axios from "axios";
 import styled from "styled-components";
 
-
 const SignupContainer = styled.div`
+margin-top: 5%; 
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
+color: white;
+justify-content: center;
 `
+const SignupBody = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color: #918383;
+min-height: 500px;
+max-width: 400px;
+min-width: 400px;
+`
+
+const SignUpButton = styled.button`
+margin: 5%;
+width: 35%;
+background-color: #323232;
+color: white;
+padding: 1%;
+border-radius: 8px;
+`
+
+const Login = styled.p`
+font-size: 0.7rem;
+`
+
 
 function SignupForm({values, errors, touched, status}){
     const [user, setUser]= useState([])
@@ -21,12 +48,11 @@ function SignupForm({values, errors, touched, status}){
 
 
 return(
-    <div>
-        <nav>
-            <NavLink to="/login"> Log-in</NavLink>
-        </nav>
+    <SignupContainer>
+
+        <SignupBody>
         <h1>Sign-Up</h1>
-            <SignupContainer>
+            
                 <Form>
                 <div>
                 <label>
@@ -94,10 +120,15 @@ return(
                 )}
                 </label>
                 </div>
-                <button type='submit'>Submit!</button>
+                <SignUpButton type='submit'>Submit!</SignUpButton>
+                
+                <Login>Already have an account? 
+                    <Link to="/login"> Log In Here</Link>
+                </Login>
+
             </Form>
-        </SignupContainer>
-</div>
+        </SignupBody>
+</SignupContainer>
 
 )
 }
@@ -117,8 +148,8 @@ validationSchema: Yup.object().shape({
     first_name: Yup.string().min(2, 'Name must be 2 character').required('Required Field'),
     last_name: Yup.string().min(2, 'Name must be 2 character').required('Required Field'),
     email: Yup.string().email('Email not valid').required('Required Field'),
-    username: Yup.string().min(4, 'Username must be 4 characters').required('Required Field'),
-    password: Yup.string().min(6, 'Password must be 6 characters').required('Required Field'),
+    username: Yup.string().min(6, 'Username must be 6 characters').required('Required Field'),
+    password: Yup.string().min(8, 'Password must be 8 characters').required('Required Field'),
 }),
 
 handleSubmit (values, { setStatus, props }) {
@@ -127,7 +158,7 @@ handleSubmit (values, { setStatus, props }) {
         .then(response => {
             console.log("Sign-Up", response);
             setStatus(response.data);
-            props.history.push('/login')
+            props.history.push('/userinfo/:id')
         })
         .catch(err => console.log(err.response));
 }

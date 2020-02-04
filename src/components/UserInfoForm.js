@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 
 //utils
-import { axiosWithAuth, useWindowWidth } from '../utils/'
-
-//images
-import desktopImage from "../images/infodesktop.jpg";
-import mobileImage from "../images/infomobile.jpg";
+import { axiosWithAuth } from '../utils/'
 
 //styling
 import styled from "styled-components";
 const InfoBody = styled.div`
 margin: 5%;
+color: white;
 `
 
 const InfoForm = styled.form`
@@ -58,11 +55,8 @@ border-radius: 8px;
         .catch(err => console.log(err));
     };
 
-    //background image
-    const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
-
         return (
-            <InfoBody style={{backgroundImage: `url(${imageUrl})` }}>
+            <InfoBody >
                 <h2>User Information</h2>
                 <InfoForm onSubmit={addUserInfo}>
                 <p>Age:</p>

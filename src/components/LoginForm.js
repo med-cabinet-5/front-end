@@ -1,13 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Field, ErrorMessage, withFormik } from 'formik';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 
 const LoginContainer = styled.div`
+margin-top: 5%;
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
+color: white;
+justify-content: center;
+`
+
+const LoginBody = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+background-color: #918383;
+min-height: 500px;
+max-width: 400px;
+min-width: 400px;
+`
+
+const LoginButton = styled.button`
+margin: 5%;
+width: 35%;
+background-color: #323232;
+color: white;
+padding: 1%;
+border-radius: 8px;
+`
+
+const SignUp = styled.p`
+font-size: 0.7rem;
 `
 
 function LoginForm({values, errors, touched, status}) {
@@ -19,12 +47,11 @@ function LoginForm({values, errors, touched, status}) {
   },[status])
 
   return (
-    <div className="LoginForm">
-      <nav>
-        <NavLink to="/signup"> Sign-Up</NavLink>
-      </nav>
-      <h1>Login</h1>
-        <LoginContainer>
+    <LoginContainer className="LoginForm">
+      
+      <LoginBody>
+      <h1>Log In</h1>
+        
         <Form>
           <div className="user-username">
           <label htmlFor="user_username">Username: </label>
@@ -54,10 +81,15 @@ function LoginForm({values, errors, touched, status}) {
           <ErrorMessage name="password" component="div" className="error"/>
           </div>
 
-          <button type="submit">Submit</button>
+          <LoginButton type="submit">Submit</LoginButton>
+          
+          <SignUp> Don't have an account? 
+            <Link to="/signup"> Sign-Up</Link>
+          </SignUp>
+
         </Form>
-        </LoginContainer>
-    </div>
+        </LoginBody>
+    </LoginContainer>
   );
 };
 
@@ -69,8 +101,8 @@ const FormikLoginForm = withFormik({
       };
   },
   validationSchema: Yup.object().shape({
-  username: Yup.string().required('Please enter a username'),
-  password: Yup.string().required('Please enter a password'),
+    username: Yup.string().min(6, 'Username must be 6 characters').required('Required Field'),
+    password: Yup.string().min(8, 'Password must be 8 characters').required('Required Field'),
 }),
 handleSubmit(values, { setStatus, props }) {
   axios
@@ -78,7 +110,7 @@ handleSubmit(values, { setStatus, props }) {
       .then(response => {
           console.log(response);
           setStatus(response.data);
-          props.history.push('/login')
+          props.history.push('/dashboard/${id}')
       })
       .catch(err => console.log(err.response));
 }

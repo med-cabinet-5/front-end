@@ -1,12 +1,17 @@
 //display user details/strains
 
 import React from "react";
+import styled from "styled-components"
+
+const Dashboard = styled.div`
+color: white;
+`
 
 function UserDashboard() {
     return (
-<div>
+<Dashboard>
     <p>User Details</p>
-</div>
+</Dashboard>
 
     )};
 
