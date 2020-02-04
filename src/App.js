@@ -30,6 +30,7 @@ function App() {
 
         <p>
           Med Cabinet 5
+          <MarketingLanding />
         </p>
       </header>
       <Switch>

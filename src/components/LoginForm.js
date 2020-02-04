@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 
-const formContainerDiv = styled.div `
+const formContainerDiv = styled.div`
 display: flex;
 flex-direction: column;
 `;
@@ -21,6 +21,7 @@ export default function LoginForm() {
       })
       .catch(e => console.log(e)) 
   }
+
   return (
     <div className="LoginForm">
       <h1>Login Form</h1>
@@ -71,8 +72,6 @@ export default function LoginForm() {
 }
 
 const validationSchema = Yup.object().shape({
-  first_name: Yup.string().required('Please enter your first name'),
-  last_name: Yup.string().required('Please enter your lastname name'),
   username: Yup.string().required('Please enter a username'),
   password: Yup.string().required('Please enter a password'),
   remember_pass: Yup.boolean()
