@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Field, ErrorMessage, withFormik } from 'formik';
+import { NavLink } from "react-router-dom";
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 
-const FormContainerDiv = styled.div`
+const LoginContainer = styled.div`
 display: flex;
 flex-direction: column;
-`;
+`
 
 function LoginForm({values, errors, touched, status}) {
   const [user, setUser]= useState([])
@@ -17,14 +18,16 @@ function LoginForm({values, errors, touched, status}) {
   status && setUser(users =>[...users, status])
   },[status])
 
-
   return (
     <div className="LoginForm">
+      <nav>
+        <NavLink to="/signup"> Sign-Up</NavLink>
+      </nav>
       <h1>Login</h1>
-        <FormContainerDiv>
+        <LoginContainer>
         <Form>
           <div className="user-username">
-          <label htmlFor="user_username">Username</label>
+          <label htmlFor="user_username">Username: </label>
           <Field
             type="text"
             name="username"
@@ -38,7 +41,7 @@ function LoginForm({values, errors, touched, status}) {
           </div>
 
           <div className="user-password">
-          <label htmlFor="user_password">Password</label>
+          <label htmlFor="user_password">Password: </label>
           <Field
             type="password"
             name="password"
@@ -53,7 +56,7 @@ function LoginForm({values, errors, touched, status}) {
 
           <button type="submit">Submit</button>
         </Form>
-        </FormContainerDiv>
+        </LoginContainer>
     </div>
   );
 };

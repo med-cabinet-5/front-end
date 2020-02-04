@@ -1,8 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import {withFormik, Form, Field} from 'formik'
+import { NavLink } from "react-router-dom";
 import * as Yup from 'yup'
 import axios from "axios";
-// import styled from "styled-components";
+import styled from "styled-components";
+
+
+const SignupContainer = styled.div`
+display: flex;
+flex-direction: column;
+`
 
 function SignupForm({values, errors, touched, status}){
     const [user, setUser]= useState([])
@@ -15,73 +22,89 @@ function SignupForm({values, errors, touched, status}){
 
 return(
     <div>
-        <Form>
-        <label>
-        First Name:
-        <br/>
-        <Field
-            type='text'
-            name='first_name'
-            placeholder='First Name'
-        />
-        {touched.first_name && errors.first_name && (
-        <p className='errors'>{errors.first_name}</p>
-        )}
-        </label>
+        <nav>
+            <NavLink to="/login"> Log-in</NavLink>
+        </nav>
+        <h1>Sign-Up</h1>
+            <SignupContainer>
+                <Form>
+                <div>
+                <label>
+                    First Name: 
+                <Field
+                    type='text'
+                    name='first_name'
+                    placeholder='First Name'
+                />
+                {touched.first_name && errors.first_name && (
+                <p className='errors'>{errors.first_name}</p>
+                )}
+                </label>
+                </div>
+                
+                <div>
+                <label>
+                    Last Name: 
+                <Field
+                    type='text' 
+                    name='last_name'
+                    placeholder='Last Name'
+                />
+                {touched.last_name && errors.last_name && (
+                <p className='errors'>{errors.last_name}</p>
+                )}
+                </label>
+                </div>
 
-        <label>
-            Last Name:
-        <Field
-            type='text' 
-            name='last_name'
-            placeholder='Last Name'
-        />
-        {touched.last_name && errors.last_name && (
-        <p className='errors'>{errors.last_name}</p>
-        )}
-        </label>
+                <div>
+                <label>
+                    E-mail: 
+                <Field
+                    type='email'
+                    name='email'
+                    placeholder='E-mail'
+                />
+                {touched.email && errors.email && (
+                <p className='errors'>{errors.email}</p>
+                )}
+                </label>
+                </div>
+                
+                <div>
+                <label>
+                    Username: 
+                <Field
+                    type='text'
+                    name='username'
+                    placeholder='Username'
+                    />
+                </label>
+                </div>
 
-        <label>
-            E-mail:
-        <Field
-            type='email'
-            name='email'
-            placeholder='E-mail'
-        />
-        {touched.email && errors.email && (
-        <p className='errors'>{errors.email}</p>
-        )}
-        </label>
-
-        <label>
-            Username:
-        <Field
-            type='text'
-            name='username'
-            placeholder='Username'
-            />
-        </label>
-
-        <label>
-            Password:
-        <Field
-            type='password'
-            name='password'
-            placeholder='Password'
-        />
-        {touched.password && errors.password && (
-        <p className='errors'>{errors.password}</p>
-        )}
-        </label>
-        <button type='submit'>Submit!</button>
-    </Form>
+                <div>
+                <label>
+                    Password: 
+                <Field
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                />
+                {touched.password && errors.password && (
+                <p className='errors'>{errors.password}</p>
+                )}
+                </label>
+                </div>
+                <button type='submit'>Submit!</button>
+            </Form>
+        </SignupContainer>
 </div>
+
 )
 }
 
 const FormikSignupForm = withFormik({
 mapPropsToValues({first_name, last_name, email, username, password}){
-return {
+    return {
     first_name: first_name || '',
     last_name: last_name || '',
     email: email || '',

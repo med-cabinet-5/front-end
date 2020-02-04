@@ -15,8 +15,11 @@ const LandingBody = styled.div`
 function MarketingLanding () {
     return(
     <LandingBody>
+        
         <Link to="/login"> Login</Link>
+    
         <Link to="/signup"> Sign-Up</Link>
+        
     </LandingBody>
     )
 };
