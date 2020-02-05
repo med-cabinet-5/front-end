@@ -21,6 +21,7 @@ import StrainSearch from "./components/StrainSearch";
 
 //styling
 import './App.css';
+import 'antd/dist/antd.css'
 import styled from "styled-components"
 
 const NavLogo = styled.img`
@@ -50,8 +51,8 @@ function App() {
           <Route path="/signup" component={FormikSignupForm} />
 
           <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
-          <PrivateRoute path="/userinfo" component={UserInfoForm} />
-          <PrivateRoute path="/strains/:id" component={StrainSelector} />
+          <PrivateRoute path="/infoform" component={UserInfoForm} />
+          <PrivateRoute path="/strains" component={StrainSelector} />
           <PrivateRoute path="/search" component={StrainSearch} />
         </Switch>
     </div>

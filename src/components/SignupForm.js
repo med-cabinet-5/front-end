@@ -158,7 +158,7 @@ handleSubmit (values, { setStatus, props }) {
         .then(response => {
             console.log("Sign-Up", response);
             setStatus(response.data);
-            props.history.push('/userinfo')
+            props.history.push('/infoform')
         })
         .catch(err => console.log(err.response));
 }
