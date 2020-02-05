@@ -40,6 +40,7 @@ display: flex;
 `
 
 //.get request of top five strains returned from DS Kingdom
+//.post to backend to save strains
 
 function StrainSelector() {
     return (

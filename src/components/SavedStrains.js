@@ -24,6 +24,7 @@ max-width: 400px;
 min-width: 400px;
 `
 
+//.get to retrieve saved strains, display cards with saved strain info
 
 function SavedStrains () {
     return(
