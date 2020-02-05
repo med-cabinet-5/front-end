@@ -54,6 +54,7 @@ function StrainSelector() {
             Display Mini Cards
         </p>
         <StrainMiniCard />
+
         <p>
             Pop-Up <StrainDetailCard /> onclick of MiniCard
         </p>
@@ -67,7 +68,7 @@ function StrainSelector() {
             Not finding what you're looking for?
         </p>
         
-    <SelectorButton> Return to Data Collection </SelectorButton> 
+    <SelectorButton> Return to Data Collection (EditForm?)</SelectorButton> 
     </div>
     
     </SelectorContainer>
