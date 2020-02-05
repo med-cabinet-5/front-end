@@ -50,7 +50,7 @@ function App() {
           <Route path="/signup" component={FormikSignupForm} />
 
           <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
-          <PrivateRoute path="/userinfo/" component={UserInfoForm} />
+          <PrivateRoute path="/userinfo" component={UserInfoForm} />
           <PrivateRoute path="/strains/:id" component={StrainSelector} />
           <PrivateRoute path="/search" component={StrainSearch} />
         </Switch>
