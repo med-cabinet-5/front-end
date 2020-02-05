@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 
 //utils
-import { axiosWithAuth, useWindowWidth } from '../utils/'
-
-//images
-import desktopImage from "../images/infodesktop.jpg";
-import mobileImage from "../images/infomobile.jpg";
+import { axiosWithAuth } from '../utils/'
 
 //styling
 import styled from "styled-components";
 const InfoBody = styled.div`
 margin: 5%;
+color: white;
 `
 
 const InfoForm = styled.form`
 display: flex;
 flex-direction: column;
 width: 50%;
-border-top: 2px solid #282c34;
+border-top: 2px solid #323232;
+background-color: #918383;
 `
 
 const InfoButton = styled.button`
@@ -31,10 +29,9 @@ border-radius: 8px;
 
     const UserInfoForm = props => {
         const [newUserInfo, setNewUserInfo] = useState({
-            id: '',
-            name: '',
-            age: '',
-            email:'',
+            ailments: '',
+            feeling: '',
+            taste: '',
         });
 
         const handleChange = e => {
@@ -53,41 +50,37 @@ border-radius: 8px;
         .then(res => {
             console.log('success', res);
             localStorage.setItem( newUserInfo, res.data.payload );
-            props.history.push('/dashboard/:id');
+            props.history.push('/dashboard/');
         })
         .catch(err => console.log(err));
     };
 
-    //background image
-    const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
-
         return (
-            <InfoBody style={{backgroundImage: `url(${imageUrl})` }}>
+            <InfoBody >
                 <h2>User Information</h2>
                 <InfoForm onSubmit={addUserInfo}>
-                <p>Age:</p>
+                <p>Ailments:</p>
                 <input
-                    label="age:"
-                    type="number"
-                    name="age"
-                    placeholder="Age in Years"
-                    value={props.age}
-                    onChange={handleChange}
-                />
-                <p>Preferred Intake Method:</p>
-                <input
-                    label="age:"
-                    type=""
-                    name="intake"
-                    value={props.intake}
-                    onChange={handleChange}
-                />
-                <p>Symptoms:</p>
-                <input
-                    label="name"
                     type="text"
-                    name="Symptoms"
-                    value={props.symptoms}
+                    name="ailments"
+                    placeholder="Tell us what is bothering you"
+                    // value={ailments}
+                    onChange={handleChange}
+                />
+                <p>Feelings:</p>
+                <input
+                    type="text"
+                    name="feelings"
+                    placeholder="Tell us what you're hoping to feel"
+                    // value={feelings}
+                    onChange={handleChange}
+                />
+                <p>Preferred Taste:</p>
+                <input
+                    type="text"
+                    name="taste"
+                    placeholder="Tell us if you have any preferences of taste"
+                    // value={taste}
                     onChange={handleChange}
                 />
                 <InfoButton> Submit </InfoButton>
