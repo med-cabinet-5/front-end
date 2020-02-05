@@ -1,10 +1,10 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 
-const formContainerDiv = styled.div `
+const FormContainerDiv = styled.div `
 display: flex;
 flex-direction: column;
 `;
@@ -24,12 +24,7 @@ export default function LoginForm() {
   return (
     <div className="LoginForm">
       <h1>Login Form</h1>
-      <Formik
-        onSubmit={handleSubmit}
-        initialValues={initialState}
-        validationSchema={validationSchema}
-      >
-          <formContainerDiv>
+          <FormContainerDiv>
         <Form>
         
           <div className="user-username">
@@ -63,8 +58,8 @@ export default function LoginForm() {
           </div>
           <button type="submit">Submit</button>
         </Form>
-        </formContainerDiv>
-      </Formik>
+        </FormContainerDiv>
+      
     </div>
     
   );
