@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Field, ErrorMessage, withFormik } from 'formik';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
@@ -39,6 +39,7 @@ font-size: 0.7rem;
 `
 
 function LoginForm({values, errors, touched, status}) {
+  
   const [user, setUser]= useState([])
 
   useEffect (()=>{
@@ -110,7 +111,7 @@ handleSubmit(values, { setStatus, props }) {
       .then(response => {
           console.log(response);
           setStatus(response.data);
-          props.history.push('/dashboard')
+          props.history.push(`/dashboard`)
       })
       .catch(err => console.log(err.response));
 }

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
-//utils
-import { axiosWithAuth } from '../utils/'
+import axios from 'axios'
 
 //styling
 import styled from "styled-components";
@@ -45,12 +43,14 @@ border-radius: 8px;
 
     const addUserInfo = e => {
         e.preventDefault();
-        axiosWithAuth()
-        .post('endpoint', newUserInfo)
+        const stringInput = `${newUserInfo.ailments} ${newUserInfo.feeling} ${newUserInfo.taste}`
+        console.log(stringInput)
+        axios
+        .post('DSendpoint', stringInput)
         .then(res => {
             console.log('success', res);
             localStorage.setItem( newUserInfo, res.data.payload );
-            props.history.push('/dashboard/');
+            props.history.push('/strains/');
         })
         .catch(err => console.log(err));
     };
