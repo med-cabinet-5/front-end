@@ -3,34 +3,52 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components"
 
-const Container = styled.div`
+const LandingContainer = styled.div`
+margin-top: 5%; 
 display: flex;
+flex-direction: column;
 justify-content: center;
-width: 100%;
+align-items: center;
+color: white;
+justify-content: center;
 `
 
-
 const LandingBody = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #D9F9FD;
-    min-height: 500px;
-    max-width: 300px;
-    min-width: 300px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: #918383;
+min-height: 500px;
+max-width: 400px;
+min-width: 400px;
+`
+
+const LandingButton = styled.button`
+margin: 5%;
+width: 35%;
+background-color: #323232;
+color: white;
+text-decoration: none;
+padding: 1%;
+border-radius: 8px;
 `
 
 function MarketingLanding () {
     return(
-    <Container>
+    <LandingContainer>
     <LandingBody>
-        
-        <Link to="/login"> Login</Link>
-    
-        <Link to="/signup"> Sign-Up</Link>
+        <h1>Welcome!</h1>
+        <LandingButton>
+        <Link to="/signup" style={{textDecoration: 'none', color: 'white' }}> Sign-Up</Link>
+        </LandingButton>
+
+        <LandingButton>
+        <Link to="/login"style={{textDecoration: 'none', color: 'white' }}> Login</Link>
+        </LandingButton>
         
     </LandingBody>
-    </Container>
+    </LandingContainer>
     )
 };
 
