@@ -17,6 +17,7 @@ import MarketingLanding from "./components/MarketingLanding";
 import UserDashboard from "./components/UserDashboard";
 import UserInfoForm from "./components/UserInfoForm";
 import StrainSelector from "./components/StrainSelector";
+import StrainSearch from "./components/StrainSearch";
 
 //styling
 import './App.css';
@@ -49,8 +50,9 @@ function App() {
           <Route path="/signup" component={FormikSignupForm} />
 
           <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
-          <PrivateRoute path="/userinfo/:id" component={UserInfoForm} />
+          <PrivateRoute path="/userinfo/" component={UserInfoForm} />
           <PrivateRoute path="/strains/:id" component={StrainSelector} />
+          <PrivateRoute path="/search" component={StrainSearch} />
         </Switch>
     </div>
     </Router> 

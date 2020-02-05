@@ -110,7 +110,7 @@ handleSubmit(values, { setStatus, props }) {
       .then(response => {
           console.log(response);
           setStatus(response.data);
-          props.history.push('/dashboard/${id}')
+          props.history.push('/dashboard/')
       })
       .catch(err => console.log(err.response));
 }
