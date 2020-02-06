@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import { withFormik, Form, Field, ErrorMessage } from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
 
-
-const FormContainerDiv = styled.div `
+const LoginContainer = styled.div `
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-color: white;
+color: black;
 justify-content: center;
 padding: 5rem;
 `
@@ -24,6 +23,17 @@ background-color: #918383;
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
+`
+
+const LoginLabels = styled.p`
+color: white;
+margin-top: 4%;
+margin-bottom: 1%;
+`
+
+const LoginHeader = styled.h1`
+color: white;
+margin-top: 3%;
 `
 
 const LoginButton = styled.button`
@@ -39,6 +49,10 @@ const SignUp = styled.p`
 font-size: 0.7rem;
 `
 
+const Error = styled.p`
+color:red;
+`
+
 function LoginForm({values, errors, touched, status}) {
   
   const [user, setUser]= useState([])
@@ -50,46 +64,48 @@ function LoginForm({values, errors, touched, status}) {
 
   return (
     <div className="LoginForm">
-      <h1>Login Form</h1>
-          <FormContainerDiv>
+      <LoginHeader>Login </LoginHeader>
+        <LoginContainer>
         <Form>
-          <div className="user-username">
-          <label htmlFor="user_username">Username: </label>
-          <Field
-            type="text"
-            name="username"
-            placeholder="Enter your username here"
-          
-          />
-            {touched.username && errors.username && (
-              <p className="errors"> {errors.username}</p>
-            )}
-          <ErrorMessage name="username" component="div" className="error"/>
-          </div>
-
-          <div className="user-password">
-          <label htmlFor="user_password">Password: </label>
-          <Field
-            type="password"
-            name="password"
-            placeholder="Enter your password here"
-            />
-              {touched.password && errors.password && (
-                <p className="errors"> {errors.password}</p>
+            <div className="user-username">
+              <LoginLabels>
+              <label htmlFor="user_username">Username: </label>
+              </LoginLabels>
+              <Field
+                type="text"
+                name="username"
+                placeholder="Enter Your Username"
+              />
+                {touched.username && errors.username && (
+                  <Error className="errors"> {errors.username}</Error>
               )}
-          
-          <ErrorMessage name="password" component="div" className="error"/>
-          </div>
+            {/* <ErrorMessage name="username" component="div" className="error"/> */}
+            </div>
+
+            <div className="user-password">
+              <LoginLabels>
+              <label htmlFor="user_password">Password: </label>
+              </LoginLabels>
+              <Field
+                type="password"
+                name="password"
+                placeholder="Enter Your Password"
+              />
+                {touched.password && errors.password && (
+                  <Error className="errors"> {errors.password}</Error>
+                )}
+            {/* <ErrorMessage name="password" component="div" className="error"/> */}
+            </div>
 
           <LoginButton type="submit">Submit</LoginButton>
           
           <SignUp> Don't have an account? 
-            <Link to="/signup"> Sign-Up</Link>
+            <Link to="/signup" style={{color: "#1497AB", textDecoration: "underline", }}> Sign-Up</Link>
           </SignUp>
           
         </Form>
         
-        </FormContainerDiv>
+        </LoginContainer>
         </div>
   );
 };

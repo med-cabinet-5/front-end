@@ -18,10 +18,21 @@ const SignupBody = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
+color: black;
 background-color: rgb(145, 131, 131, 0.7);
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
+`
+const SignupLabels = styled.p`
+color: white;
+margin-top: 4%;
+margin-bottom: 1%;
+`
+
+const SignupHeader = styled.h1`
+color: white;
+margin-top: 3%;
 `
 
 const SignUpButton = styled.button`
@@ -43,12 +54,13 @@ font-size: 0.7rem;
 `
 
 const Columns = styled.div`
-display:flex;
+display: flex;
 flex-direction:column;
-align-items:center;
-justify-content:center;
-margin-bottom:1%;
+justify-content: center;
+align-items: center;
+margin-bottom: 1%;
 `
+
 const Error = styled.p`
 color:red;
 `
@@ -66,13 +78,15 @@ return(
     <SignupContainer>
 
         <SignupBody>
-        <h1>Sign-Up</h1>
+        <SignupHeader>Sign-Up</SignupHeader>
             
                 <Form>
                 <Columns>
+                <SignupLabels>
                 <label>
                     First Name: 
-                    </label>
+                </label>
+                </SignupLabels>
                 <Field
                     type='text'
                     name='first_name'
@@ -81,13 +95,14 @@ return(
                 {touched.first_name && errors.first_name && (
                 <Error className='errors'>{errors.first_name}</Error>
                 )}
-                
                 </Columns>
                 
                 <Columns>
+                <SignupLabels>
                 <label>
                     Last Name: 
-                    </label>
+                </label>
+                </SignupLabels>
                 <Field
                     type='text' 
                     name='last_name'
@@ -96,13 +111,14 @@ return(
                 {touched.last_name && errors.last_name && (
                 <Error className='errors'>{errors.last_name}</Error>
                 )}
-                
                 </Columns>
 
                 <Columns>
+                <SignupLabels>
                 <label>
                     E-mail: 
-                    </label>
+                </label>
+                </SignupLabels>
                 <Field
                     type='email'
                     name='email'
@@ -111,13 +127,14 @@ return(
                 {touched.email && errors.email && (
                 <Error className='errors'>{errors.email}</Error>
                 )}
-                
                 </Columns>
                 
                 <Columns>
+                <SignupLabels>
                 <label>
                     Username: 
-                    </label>
+                </label>
+                </SignupLabels>
                 <Field
                     type='text'
                     name='username'
@@ -129,9 +146,11 @@ return(
                 </Columns>
 
                 <Columns>
+                <SignupLabels>
                 <label>
                     Password: 
-                    </label>
+                </label>
+                </SignupLabels>
                 <Field
                     type='password'
                     name='password'
@@ -140,12 +159,13 @@ return(
                 {touched.password && errors.password && (
                 <Error className='errors'>{errors.password}</Error>
                 )}
-                
                 </Columns>
-                <SignUpButton type='submit'>Submit!</SignUpButton>
+
+                <SignUpButton type='submit'>Submit</SignUpButton>
                 
-                <Login>Already have an account? 
-                    <Link to="/login"> Log In Here</Link>
+                <Login>Already have an account? Log In 
+                    <Link to="/login" style={{color: "#1497AB", textDecoration: "underline", }}> Here</Link> 
+                    
                 </Login>
 
             </Form>
