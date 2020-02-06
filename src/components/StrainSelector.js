@@ -39,23 +39,21 @@ const StrainInfo = styled.div`
 display: flex;
 `
 
-
-
 //.get request of top five strains returned from DS Kingdom
 //.post to backend to save strains
 
 
 function StrainSelector() {
 
-    const {strains} = useContext(StrainContext);
+    // const {strains} = useContext(StrainContext);
     
-    useEffect(() => { 
-        const fetchStrains = id => {
-            axios
-                .get(`https://med-cab-ds.herokuapp.com/json/${id}`)
-                .then(res => set({ strains: res }))
-                .catch(err => console.log(err.response));
-          };
+    // useEffect(() => { 
+    //     const fetchStrains = id => {
+    //         axios
+    //             .get(`https://med-cab-ds.herokuapp.com/json/${id}`)
+    //             .then(res => set({ strains: res }))
+    //             .catch(err => console.log(err.response));
+    //      };
 
     return (
     <SelectorContainer>
