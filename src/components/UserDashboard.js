@@ -1,12 +1,21 @@
 //display user details/strains
-
-import React, { useState, useEffect } from "react";
+//dependencies & hooks
+import React, { useState, useEffect, useContext } from "react";
 
 //router
 import { NavLink } from "react-router-dom";
 
 //components
 import SavedStrains from "./SavedStrains";
+import StrainSelector from "./StrainSelector";
+import StrainDetailCard from "./StrainDetailCard";
+import StrainMiniCard from "./StrainMiniCard";
+
+//actions
+import { fetchSavedStrains, deleteSavedStrains, updateUser } from "../actions";
+
+//contexts
+//savedstrains, user
 
 //styles
 import styled from "styled-components"
@@ -47,7 +56,7 @@ align-items: center;
 width: 25%;
 `
 
-const UserInfo = styled.div`
+const UserResults = styled.div`
 display: flex;
 flex-direction: column;
 background-color: #918383;
@@ -96,14 +105,12 @@ function UserDashboard() {
         <span>
         <NavLogo src={settings} alt="Settings" />
         </span>
-    <UserInfo>
-        <p>Display User Info Here</p>
-        <p> (proba) There's a -% chance you're looking for a(n) indica</p>
-        <p>Your top ailments: (ailments) </p>
-        <p>Your top effects (effects)</p>
-        <p>Your top flavors: (flavors)</p>
-    </UserInfo>
+    <UserResults>
+    <StrainSelector />
+    </UserResults>
+
     <SavedStrains />
+
     </DashboardContainer>
 )};
 

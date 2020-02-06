@@ -23,7 +23,7 @@ import StrainSearch from "./components/StrainSearch";
 import { SavedStrainContext } from "./contexts/SavedStrainContext";
 import { StrainContext } from "./contexts/StrainContext";
 import { UserContext } from "./contexts/UserContext";
-import { StoresContext } from "./contexts/StoresContext";
+// import { StoresContext } from "./contexts/StoresContext";
 
 //styling
 import './App.css';
@@ -39,8 +39,6 @@ margin-bottom:8%;
 `
 
 function App() {
-
-
 
   const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
 

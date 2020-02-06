@@ -1,6 +1,13 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
 import axios from "axios";
 
+
+
+//Additional actions not dispatched, but alternatively located in app: 
+//sign-up, login, posting user input to DS;
+
+
+
 //STRAIN ACTION EXPORTS//
 //From DS
 //fetch strain recommendations from DS
@@ -102,6 +109,7 @@ export const deleteSavedStrain = id => dispatch => {
     })
     .catch(error => dispatch({type: DELETE_SAVEDSTRAIN_FAILURE, payload: error}))
 }
+
 
 
 //USER-BACKEND//
