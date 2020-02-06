@@ -1,9 +1,14 @@
 import React from 'react';
-
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
 
 //Private Route
 import PrivateRoute from "./utils/PrivateRoute";
+
+//images
+import logo from "./images/logo.png"
+import desktopImage from "./images/infodesktop.jpg";
+import mobileImage from "./images/infomobile.jpg";
+import { useWindowWidth } from "./utils/useWindowWidth"
 
 //Components
 import FormikLoginForm from "./components/LoginForm";
@@ -12,37 +17,48 @@ import MarketingLanding from "./components/MarketingLanding";
 import UserDashboard from "./components/UserDashboard";
 import UserInfoForm from "./components/UserInfoForm";
 import StrainSelector from "./components/StrainSelector";
+import StrainSearch from "./components/StrainSearch";
 
 //styling
 import './App.css';
+import 'antd/dist/antd.css'
+import styled from "styled-components"
+
+const NavLogo = styled.img`
+display: flex;
+justify-content: center;
+max-height: 200px;
+padding: 5% 0 0;
+margin-bottom:8%;
+`
 
 function App() {
+
+  const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
+
   return (
     <Router>
-    <div className="App">
+
+    <div className="App" style={{backgroundImage: `url(${imageUrl})` }}>
       <header className="App-header">
-
-        <nav>
-          <Link to="/"> Home </Link>
-          <Link to="/login"> Log-in</Link>
-          <Link to="/signup"> Sign-Up</Link>
-        </nav>
-
-        <p>
-          Med Cabinet 5
-          <MarketingLanding />
-        </p>
+        <Link to="/">
+            <NavLogo src={logo} alt="Logo" />
+        </Link>
       </header>
+
       <Switch>
-        <Route exact path="/" component={MarketingLanding} />
-        <Route path="/login" component={FormikLoginForm} />
-        <Route path="/signup" component={FormikSignupForm} />
-        <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
-        <PrivateRoute path="/userinfo/:id" component={UserInfoForm} />
-        <PrivateRoute path="/strains/:id" component={StrainSelector} />
-      </Switch>
+          <Route exact path ="/" component={MarketingLanding} />
+          <Route path="/login" component={FormikLoginForm} />
+          <Route path="/signup" component={FormikSignupForm} />
+
+          <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
+          <PrivateRoute path="/infoform" component={UserInfoForm} />
+          <PrivateRoute path="/strains" component={StrainSelector} />
+          <PrivateRoute path="/search" component={StrainSearch} />
+        </Switch>
     </div>
-    </Router>
+    </Router> 
+
   );
 }
 
