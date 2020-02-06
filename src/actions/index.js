@@ -73,7 +73,7 @@ export const fetchStats = () => dispatch => {
 
 //SAVED STRAINS-BACKEND//
 //save strains to backend
-export const saveStrain = (save) => dispatch => {
+export const saveStrain = (save, user) => dispatch => {
     dispatch({type: CREATE_SAVEDSTRAIN_START})
     axiosWithAuth()
     .post(` https://med-cabinet-server.herokuapp.com/api/savedstrains/user/${user.id}`, save )
@@ -85,7 +85,7 @@ export const saveStrain = (save) => dispatch => {
 }
 
 //fetch savedstrains
-export const fetchSavedStrains = () => dispatch => {
+export const fetchSavedStrains = (user) => dispatch => {
     dispatch({type:FETCH_SAVEDSTRAIN_START})
     axiosWithAuth()
     .get(`https://med-cabinet-server.herokuapp.com/api/savedstrains/user/${user.id}`)
@@ -97,7 +97,7 @@ export const fetchSavedStrains = () => dispatch => {
 }
 
 //delete saved strains from backend
-export const deleteSavedStrain = id => dispatch => {
+export const deleteSavedStrain = (id, user, strain) => dispatch => {
     dispatch({type: DELETE_SAVEDSTRAIN_START})
     axiosWithAuth()
     .delete(` https://med-cabinet-server.herokuapp.com/api/savedstrains/user/${user.id}/${strain.id}`, id)
