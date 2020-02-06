@@ -12,6 +12,7 @@ justify-content: center;
 align-items: center;
 color: black;
 justify-content: center;
+padding: 5rem;
 `
 
 const LoginBody = styled.div`
