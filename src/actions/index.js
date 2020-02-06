@@ -1,4 +1,4 @@
-import axiosWithAuth from "../utils/AxiosWithAuth";
+import { axiosWithAuth } from "../utils/AxiosWithAuth";
 import axios from "axios";
 
 //Additional actions not dispatched, but alternatively located in app: 
