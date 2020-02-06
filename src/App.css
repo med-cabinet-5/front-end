@@ -39,7 +39,7 @@
 
 .App-header {
   background-color: #323232;
-  min-height: 30vh;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,4 +60,6 @@
     transform: rotate(360deg);
   }
 }
-
+.ant-carousel{
+  text-align: center;
+}

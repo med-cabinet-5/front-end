@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Field, ErrorMessage, withFormik } from 'formik';
-import { Link, useParams } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
-
-const LoginContainer = styled.div`
-margin-top: 5%;
+import {Link} from 'react-router-dom'
+const FormContainerDiv = styled.div `
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -48,11 +46,9 @@ function LoginForm({values, errors, touched, status}) {
   },[status])
 
   return (
-    <LoginContainer className="LoginForm">
-      
-      <LoginBody>
-      <h1>Log In</h1>
-        
+    <div className="LoginForm">
+      <h1>Login Form</h1>
+          <FormContainerDiv>
         <Form>
           <div className="user-username">
           <label htmlFor="user_username">Username: </label>
@@ -87,10 +83,11 @@ function LoginForm({values, errors, touched, status}) {
           <SignUp> Don't have an account? 
             <Link to="/signup"> Sign-Up</Link>
           </SignUp>
-
+          
         </Form>
-        </LoginBody>
-    </LoginContainer>
+        
+        </FormContainerDiv>
+        </div>
   );
 };
 

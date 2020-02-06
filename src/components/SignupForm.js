@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
-import {withFormik, Form, Field} from 'formik'
+import React, {useState, useEffect} from 'react';
+import {withFormik, Form, Field} from 'formik';
 import { Link } from "react-router-dom";
-import * as Yup from 'yup'
+import * as Yup from 'yup';
 import axios from "axios";
 import styled from "styled-components";
 
@@ -18,7 +18,7 @@ const SignupBody = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-background-color: #918383;
+background-color: rgb(145, 131, 131, 0.7);
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
@@ -31,12 +31,27 @@ background-color: #323232;
 color: white;
 padding: 1%;
 border-radius: 8px;
+
+
+&:hover{
+
+}
 `
 
 const Login = styled.p`
 font-size: 0.7rem;
 `
 
+const Columns = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+margin-bottom:1%;
+`
+const Error = styled.p`
+color:red;
+`
 
 function SignupForm({values, errors, touched, status}){
     const [user, setUser]= useState([])
@@ -54,72 +69,79 @@ return(
         <h1>Sign-Up</h1>
             
                 <Form>
-                <div>
+                <Columns>
                 <label>
                     First Name: 
+                    </label>
                 <Field
                     type='text'
                     name='first_name'
                     placeholder='First Name'
                 />
                 {touched.first_name && errors.first_name && (
-                <p className='errors'>{errors.first_name}</p>
+                <Error className='errors'>{errors.first_name}</Error>
                 )}
-                </label>
-                </div>
                 
-                <div>
+                </Columns>
+                
+                <Columns>
                 <label>
                     Last Name: 
+                    </label>
                 <Field
                     type='text' 
                     name='last_name'
                     placeholder='Last Name'
                 />
                 {touched.last_name && errors.last_name && (
-                <p className='errors'>{errors.last_name}</p>
+                <Error className='errors'>{errors.last_name}</Error>
                 )}
-                </label>
-                </div>
+                
+                </Columns>
 
-                <div>
+                <Columns>
                 <label>
                     E-mail: 
+                    </label>
                 <Field
                     type='email'
                     name='email'
                     placeholder='E-mail'
                 />
                 {touched.email && errors.email && (
-                <p className='errors'>{errors.email}</p>
+                <Error className='errors'>{errors.email}</Error>
                 )}
-                </label>
-                </div>
                 
-                <div>
+                </Columns>
+                
+                <Columns>
                 <label>
                     Username: 
+                    </label>
                 <Field
                     type='text'
                     name='username'
                     placeholder='Username'
                     />
-                </label>
-                </div>
+                {touched.username && errors.username && (
+                <Error className='errors'>{errors.username}</Error>
+                )}
+                </Columns>
 
-                <div>
+                <Columns>
                 <label>
                     Password: 
+                    </label>
                 <Field
                     type='password'
                     name='password'
                     placeholder='Password'
                 />
                 {touched.password && errors.password && (
-                <p className='errors'>{errors.password}</p>
+                <Error className='errors'>{errors.password}</Error>
                 )}
-                </label>
-                </div>
+                
+                </Columns>
                 <SignUpButton type='submit'>Submit!</SignUpButton>
                 
                 <Login>Already have an account? 

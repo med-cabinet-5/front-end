@@ -29,6 +29,7 @@ display: flex;
 justify-content: center;
 max-height: 200px;
 padding: 5% 0 0;
+margin-bottom:8%;
 `
 
 function App() {
