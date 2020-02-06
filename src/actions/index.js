@@ -112,7 +112,7 @@ export const deleteSavedStrain = (id, user, strain) => dispatch => {
 
 //USER-BACKEND//
 //edit user
-export const updateUser = id => dispatch => {
+export const updateUser = (id) => dispatch => {
     dispatch({type: UPDATE_USERPROFILE_START})
     axiosWithAuth()
     .put(` https://med-cabinet-server.herokuapp.com/api/user/${id}`)

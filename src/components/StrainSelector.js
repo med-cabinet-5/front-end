@@ -59,6 +59,8 @@ display: flex;
 
 function StrainSelector() {
     
+    
+
     return (
     <SelectorContainer>
 
