@@ -62,23 +62,20 @@ font-size:4.5rem;
 `
 function MarketingLanding () {
     return(
-       <CarouselBody>
+    <CarouselBody>
         <Carousel autoplay effect="fade">
-             
             
     <LandingBody>
         <Carouselpic> <Icon type="experiment" /></Carouselpic>
-         <CarouselHeader>Find your strain</CarouselHeader>
-        <CarouselP>Find strains based on their effects and taste in a database of thousnads</CarouselP>
+            <CarouselHeader>Find your strain</CarouselHeader>
+        <CarouselP> Be matched with strains that address your needs. You'll be given recommendations based on desired effects and taste from a database of thousands of strains</CarouselP>
     </LandingBody>
             
-            
-     <LandingBody>
-         <Carouselpic><Icon type="book" /></Carouselpic>
+    <LandingBody>
+        <Carouselpic><Icon type="book" /></Carouselpic>
         <CarouselHeader>Locate your strain</CarouselHeader>
         <CarouselP>Locate nearby dispensaries or medical practitioners that can give expert insights.</CarouselP>
     </LandingBody>
-           
             
     <LandingBody>
     <Carouselpic><Icon type="idcard" /></Carouselpic>

@@ -56,6 +56,7 @@ function App() {
           <PrivateRoute path="/strains" component={StrainSelector} />
           <PrivateRoute path="/search" component={StrainSearch} />
         </Switch>
+
     </div>
     </Router> 
 
