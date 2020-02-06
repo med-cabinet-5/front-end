@@ -37,6 +37,7 @@ font-size: 0.7rem;
 `
 
 function LoginForm({values, errors, touched, status}) {
+  
   const [user, setUser]= useState([])
 
   useEffect (()=>{
@@ -107,7 +108,7 @@ handleSubmit(values, { setStatus, props }) {
       .then(response => {
           console.log(response);
           setStatus(response.data);
-          props.history.push('/dashboard/')
+          props.history.push(`/dashboard`)
       })
       .catch(err => console.log(err.response));
 }

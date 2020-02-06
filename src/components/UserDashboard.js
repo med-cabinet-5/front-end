@@ -26,6 +26,10 @@ function UserDashboard() {
 
     <UserInfo>
         <p>Display User Info Here</p>
+        <p> (proba) There's a -% chance you're looking for a(n) indica</p>
+        <p>Your top ailments: (ailments) </p>
+        <p>Your top effects (effects)</p>
+        <p>Your top flavors: (flavors)</p>
     </UserInfo>
 
     <div>
