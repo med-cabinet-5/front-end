@@ -66,10 +66,10 @@ border-radius: 8px;
 
     const addUserInfo = e => {
         e.preventDefault();
-        const stringInput = `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
-        console.log(stringInput)
+        const joinedInput = `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
+        console.log(joinedInput)
         axios
-        .post('https://med-cab-ds.herokuapp.com/stats', stringInput)
+        .post('https://med-cab-ds.herokuapp.com/stats', joinedInput)
         .then(res => {
             console.log('success', res);
             props.history.push('/strains/');
