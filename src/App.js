@@ -23,7 +23,7 @@ import StrainSearch from "./components/StrainSearch";
 import { SavedStrainContext } from "./contexts/SavedStrainContext";
 import { StrainContext } from "./contexts/StrainContext";
 import { UserContext } from "./contexts/UserContext";
-import { StoresContext } from "./contexts/StoresContext";
+// import { StoresContext } from "./contexts/StoresContext";
 
 //styling
 import './App.css';
@@ -40,8 +40,6 @@ margin-bottom:8%;
 
 function App() {
 
-
-
   const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
 
   return (
@@ -57,8 +55,8 @@ function App() {
           <Route exact path ="/" component={MarketingLanding} />
           <Route path="/login" component={FormikLoginForm} />
           <Route path="/signup" component={FormikSignupForm} />
-          <Route path="/infoform" component={UserInfoForm} />
 
+          <PrivateRoute path="/infoform" component={UserInfoForm} />
           <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
           <PrivateRoute path="/strains" component={StrainSelector} />
           <PrivateRoute path="/search" component={StrainSearch} />

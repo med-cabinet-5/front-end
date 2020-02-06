@@ -1,7 +1,17 @@
-import React, { useEffect } from "react";
+//dependencies & hooks
+import React, { useEffect, useContext } from "react";
+
+//components
 import StrainDetailCard from "./StrainDetailCard";
 import StrainMiniCard from "./StrainMiniCard";
 
+//actions
+import { fetchRecs, fetchStats, saveStrain } from "../actions";
+
+//contexts
+//user, strain, savedstrain
+
+//styles
 import styled from "styled-components";
 
 const SelectorButton = styled.button`
@@ -39,28 +49,27 @@ const StrainInfo = styled.div`
 display: flex;
 `
 
+const UserInfo = styled.div`
+display: flex;
+`
+
 //.get request of top five strains returned from DS Kingdom
 //.post to backend to save strains
 
 
 function StrainSelector() {
-
-    // const {strains} = useContext(StrainContext);
     
-    // useEffect(() => { 
-    //     const fetchStrains = id => {
-    //         axios
-    //             .get(`https://med-cab-ds.herokuapp.com/json/${id}`)
-    //             .then(res => set({ strains: res }))
-    //             .catch(err => console.log(err.response));
-    //      };
-
     return (
     <SelectorContainer>
 
     < SelectorBody>
     <h2>Here are the recommended strains for (name!)</h2>
     
+    <UserInfo>
+        <p>Stats</p>
+    </UserInfo >
+
+
     <StrainInfo>
         <p>
             Display Mini Cards
@@ -71,7 +80,6 @@ function StrainSelector() {
             Pop-Up <StrainDetailCard /> onclick of MiniCard
         </p>
     </StrainInfo>
-
     </SelectorBody>
 
 
