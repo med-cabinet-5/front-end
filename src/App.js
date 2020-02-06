@@ -19,6 +19,7 @@ import UserInfoForm from "./components/UserInfoForm";
 import StrainSelector from "./components/StrainSelector";
 import StrainSearch from "./components/StrainSearch";
 
+
 //styling
 import './App.css';
 import 'antd/dist/antd.css'
@@ -38,7 +39,6 @@ function App() {
 
   return (
     <Router>
-
     <div className="App" style={{backgroundImage: `url(${imageUrl})` }}>
       <header className="App-header">
         <Link to="/">

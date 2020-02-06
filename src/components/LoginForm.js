@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
+
+
 const FormContainerDiv = styled.div `
 display: flex;
 flex-direction: column;
@@ -11,6 +13,7 @@ justify-content: center;
 align-items: center;
 color: white;
 justify-content: center;
+padding: 5rem;
 `
 
 const LoginBody = styled.div`
