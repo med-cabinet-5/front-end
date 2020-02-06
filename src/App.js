@@ -39,7 +39,6 @@ function App() {
 
   return (
     <Router>
-
     <div className="App" style={{backgroundImage: `url(${imageUrl})` }}>
       <header className="App-header">
         <Link to="/">

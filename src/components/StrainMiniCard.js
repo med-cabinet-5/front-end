@@ -1,8 +1,10 @@
 //Danika
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 //import axios from "axios";
 //import useState
+//import SavedStrains
+//import userlist
 
 //Styled components
 const CardsContainer = styled.div`
@@ -25,12 +27,21 @@ min-height: 500px;
 max-width: 400px;
 min-width: 400px;
 `
+const CardHeader = styled.div`
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+`;
+
+const FavouritesButton = styled.i`
+color: white;
+`;
+
 
 export default function StrainMiniCard(props) {
 
-    //SET STATE FOR CARDS & LIKED/SAVED STRAINS
+    //SET STATE FOR CARDS 
     //const [cards, setCards] = useState([]);
-    //const [savedStrains, setSavedStrains] = useState();
 
     //CALL DATA
     /*{useEffect(() => {
@@ -45,14 +56,23 @@ export default function StrainMiniCard(props) {
 });
 
 }, []);}*/
+
+//FAVOURITES BUTTON FUNCTIONALITY
+//ADD ONCLICK EVENT FOR FAV ICON SO THAT COLOR CHANGES
+//ADD STATE AND CREATE A NEW ARRAY OF USER'S FAVOURITES.
+
+
+
+
     
 return (
     
         <CardsContainer>
              <CardBody>
-                 <div clasName="card-header">
-                 <p>{props.strain}</p>  <button>kjgk</button>
-                 </div>
+                 <CardHeader>
+                 <p>{props.strain}</p>  
+                 <i class="far fa-heart"></i>
+                 </CardHeader>
                  <div className="card-main">
                  <h1>{props.name_abbreviated}</h1>  
                  </div>
