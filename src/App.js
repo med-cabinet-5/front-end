@@ -20,8 +20,8 @@ import StrainSelector from "./components/StrainSelector";
 import StrainSearch from "./components/StrainSearch";
 
 //styling
-import './App.css';
 import 'antd/dist/antd.css'
+import './App.css'
 import styled from "styled-components"
 
 const NavLogo = styled.img`

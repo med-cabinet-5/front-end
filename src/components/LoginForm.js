@@ -4,7 +4,10 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
-const FormContainerDiv = styled.div `
+
+
+const LoginFormContainer = styled.div`
+margin-top: 5%; 
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -13,11 +16,12 @@ color: white;
 justify-content: center;
 `
 
-const LoginBody = styled.div`
+const LogInBody = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-background-color: #918383;
+background-color: rgb(0,181,205, 0.7);
+border-radius:36px;
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
@@ -35,6 +39,14 @@ border-radius: 8px;
 const SignUp = styled.p`
 font-size: 0.7rem;
 `
+const Columns = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+margin-bottom:1%;
+`
+
 
 function LoginForm({values, errors, touched, status}) {
   
@@ -46,11 +58,13 @@ function LoginForm({values, errors, touched, status}) {
   },[status])
 
   return (
-    <div className="LoginForm">
-      <h1>Login Form</h1>
-          <FormContainerDiv>
+      
+          <LoginFormContainer>
+            
+            <LogInBody>
+            <h1>Login Form</h1>
         <Form>
-          <div className="user-username">
+        <Columns>
           <label htmlFor="user_username">Username: </label>
           <Field
             type="text"
@@ -62,9 +76,8 @@ function LoginForm({values, errors, touched, status}) {
               <p className="errors"> {errors.username}</p>
             )}
           <ErrorMessage name="username" component="div" className="error"/>
-          </div>
-
-          <div className="user-password">
+          </Columns>
+         <Columns>
           <label htmlFor="user_password">Password: </label>
           <Field
             type="password"
@@ -76,7 +89,7 @@ function LoginForm({values, errors, touched, status}) {
               )}
           
           <ErrorMessage name="password" component="div" className="error"/>
-          </div>
+          </Columns>
 
           <LoginButton type="submit">Submit</LoginButton>
           
@@ -85,9 +98,9 @@ function LoginForm({values, errors, touched, status}) {
           </SignUp>
           
         </Form>
+        </LogInBody>
+        </LoginFormContainer>
         
-        </FormContainerDiv>
-        </div>
   );
 };
 

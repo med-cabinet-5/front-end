@@ -3,16 +3,10 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components"
 import { Carousel, Icon } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCannabis} from '@fortawesome/free-solid-svg-icons'
+import {faJoint} from '@fortawesome/free-solid-svg-icons'
 
-const LandingContainer = styled.div`
-margin-top: 5%; 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-color: white;
-justify-content: center;
-`
 
 const LandingBody = styled.div`
 display: flex;
@@ -63,11 +57,13 @@ font-size:4.5rem;
 function MarketingLanding () {
     return(
        <CarouselBody>
+             
         <Carousel autoplay effect="fade">
              
-            
+      
     <LandingBody>
-        <Carouselpic> <Icon type="experiment" /></Carouselpic>
+    
+        <Carouselpic> <FontAwesomeIcon icon={ faCannabis}/></Carouselpic>
          <CarouselHeader>Find your strain</CarouselHeader>
         <CarouselP>Find strains based on their effects and taste in a database of thousnads</CarouselP>
     </LandingBody>
@@ -81,7 +77,7 @@ function MarketingLanding () {
            
             
     <LandingBody>
-    <Carouselpic><Icon type="idcard" /></Carouselpic>
+    <Carouselpic><FontAwesomeIcon icon={ faJoint}/></Carouselpic>
         <CarouselHeader>Welcome!</CarouselHeader>
         <CarouselP>Explore what Med Cabinet has to offer!</CarouselP>
         <CarouselDiv>

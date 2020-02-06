@@ -18,7 +18,8 @@ const SignupBody = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-background-color: rgb(145, 131, 131, 0.7);
+background-color: rgb(0,181,205, 0.7);
+border-radius:36px;
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
