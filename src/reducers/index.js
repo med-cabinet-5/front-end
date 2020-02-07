@@ -1,5 +1,5 @@
 
-
+//FROM PREVIOUS PROJECT
 // export const initialState = { 
 //     todos: [
 //         {
@@ -36,8 +36,20 @@
 //     return nonCompletedList
 // }
 
-// export const todoReducer = (state, action) => {
+//ADD FUNCTIONS NECESSARY FOR ACTIONS WITHIN APP:
+    
+
+
+//REDUCER
+// export const indexReducer = (state, action) => {
 //     switch(action.type) {
+//ADD CASES:
+
+
+
+
+
+            //From previous project
 //         case 'ADD_TODO':
 //             const newItem ={
 //             item: action.payload,
@@ -47,7 +59,7 @@
 //             return {
 //                 ...state, todos: [...state.todos, newItem]
 //             };
-            
+
 //         case 'TOGGLE_COMPLETED':
 //             return {
 //                 todos: toggleItem(action.payload, state.todos)
@@ -62,3 +74,5 @@
 //         return state;
 //     };
 // }
+
+

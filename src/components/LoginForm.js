@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import { withFormik, Form, Field, ErrorMessage } from 'formik';
+import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
 
 
-const LoginFormContainer = styled.div`
+const LoginFormContainer = styled.div `
 margin-top: 5%; 
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-color: white;
+color: black;
 justify-content: center;
+padding: 5rem;
 `
 
 const LogInBody = styled.div`
@@ -25,6 +26,17 @@ border-radius:36px;
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
+`
+
+const LoginLabels = styled.p`
+color: white;
+margin-top: 4%;
+margin-bottom: 1%;
+`
+
+const LoginHeader = styled.h1`
+color: white;
+margin-top: 3%;
 `
 
 const LoginButton = styled.button`
@@ -48,6 +60,10 @@ margin-bottom:1%;
 `
 
 
+const Error = styled.p`
+color:red;
+`
+
 function LoginForm({values, errors, touched, status}) {
   
   const [user, setUser]= useState([])
@@ -62,7 +78,7 @@ function LoginForm({values, errors, touched, status}) {
           <LoginFormContainer>
             
             <LogInBody>
-            <h1>Login Form</h1>
+            <h1>Login </h1>
         <Form>
         <Columns>
           <label htmlFor="user_username">Username: </label>
@@ -94,13 +110,13 @@ function LoginForm({values, errors, touched, status}) {
           <LoginButton type="submit">Submit</LoginButton>
           
           <SignUp> Don't have an account? 
-            <Link to="/signup"> Sign-Up</Link>
+            <Link to="/signup" style={{color: "#1497AB", textDecoration: "underline", }}> Sign-Up</Link>
           </SignUp>
           
         </Form>
         </LogInBody>
         </LoginFormContainer>
-        
+
   );
 };
 

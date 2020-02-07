@@ -3,9 +3,30 @@ import axios from 'axios'
 
 //styling
 import styled from "styled-components";
+import { } from "antd";
+
 const InfoBody = styled.div`
 margin: 5%;
 color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
+
+const InfoHeader = styled.h1`
+color: white
+`
+
+const InfoLabels = styled.p`
+color: white;
+text-align: left;
+margin-top: 7%;
+margin-bottom: 1%;
+`
+const InfoInstructions = styled.div`
+padding-bottom: 3%;
+border-bottom: #323232 solid 2px;
 `
 
 const InfoForm = styled.form`
@@ -14,6 +35,8 @@ flex-direction: column;
 width: 50%;
 border-top: 2px solid #323232;
 background-color: #918383;
+color: black;
+padding: 5%;
 `
 
 const InfoButton = styled.button`
@@ -28,7 +51,7 @@ border-radius: 8px;
     const UserInfoForm = props => {
         const [newUserInfo, setNewUserInfo] = useState({
             ailments: '',
-            feeling: '',
+            feelings: '',
             taste: '',
         });
 
@@ -43,13 +66,12 @@ border-radius: 8px;
 
     const addUserInfo = e => {
         e.preventDefault();
-        const stringInput = `${newUserInfo.ailments} ${newUserInfo.feeling} ${newUserInfo.taste}`
-        console.log(stringInput)
+        const joinedInput = `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
+        console.log(joinedInput)
         axios
-        .post('DSendpoint', stringInput)
+        .post('https://med-cab-ds.herokuapp.com/stats', joinedInput)
         .then(res => {
             console.log('success', res);
-            localStorage.setItem( newUserInfo, res.data.payload );
             props.history.push('/strains/');
         })
         .catch(err => console.log(err));
@@ -57,36 +79,42 @@ border-radius: 8px;
 
         return (
             <InfoBody >
-                <h2>User Information</h2>
                 <InfoForm onSubmit={addUserInfo}>
-                <p>Ailments:</p>
+                <InfoHeader>User Information</InfoHeader>
+                    <InfoInstructions>
+                        <InfoLabels>
+                            We'll need to get some information from you about the ailments you're experiencing, your desired effects, and what your preferences for taste are. This will help us give you better recommendations based on the information you provide.
+                        </InfoLabels>
+                    </InfoInstructions>
+
+                <InfoLabels>Ailments:</InfoLabels>
                 <input
                     type="text"
                     name="ailments"
-                    placeholder="Tell us what is bothering you"
-                    // value={ailments}
+                    placeholder="Tell us more about what is bothering you"
+                    value={newUserInfo.ailments}
                     onChange={handleChange}
                 />
-                <p>Feelings:</p>
+                <InfoLabels>Feelings:</InfoLabels>
                 <input
                     type="text"
                     name="feelings"
-                    placeholder="Tell us what you're hoping to feel"
-                    // value={feelings}
+                    placeholder="Tell us what effects you're hoping to experience"
+                    value={newUserInfo.feelings}
                     onChange={handleChange}
                 />
-                <p>Preferred Taste:</p>
+                <InfoLabels>Preferred Taste:</InfoLabels>
                 <input
                     type="text"
                     name="taste"
                     placeholder="Tell us if you have any preferences of taste"
-                    // value={taste}
+                    value={newUserInfo.taste}
                     onChange={handleChange}
                 />
                 <InfoButton> Submit </InfoButton>
                 </InfoForm>
             </InfoBody>
-            );
+        );
     };
     
     export default UserInfoForm;
