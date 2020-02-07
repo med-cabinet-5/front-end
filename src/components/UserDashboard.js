@@ -89,19 +89,17 @@ function UserDashboard() {
     return (
     <DashboardContainer>
     {/* <NavContainer>
-
         <NavLink to="/" style={{color: "#1497AB", textDecoration: "underline", }}> Home </NavLink>
         <NavLink to="/search" style={{color: "#1497AB", textDecoration: "underline", }} > Explore </NavLink>
         <NavLink to="/logout" style={{color: "#1497AB", textDecoration: "underline", }} >Logout </NavLink>
-        
     </NavContainer> */}
 
     <UserNav>
-        <UserHeader>Welcome Back (name)!</UserHeader>
+        <UserHeader> Welcome Back (name)!</UserHeader>
         <img src={avatar} alt="avatar" />
         </UserNav>
     
-    {/* <UserHeader>Welcome Back (name)!</UserHeader> */}
+        {/* <UserHeader>Welcome Back (name)!</UserHeader> */}
         <span>
         <NavLogo src={settings} alt="Settings" />
         </span>
@@ -110,7 +108,6 @@ function UserDashboard() {
     </UserResults>
 
     <SavedStrains />
-
     </DashboardContainer>
 )};
 

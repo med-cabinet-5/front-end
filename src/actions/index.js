@@ -21,8 +21,8 @@ export const FETCH_STATS_FAILURE = 'FETCH_STATS_FAILURE';
 //Back-End
 //save strains to backend
 export const CREATE_SAVEDSTRAIN_START = 'CREATE_SAVEDSTRAIN_START';
-export const CREATE_SAVEDSTRAIN_SUCCESS = 'CREATE_SAVEDSTRAIN_SUCCESS'
-export const CREATE_SAVEDSTRAIN_FAILURE = 'CREATE_SAVEDSTRAIN_FAILURE'
+export const CREATE_SAVEDSTRAIN_SUCCESS = 'CREATE_SAVEDSTRAIN_SUCCESS';
+export const CREATE_SAVEDSTRAIN_FAILURE = 'CREATE_SAVEDSTRAIN_FAILURE';
 
 //fetch savedstrains
 export const FETCH_SAVEDSTRAIN_START = 'FETCH_SAVEDSTRAIN_START';
@@ -31,8 +31,8 @@ export const FETCH_SAVEDSTRAIN_FAILURE = 'FETCH_SAVEDSTRAIN_FAILURE';
 
 //delete saved strains from backend
 export const DELETE_SAVEDSTRAIN_START = 'DELETE_SAVEDSTRAIN_START';
-export const DELETE_SAVEDSTRAIN_SUCCESS = 'CREATE_SAVEDSTRAIN_SUCCESS'
-export const DELETE_SAVEDSTRAIN_FAILURE = 'CREATE_SAVEDSTRAIN_FAILURE'
+export const DELETE_SAVEDSTRAIN_SUCCESS = 'CREATE_SAVEDSTRAIN_SUCCESS';
+export const DELETE_SAVEDSTRAIN_FAILURE = 'CREATE_SAVEDSTRAIN_FAILURE';
 
 //USER ACTION EXPORTS//
 //edit user
@@ -112,7 +112,7 @@ export const deleteSavedStrain = (id, user, strain) => dispatch => {
 
 //USER-BACKEND//
 //edit user
-export const updateUser = id => dispatch => {
+export const updateUser = (id) => dispatch => {
     dispatch({type: UPDATE_USERPROFILE_START})
     axiosWithAuth()
     .put(` https://med-cabinet-server.herokuapp.com/api/user/${id}`)
