@@ -15,7 +15,6 @@ const LoginContainer = styled.div `
 margin-top: 5%;
 display: flex;
 flex-direction: column;
-justify-content: center;
 align-items: center;
 justify-content: center;
 `
@@ -24,7 +23,7 @@ const LoginBody = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-padding-top: 8%;
+padding-top: 5%;
 color: black;
 min-height: 500px;
 max-height: 500px;
@@ -104,9 +103,9 @@ function LoginForm({values, errors, touched, status}) {
           
           />
             {touched.username && errors.username && (
-              <p className="errors"> {errors.username}</p>
+              <Error className="errors"> {errors.username}</Error>
             )}
-          <Error name="username" component="div" className="error"/>
+        
           </Columns>
           <Columns>
           <LoginLabels htmlFor="user_password">Password: </LoginLabels>
@@ -116,10 +115,8 @@ function LoginForm({values, errors, touched, status}) {
             placeholder="Enter password"
             />
               {touched.password && errors.password && (
-                <p className="errors"> {errors.password}</p>
+                <Error className="errors"> {errors.password}</Error>
               )}
-          
-          <Error name="password" component="div" className="error"/>
           </Columns>
 
           <LoginButton type="submit" onClick={success}>Submit</LoginButton>
