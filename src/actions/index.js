@@ -1,22 +1,20 @@
 import { axiosWithAuth } from "../utils/AxiosWithAuth";
-import axios from "axios";
+// import axios from "axios";
 
 //Additional actions not dispatched, but alternatively located in app: 
 //sign-up, login, posting user input to DS;
 
-
-
 //STRAIN ACTION EXPORTS//
 //From DS
-//fetch strain recommendations from DS
-export const FETCH_STRAIN_START = 'FETCH_STRAIN_START';
-export const FETCH_STRAIN_SUCCESS = 'FETCH_STRAIN_SUCCESS';
-export const FETCH_STRAIN_FAILURE = 'FETCH_STRAIN_FAILURE';
+// //fetch strain recommendations from DS
+// export const FETCH_STRAIN_START = 'FETCH_STRAIN_START';
+// export const FETCH_STRAIN_SUCCESS = 'FETCH_STRAIN_SUCCESS';
+// export const FETCH_STRAIN_FAILURE = 'FETCH_STRAIN_FAILURE';
 
-//fetch user stats from DS
-export const FETCH_STATS_START = 'FETCH_STATS_START';
-export const FETCH_STATS_SUCCESS = 'FETCH_STATS_SUCCESS';
-export const FETCH_STATS_FAILURE = 'FETCH_STATS_FAILURE';
+// //fetch user stats from DS
+// export const FETCH_STATS_START = 'FETCH_STATS_START';
+// export const FETCH_STATS_SUCCESS = 'FETCH_STATS_SUCCESS';
+// export const FETCH_STATS_FAILURE = 'FETCH_STATS_FAILURE';
 
 //Back-End
 //save strains to backend
@@ -45,29 +43,29 @@ export const UPDATE_USERPROFILE_FAILURE = 'UPDATE_USERPROFILE_FAILURE';
 //ACTIONS//
 
 //RETURNS FROM DS//
-//fetch strain recommendations from DS
-export const fetchRecs = () => dispatch => {
-    dispatch({type:FETCH_STRAIN_START })
-    axios
-    .get(`https://med-cab-ds.herokuapp.com/json`)
-    .then( response => {
-        console.log('response from DS_JSON_GET', response);
-        dispatch({type: FETCH_STRAIN_SUCCESS, payload: response })
-    })
-    .catch(error => dispatch({type: FETCH_STRAIN_FAILURE, payload: error}))
-}
+// //fetch strain recommendations from DS
+// export const fetchRecs = () => dispatch => {
+//     dispatch({type:FETCH_STRAIN_START })
+//     axios
+//     .get(`https://med-cab-ds.herokuapp.com/json`)
+//     .then( response => {
+//         console.log('response from DS_JSON_GET', response);
+//         dispatch({type: FETCH_STRAIN_SUCCESS, payload: response })
+//     })
+//     .catch(error => dispatch({type: FETCH_STRAIN_FAILURE, payload: error}))
+// }
 
-//fetch user stats from DS
-export const fetchStats = () => dispatch => {
-    dispatch({type: FETCH_STATS_START})
-    axios
-    .get(`https://med-cab-ds.herokuapp.com/stats`)
-    .then( response => {
-        console.log('response from DS_STATS_GET', response);
-        dispatch({type: FETCH_STATS_SUCCESS, payload: response })
-    })
-    .catch(error => dispatch({type: FETCH_STATS_FAILURE, payload: error}))
-}
+// //fetch user stats from DS
+// export const fetchStats = () => dispatch => {
+//     dispatch({type: FETCH_STATS_START})
+//     axios
+//     .get(`https://med-cab-ds.herokuapp.com/stats`)
+//     .then( response => {
+//         console.log('response from DS_STATS_GET', response);
+//         dispatch({type: FETCH_STATS_SUCCESS, payload: response })
+//     })
+//     .catch(error => dispatch({type: FETCH_STATS_FAILURE, payload: error}))
+// }
 
 
 

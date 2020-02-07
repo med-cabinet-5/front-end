@@ -47,8 +47,8 @@ export default function StrainMiniCard(props) {
     /*{useEffect(() => {
     axios.get()
     .then(response => {
-       setCards(response.data.results);
-      console.log(response.data);
+        setCards(response.data.results);
+        console.log(response.data);
     })
 
   .catch(error => {
@@ -57,47 +57,47 @@ export default function StrainMiniCard(props) {
 
 }, []);}*/
 
-//FAVOURITES BUTTON FUNCTIONALITY
-//ADD ONCLICK EVENT FOR FAV ICON SO THAT COLOR CHANGES
-//ADD STATE AND CREATE A NEW ARRAY OF USER'S FAVOURITES.
 
-/*
-function setColor(icon, color){
-    let count=1;
-    let favsButton = document.getElementbyClaassName("far fa-heart")
-    if (count == 0){
-        favsButton.style.backgroundColor = "white"
-        count=1;        
+    //FAVOURITES BUTTON FUNCTIONALITY
+    //ADD ONCLICK EVENT FOR FAV ICON SO THAT COLOR CHANGES
+    //ADD STATE AND CREATE A NEW ARRAY OF USER'S FAVOURITES.
+
+    /*
+    function setColor(icon, color){
+        let count=1;
+        let favsButton = document.getElementbyClaassName("far fa-heart")
+        if (count == 0){
+            favsButton.style.backgroundColor = "white"
+            count=1;        
+        }
+        else{
+            favsButton.style.backgroundColor = "red"
+            count=0;
+        }
     }
-    else{
-        favsButton.style.backgroundColor = "red"
-        count=0;
-    }
-}
-*/
+    */
 
-//const [saved, setSaved] = useState([]);
+    //const [saved, setSaved] = useState([]);
 
-//I am confused about how to do this.
+    //I am confused about how to do this.
 
 
     
 return (
     
         <CardsContainer>
-             <CardBody>
-                 <CardHeader>
-                 <p>{props.strain}</p>  
-                 <i /*onClick(setColor())*/class="far fa-heart"></i>
-                 </CardHeader>
-                 <div className="card-main">
-                 <h1>{props.name_abbreviated}</h1>  
-                 </div>
-                 <div className="card-footer">
-                 <h2>{props.name}</h2>
-                 </div>
+            <CardBody>
+                <CardHeader>
+                <p>{props.strain}</p>  
+                <i /*onClick(setColor())*/class="far fa-heart"></i>
+                </CardHeader>
+                <div className="card-main">
+                <h1>{props.name_abbreviated}</h1>  
+                </div>
+                <div className="card-footer">
+                <h2>{props.name}</h2>
+                </div>
         </CardBody> 
         </CardsContainer>
-       
        )
-     }
+    }

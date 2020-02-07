@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {withFormik, Form, Field} from 'formik';
-import { Link } from "react-router-dom";
-import * as Yup from 'yup';
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+//Formik
+import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+
+//styles
 import styled from "styled-components";
+import { message } from 'antd';
 
 const SignupContainer = styled.div`
 margin-top: 5%; 
@@ -11,7 +16,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-color: white;
 justify-content: center;
 `
 const SignupBody = styled.div`
@@ -21,7 +25,8 @@ justify-content: center;
 background-color: rgb(0,181,205, 0.7);
 border-radius:36px;
 color: black;
-min-height: 500px;
+min-height: 600px;
+max-height: 600px;
 max-width: 400px;
 min-width: 400px;
 `
@@ -50,6 +55,7 @@ border-radius: 8px;
 
 const Login = styled.p`
 font-size: 0.7rem;
+color: white;
 `
 
 const Columns = styled.div`
@@ -66,6 +72,12 @@ color:red;
 
 function SignupForm({values, errors, touched, status}){
     const [user, setUser]= useState([])
+
+    const success = () => {
+        const hide = message.loading('Signing In...', 0);
+        // Dismiss manually and asynchronously
+        setTimeout(hide, 2500);
+    };
 
     useEffect (()=>{
     console.log('status', status)
@@ -160,7 +172,7 @@ return(
                 )}
                 </Columns>
 
-                <SignUpButton type='submit'>Submit</SignUpButton>
+                <SignUpButton type='submit' onClick={success}>Submit</SignUpButton>
                 
                 <Login>Already have an account? Log In 
                     <Link to="/login" style={{color: "#1497AB", textDecoration: "underline", }}> Here</Link> 

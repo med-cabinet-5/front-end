@@ -3,14 +3,14 @@ import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 //components
-import StrainDetailCard from "./StrainDetailCard";
-import StrainMiniCard from "./StrainMiniCard";
+import CardModal from "./CardModal"
 
 //actions
-import { fetchRecs, fetchStats, saveStrain } from "../actions";
+import { saveStrain } from "../actions";
+// import { fetchRecs, fetchStats,} from "../actions"
 
 //contexts
-//user, strain, savedstrain
+//user, results, savedstrain
 
 //styles
 import styled from "styled-components";
@@ -62,44 +62,42 @@ display: flex;
 //.get request of top five strains returned from DS Kingdom
 //.post to backend to save strains
 
+
+
+
+
+
 function StrainSelector() {
     
     // useEffect() fetchRecs, fetchStats
 
     return (
     <SelectorContainer>
-    
     < SelectorBody>
     <h2>Here are the recommended strains for (name!)</h2>
-    
-    <UserInfo>
-        <p>Stats</p>
-    </UserInfo >
 
     <StrainInfo>
         <p>
-            Display Mini Cards
-            {/* <StrainMiniCard /> */}
+            <CardModal />
         </p>
         
-
-        <p>
-            Pop-Up <StrainDetailCard /> onclick of MiniCard
-        </p>
     </StrainInfo>
+
+    <UserInfo>
+        <h2>Additional Information:</h2>
+        <p>Stats</p>
+    </UserInfo >
 
     <Not>
         <p>
             Not finding what you're looking for?
         </p>
-        
-    <SelectorButton> 
+        <SelectorButton> 
         <Link to="/infoform" style={{color: "#1497AB", textDecoration: "underline", }}>
         Go Back
         </Link>
-    </SelectorButton> 
+        </SelectorButton> 
     </Not>
-
     </SelectorBody>
     </SelectorContainer>
 )};

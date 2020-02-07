@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from "styled-components"
 
+import CardModal from "./CardModal"
 
 const SavedContainer = styled.div`
 margin-top: 5%; 
@@ -31,7 +32,7 @@ function SavedStrains () {
     <SavedContainer>
     <SavedBody>
         <h3>Saved Strains!</h3>
-
+        <p> display card modal of saved strains </p>
     </SavedBody>
     </SavedContainer>
     )
