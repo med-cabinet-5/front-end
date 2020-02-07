@@ -107,7 +107,7 @@ function LoginForm({values, errors, touched, status}) {
             )}
           <ErrorMessage name="username" component="div" className="error"/>
           </Columns>
-         <Columns>
+          <Columns>
           <label htmlFor="user_password">Password: </label>
           <Field
             type="password"
@@ -132,8 +132,7 @@ function LoginForm({values, errors, touched, status}) {
 
         </LoginContainer>
         </div>
-        </LogInBody>
-        </LoginFormContainer>
+    
 
   );
 };

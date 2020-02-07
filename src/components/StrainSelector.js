@@ -64,12 +64,9 @@ display: flex;
 
 
 
-
-
-
 function StrainSelector() {
     
-    // useEffect() fetchRecs, fetchStats
+    // useEffect()
 
     return (
     <SelectorContainer>
