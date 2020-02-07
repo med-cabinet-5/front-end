@@ -26,8 +26,8 @@ import { UserContext } from "./contexts/UserContext";
 // import { StoresContext } from "./contexts/StoresContext";
 
 //styling
-import './App.css';
 import 'antd/dist/antd.css'
+import './App.css'
 import styled from "styled-components"
 
 const NavLogo = styled.img`

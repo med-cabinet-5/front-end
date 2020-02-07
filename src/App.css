@@ -63,3 +63,7 @@
 .ant-carousel{
   text-align: center;
 }
+
+.ant-carousel .slick-dots li button{
+  width:40px;
+}
