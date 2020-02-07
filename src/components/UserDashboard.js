@@ -19,7 +19,7 @@ import { fetchSavedStrains, deleteSavedStrains, updateUser } from "../actions";
 
 //styles
 import styled from "styled-components"
-import { Drawer } from "antd";
+import { Drawer, Button, Form, Input } from "antd";
 
 //icons
 import avatar from "../icons/avatar.png";
@@ -52,6 +52,7 @@ margin-bottom: 8%;
 function UserDashboard() {
 
     const [visible, setVisible] = useState(false);
+    const [editVisible, setEditVisible] = useState(false)
 
     const showDrawer = () => {
         setVisible(true)
@@ -61,6 +62,14 @@ function UserDashboard() {
         setVisible(false)
     };
 
+    const showEditDrawer = () => {
+        setEditVisible(true)
+    };
+
+    const onEditDrawerClose = () => {
+        setEditVisible(false);
+        setVisible(false)
+    };
 
     return (
     <DashboardContainer>
@@ -70,21 +79,85 @@ function UserDashboard() {
         <NavLink to="/logout" style={{color: "#1497AB", textDecoration: "underline", }} >Logout </NavLink>
     </NavContainer> */}
 
-    <div>
+        <div>
         <NavLogo  onClick={showDrawer}>
         <img src={avatar} alt="avatar" />
         </NavLogo>
-    
+
         <Drawer
-            title="Hello (Name)" 
-            placement="right"
+            title="Hello (Name)"
+            width={320}
             closable={true}
             onClose={onClose}
             visible={visible}
-        >
-            <p>Edit User Details <img src={edit} alt="edit pencil" /> </p>
+        >   
+            <p>Edit User Details: (username)
+                <span  onClick={showEditDrawer}>
+                <img src={edit} alt="edit pencil" /> 
+                </span>
+            </p>
+            <Drawer
+                title="Edit User Details"
+                width={520}
+                closable={false}
+                onClose={onEditDrawerClose}
+                visible={editVisible}
+                bodyStyle={{ paddingBottom: 80 }}
+            > 
+
+            <div>
+            <Form layout="vertical" hideRequiredMark>
+                <Form.Item label="First Name">
+                <Input placeholder= "Please enter first name to update" />     
+                </Form.Item>
+
+                <Form.Item label="Last Name">
+                <Input placeholder= "Please enter last name to update" />     
+                </Form.Item>
+
+                <Form.Item label="E-mail">
+                <Input placeholder= "Please enter e-mail to update" />     
+                </Form.Item>
+
+                <Form.Item label="Password">
+                <Input placeholder= "Please enter updated password" />     
+                </Form.Item>
+            </Form>
+            </div>
+
+
+            <div className="button-div"
+                style={{
+                position: 'absolute',
+                bottom: 0,
+                width: '100%',
+                borderTop: '1px solid #e8e8e8',
+                padding: '10px 16px',
+                textAlign: 'right',
+                left: 0,
+                background: '#fff',
+                borderRadius: '0 0 4px 4px',
+                }}
+            >
+                <Button
+                style={{
+                    marginRight: 8,
+                }}
+                onClick={onEditDrawerClose}
+                >
+                Cancel
+                </Button>
+                <Button onClick={onClose} type="primary">
+                {/* <Button onClick={submit put req}> */}
+                Submit
+                </Button>
+            </div>
         </Drawer>
-    </div>
+    
+        </Drawer>
+        </div>
+    
+  
 
     <UserResults>
         {/* map results context, display in strain selector as a list, post to saved strains endpoint */}
@@ -93,6 +166,6 @@ function UserDashboard() {
         {/* display get of saved strains */}
     <SavedStrains />
     </DashboardContainer>
-)};
-
+    )
+}
 export default UserDashboard;

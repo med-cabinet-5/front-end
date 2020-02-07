@@ -82,7 +82,7 @@ border-radius: 8px;
             try {
                 const strains = await axios.post('https://med-cab-ds.herokuapp.com/json', JSON.stringify(joinedInput));
                 const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
-                console.log("Try Block", strains.data, stats.data)
+                console.log("Try Block", strains, stats)
                 //set results to context to use as {strains, stats} dispatch
 
                 props.history.push(`dashboard/${id}`)

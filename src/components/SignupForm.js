@@ -16,7 +16,6 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-color: white;
 justify-content: center;
 `
 const SignupBody = styled.div`
@@ -25,7 +24,8 @@ flex-direction: column;
 justify-content: center;
 color: black;
 background-color: rgb(145, 131, 131, 0.7);
-min-height: 500px;
+min-height: 600px;
+max-height: 600px;
 max-width: 400px;
 min-width: 400px;
 `
@@ -54,6 +54,7 @@ border-radius: 8px;
 
 const Login = styled.p`
 font-size: 0.7rem;
+color: white;
 `
 
 const Columns = styled.div`

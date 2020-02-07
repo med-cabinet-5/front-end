@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router';
 
 //Formik
 import { withFormik, Form, Field } from 'formik';
@@ -12,21 +11,23 @@ import styled from "styled-components";
 import { message } from 'antd';
 
 const LoginContainer = styled.div `
+margin-top: 5%;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-color: black;
 justify-content: center;
-padding: 5rem;
 `
 
 const LoginBody = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: center;
-background-color: #918383;
-min-height: 500px;
+justify-content: flex-start;
+padding-top: 8%;
+color: black;
+background-color: rgb(145, 131, 131, 0.7);
+min-height: 600px;
+max-height: 600px;
 max-width: 400px;
 min-width: 400px;
 `
@@ -53,10 +54,12 @@ border-radius: 8px;
 
 const SignUp = styled.p`
 font-size: 0.7rem;
+color: white;
 `
 
 const Error = styled.p`
 color:red;
+
 `
 
 function LoginForm({values, errors, touched, status}) {
@@ -76,8 +79,10 @@ function LoginForm({values, errors, touched, status}) {
 
   return (
     <div className="LoginForm">
+      <LoginContainer>
+      <LoginBody>
       <LoginHeader>Login </LoginHeader>
-        <LoginContainer>
+        
         <Form>
             <div className="user-username">
               <LoginLabels>
@@ -110,13 +115,13 @@ function LoginForm({values, errors, touched, status}) {
             </div>
 
           <LoginButton type="submit" onClick={success}>Submit</LoginButton>
-          
-          <SignUp> Don't have an account? 
-            <Link to="/signup" style={{color: "#1497AB", textDecoration: "underline", }}> Sign-Up</Link>
-          </SignUp>
-          
         </Form>
-        
+
+        <SignUp> Don't have an account? 
+            <Link to="/signup" style={{color: "#1497AB", textDecoration: "underline", }}> Sign-Up</Link>
+        </SignUp>
+        </LoginBody>
+
         </LoginContainer>
         </div>
   );
