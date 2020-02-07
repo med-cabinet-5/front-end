@@ -98,15 +98,15 @@ function UserDashboard() {
         <UserHeader> Welcome Back (name)!</UserHeader>
         <img src={avatar} alt="avatar" />
         </UserNav>
-    
-        {/* <UserHeader>Welcome Back (name)!</UserHeader> */}
+
         <span>
-        <NavLogo src={settings} alt="Settings" />
+        {/* <NavLogo src={settings} alt="Settings" /> */}
         </span>
     <UserResults>
+        {/* map results context, display in strain selector as a list, post to saved strains endpoint */}
     <StrainSelector />
     </UserResults>
-
+        {/* display get of saved strains */}
     <SavedStrains />
     </DashboardContainer>
 )};

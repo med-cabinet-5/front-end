@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router';
 import axios from 'axios'
 
 //styling
 import styled from "styled-components";
-import { } from "antd";
 
 const InfoBody = styled.div`
 margin: 5%;
@@ -49,6 +49,8 @@ border-radius: 8px;
 `
 
     const UserInfoForm = props => {
+        const { id } = useParams()
+
         const [newUserInfo, setNewUserInfo] = useState({
             ailments: '',
             feelings: '',
@@ -69,11 +71,13 @@ border-radius: 8px;
         const joinedInput = { 
             "USER_INPUT_STRING": `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
         }
+
         try {
             const strains = await axios.post('https://med-cab-ds.herokuapp.com/json', JSON.stringify(joinedInput));
             const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
+            console.log("Try Block", strains.data, stats.data)
             //set results to context to use as {strains, stats} dispatch
-            props.history.push('dashboard')
+            props.history.push(`dashboard/${id}`)
         } catch (e) {
             console.log(e.message)
         };

@@ -20,9 +20,9 @@ import StrainSelector from "./components/StrainSelector";
 import StrainSearch from "./components/StrainSearch";
 
 //contexts
-import { SavedStrainContext } from "./contexts/SavedStrainContext";
-import { ResultsContext } from "./contexts/ResultsContext";
-import { UserContext } from "./contexts/UserContext";
+// import { SavedStrainContext } from "./contexts/SavedStrainContext";
+// import { ResultsContext } from "./contexts/ResultsContext";
+// import { UserContext } from "./contexts/UserContext";
 // import { StoresContext } from "./contexts/StoresContext";
 
 //styling
@@ -59,8 +59,7 @@ function App() {
 
           <PrivateRoute path="/infoform" component={UserInfoForm} />
           <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
-          <PrivateRoute path="/strains" component={StrainSelector} />
-          <PrivateRoute path="/search" component={StrainSearch} />
+          {/* <PrivateRoute path="/search" component={StrainSearch} /> */}
         </Switch>
 
     </div>

@@ -1,9 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+//Formik
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+
+//Otherlibraries
 import axios from 'axios';
 import styled from "styled-components";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router';
 
 const LoginContainer = styled.div `
 display: flex;
@@ -57,7 +61,7 @@ function LoginForm({values, errors, touched, status}) {
   
   const [user, setUser]= useState([])
 
-  useEffect (()=>{
+  useEffect ( () => {
   console.log('status', status)
   status && setUser(users =>[...users, status])
   },[status])
@@ -111,6 +115,7 @@ function LoginForm({values, errors, touched, status}) {
 };
 
 const FormikLoginForm = withFormik({
+
   mapPropsToValues({ username, password}) {
       return {
           username: username || "",
@@ -121,6 +126,7 @@ const FormikLoginForm = withFormik({
     username: Yup.string().min(6, 'Username must be 6 characters').required('Required Field'),
     password: Yup.string().min(8, 'Password must be 8 characters').required('Required Field'),
 }),
+
 handleSubmit(values, { setStatus, props }) {
   axios
       .post("https://med-cabinet-server.herokuapp.com/api/auth/login", values)
@@ -128,11 +134,13 @@ handleSubmit(values, { setStatus, props }) {
           console.log(response);
           setStatus(response.data);
           localStorage.setItem("token", response.data.token)
+          // const { id } = useParams()
+          // props.history.push(`/dashboard/${id}`)
           props.history.push(`/dashboard`)
+
       })
       .catch(err => console.log(err.response));
 }
 })(LoginForm);
-
 
 export default FormikLoginForm
