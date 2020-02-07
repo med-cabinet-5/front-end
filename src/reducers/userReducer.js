@@ -9,6 +9,9 @@ export const initialState =  {
     error: '',
 }
 
+
+
+
 export const userReducer = (state, action) => {
     switch(action.type) {
     case UPDATE_USERPROFILE_START:

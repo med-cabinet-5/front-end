@@ -1,5 +1,5 @@
 //dependencies & hooks
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 //components
@@ -18,9 +18,7 @@ import styled from "styled-components";
 const SelectorButton = styled.button`
 margin: 5%;
 width: 35%;
-background-color: #323232;
-color: white;
-text-decoration: none;
+background-color: #1497AB;
 padding: 1%;
 border-radius: 8px;
 `
@@ -90,7 +88,7 @@ function StrainSelector() {
             Not finding what you're looking for?
         </p>
         <SelectorButton> 
-        <Link to="/infoform" style={{color: "#1497AB", textDecoration: "underline", }}>
+        <Link to="/infoform" style={{color: "white", textDecoration: "none", }}>
         Go Back
         </Link>
         </SelectorButton> 

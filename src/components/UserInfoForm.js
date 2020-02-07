@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios'
 
+//actions
+import { fetchRecs, fetchStats } from "../actions"
+
 //styling
 import styled from "styled-components";
 import { message } from 'antd';
@@ -34,16 +37,15 @@ const InfoForm = styled.form`
 display: flex;
 flex-direction: column;
 width: 50%;
-border-top: 2px solid #323232;
 background-color: #918383;
 color: black;
 padding: 5%;
 `
 
 const InfoButton = styled.button`
-margin: 5%;
+margin: 13% 0 3%;
 width: 35%;
-background-color: #323232;
+background-color: #1497AB;
 color: white;
 padding: 1%;
 border-radius: 8px;
@@ -84,7 +86,7 @@ border-radius: 8px;
                 const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
                 console.log("Try Block", strains, stats)
                 //set results to context to use as {strains, stats} dispatch
-
+                
                 props.history.push(`dashboard/${id}`)
             } catch (e) {
                 console.log(e.message)
@@ -105,7 +107,7 @@ border-radius: 8px;
                 <input
                     type="text"
                     name="ailments"
-                    placeholder="Tell us more about what is bothering you"
+                    placeholder=" Tell us more about what is bothering you"
                     value={newUserInfo.ailments}
                     onChange={handleChange}
                 />
@@ -113,7 +115,7 @@ border-radius: 8px;
                 <input
                     type="text"
                     name="feelings"
-                    placeholder="Tell us what effects you're hoping to experience"
+                    placeholder=" Tell us what effects you're hoping to experience"
                     value={newUserInfo.feelings}
                     onChange={handleChange}
                 />
@@ -121,7 +123,7 @@ border-radius: 8px;
                 <input
                     type="text"
                     name="taste"
-                    placeholder="Tell us if you have any preferences of taste"
+                    placeholder=" Tell us if you have any preferences of taste"
                     value={newUserInfo.taste}
                     onChange={handleChange}
                 />

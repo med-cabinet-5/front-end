@@ -1,8 +1,15 @@
 //landing from front-end dev/marketing page
 import React from 'react';
+
+//components
+import CardModal from "./CardModal"
+
+//actions
+
+
+//styles
 import styled from "styled-components"
 
-import CardModal from "./CardModal"
 
 const SavedContainer = styled.div`
 margin-top: 5%; 
