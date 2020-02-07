@@ -16,8 +16,8 @@ import FormikSignupForm from "./components/SignupForm";
 import MarketingLanding from "./components/MarketingLanding";
 import UserDashboard from "./components/UserDashboard";
 import UserInfoForm from "./components/UserInfoForm";
-import StrainSelector from "./components/StrainSelector";
-import StrainSearch from "./components/StrainSearch";
+// import StrainSelector from "./components/StrainSelector";
+// import StrainSearch from "./components/StrainSearch";
 
 //contexts
 // import { SavedStrainContext } from "./contexts/SavedStrainContext";

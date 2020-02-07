@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router';
+
 //Formik
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
-//Otherlibraries
-import axios from 'axios';
+//styles
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
-import { useParams } from 'react-router';
+import { message } from 'antd';
 
 const LoginContainer = styled.div `
 display: flex;
@@ -61,6 +63,12 @@ function LoginForm({values, errors, touched, status}) {
   
   const [user, setUser]= useState([])
 
+  const success = () => {
+    const hide = message.loading('Logging in...', 0);
+    // Dismiss manually and asynchronously
+    setTimeout(hide, 2500);
+  };
+
   useEffect ( () => {
   console.log('status', status)
   status && setUser(users =>[...users, status])
@@ -101,7 +109,7 @@ function LoginForm({values, errors, touched, status}) {
             {/* <ErrorMessage name="password" component="div" className="error"/> */}
             </div>
 
-          <LoginButton type="submit">Submit</LoginButton>
+          <LoginButton type="submit" onClick={success}>Submit</LoginButton>
           
           <SignUp> Don't have an account? 
             <Link to="/signup" style={{color: "#1497AB", textDecoration: "underline", }}> Sign-Up</Link>

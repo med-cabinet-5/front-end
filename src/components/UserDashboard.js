@@ -19,11 +19,11 @@ import { fetchSavedStrains, deleteSavedStrains, updateUser } from "../actions";
 
 //styles
 import styled from "styled-components"
-import { drawer } from "antd";
+import { Drawer } from "antd";
 
 //icons
-import settings from "../icons/greysettings.png";
-import avatar from "../icons/avatar.png"
+import avatar from "../icons/avatar.png";
+import edit from "../icons/edit.png";
 
 
 const DashboardContainer = styled.div`
@@ -35,27 +35,6 @@ align-items: center;
 color: white;
 `
 
-const UserHeader = styled.h4`
-display: flex;
-color: white;
-`
-
-// const NavContainer = styled.div`
-// display: flex;
-// flex-direction: row;
-// justify-content: space-between;
-// width: 100%;
-// border: purple solid 1px;
-// `
-
-const UserNav = styled.div`
-display: flex;
-flex-direction: row;
-justify-content: space-between; 
-align-items: center;
-width: 25%;
-`
-
 const UserResults = styled.div`
 display: flex;
 flex-direction: column;
@@ -63,29 +42,26 @@ background-color: #918383;
 width: 50%;
 `
 
-const NavLogo = styled.img`
+const NavLogo = styled.span`
 display: flex;
-justify-content: center;
-max-height: 200px;
-padding: 5% 0 0;
-margin-bottom:8%;
+margin-bottom: 8%;
 `
 
-// const [visible, setVisible] = useState(false);
 
-// const showDrawer = () => {
-//     setVisible({
-//     visible: true,
-//     });
-// };
-
-// const onClose = () => {
-//     setvisible({
-//     visible: false,
-//     });
-// };
 
 function UserDashboard() {
+
+    const [visible, setVisible] = useState(false);
+
+    const showDrawer = () => {
+        setVisible(true)
+    };
+    
+    const onClose = () => {
+        setVisible(false)
+    };
+
+
     return (
     <DashboardContainer>
     {/* <NavContainer>
@@ -94,14 +70,22 @@ function UserDashboard() {
         <NavLink to="/logout" style={{color: "#1497AB", textDecoration: "underline", }} >Logout </NavLink>
     </NavContainer> */}
 
-    <UserNav>
-        <UserHeader> Welcome Back (name)!</UserHeader>
+    <div>
+        <NavLogo  onClick={showDrawer}>
         <img src={avatar} alt="avatar" />
-        </UserNav>
+        </NavLogo>
+    
+        <Drawer
+            title="Hello (Name)" 
+            placement="right"
+            closable={true}
+            onClose={onClose}
+            visible={visible}
+        >
+            <p>Edit User Details <img src={edit} alt="edit pencil" /> </p>
+        </Drawer>
+    </div>
 
-        <span>
-        {/* <NavLogo src={settings} alt="Settings" /> */}
-        </span>
     <UserResults>
         {/* map results context, display in strain selector as a list, post to saved strains endpoint */}
     <StrainSelector />

@@ -4,6 +4,7 @@ import axios from 'axios'
 
 //styling
 import styled from "styled-components";
+import { message } from 'antd';
 
 const InfoBody = styled.div`
 margin: 5%;
@@ -65,23 +66,30 @@ border-radius: 8px;
                 }
             );
         };
-
-    const addUserInfo = async e => {
-        e.preventDefault();
-        const joinedInput = { 
-            "USER_INPUT_STRING": `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
-        }
-
-        try {
-            const strains = await axios.post('https://med-cab-ds.herokuapp.com/json', JSON.stringify(joinedInput));
-            const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
-            console.log("Try Block", strains.data, stats.data)
-            //set results to context to use as {strains, stats} dispatch
-            props.history.push(`dashboard/${id}`)
-        } catch (e) {
-            console.log(e.message)
+    
+        const success = () => {
+            const hide = message.loading('Submitting Your Responses...', 0);
+            // Dismiss manually and asynchronously
+            setTimeout(hide, 2500);
         };
-    }
+
+        const addUserInfo = async e => {
+            e.preventDefault();
+            const joinedInput = { 
+                "USER_INPUT_STRING": `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
+            }
+
+            try {
+                const strains = await axios.post('https://med-cab-ds.herokuapp.com/json', JSON.stringify(joinedInput));
+                const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
+                console.log("Try Block", strains.data, stats.data)
+                //set results to context to use as {strains, stats} dispatch
+
+                props.history.push(`dashboard/${id}`)
+            } catch (e) {
+                console.log(e.message)
+            };
+        }
 
         return (
             <InfoBody >
@@ -117,7 +125,7 @@ border-radius: 8px;
                     value={newUserInfo.taste}
                     onChange={handleChange}
                 />
-                <InfoButton> Submit </InfoButton>
+                <InfoButton onClick={success}> Submit </InfoButton>
                 </InfoForm>
             </InfoBody>
         );

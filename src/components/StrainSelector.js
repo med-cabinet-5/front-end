@@ -7,7 +7,8 @@ import StrainDetailCard from "./StrainDetailCard";
 import StrainMiniCard from "./StrainMiniCard";
 
 //actions
-import { fetchRecs, fetchStats, saveStrain } from "../actions";
+import { saveStrain } from "../actions";
+// import { fetchRecs, fetchStats,} from "../actions"
 
 //contexts
 //user, results, savedstrain

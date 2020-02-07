@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {withFormik, Form, Field} from 'formik';
-import { Link } from "react-router-dom";
-import * as Yup from 'yup';
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+//Formik
+import {withFormik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+
+//styles
 import styled from "styled-components";
+import { message } from 'antd';
 
 const SignupContainer = styled.div`
 margin-top: 5%; 
@@ -65,6 +70,12 @@ color:red;
 
 function SignupForm({values, errors, touched, status}){
     const [user, setUser]= useState([])
+
+    const success = () => {
+        const hide = message.loading('Signing In...', 0);
+        // Dismiss manually and asynchronously
+        setTimeout(hide, 2500);
+    };
 
     useEffect (()=>{
     console.log('status', status)
@@ -159,7 +170,7 @@ return(
                 )}
                 </Columns>
 
-                <SignUpButton type='submit'>Submit</SignUpButton>
+                <SignUpButton type='submit' onClick={success}>Submit</SignUpButton>
                 
                 <Login>Already have an account? Log In 
                     <Link to="/login" style={{color: "#1497AB", textDecoration: "underline", }}> Here</Link> 
