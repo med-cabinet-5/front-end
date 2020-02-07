@@ -1,7 +1,18 @@
-import React, { useEffect } from "react";
+//dependencies & hooks
+import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+
+//components
 import StrainDetailCard from "./StrainDetailCard";
 import StrainMiniCard from "./StrainMiniCard";
 
+//actions
+import { fetchRecs, fetchStats, saveStrain } from "../actions";
+
+//contexts
+//user, strain, savedstrain
+
+//styles
 import styled from "styled-components";
 
 const SelectorButton = styled.button`
@@ -37,54 +48,59 @@ min-width: 400px;
 
 const StrainInfo = styled.div`
 display: flex;
+flex-direction: column;
 `
 
+const Not = styled.div`
+border-top: #323232 solid 2px;
+`
 
+const UserInfo = styled.div`
+display: flex;
+`
 
 //.get request of top five strains returned from DS Kingdom
 //.post to backend to save strains
 
-
 function StrainSelector() {
-
-    const {strains} = useContext(StrainContext);
     
-    useEffect(() => { 
-        const fetchStrains = id => {
-            axios
-                .get(`https://med-cab-ds.herokuapp.com/json/${id}`)
-                .then(res => set({ strains: res }))
-                .catch(err => console.log(err.response));
-          };
+    // useEffect() fetchRecs, fetchStats
 
     return (
     <SelectorContainer>
-
+    
     < SelectorBody>
     <h2>Here are the recommended strains for (name!)</h2>
     
+    <UserInfo>
+        <p>Stats</p>
+    </UserInfo >
+
     <StrainInfo>
         <p>
             Display Mini Cards
+            {/* <StrainMiniCard /> */}
         </p>
-        <StrainMiniCard />
+        
 
         <p>
             Pop-Up <StrainDetailCard /> onclick of MiniCard
         </p>
     </StrainInfo>
 
-    </SelectorBody>
-
-
-    <div>
+    <Not>
         <p>
             Not finding what you're looking for?
         </p>
         
-    <SelectorButton> Return to Data Collection (EditForm?)</SelectorButton> 
-    </div>
-    
+    <SelectorButton> 
+        <Link to="/infoform" style={{color: "#1497AB", textDecoration: "underline", }}>
+        Go Back
+        </Link>
+    </SelectorButton> 
+    </Not>
+
+    </SelectorBody>
     </SelectorContainer>
 )};
 

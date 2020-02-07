@@ -1,78 +1,134 @@
+import FETCH_STRAIN_START from "../actions";
+import FETCH_STRAIN_SUCCESS from "../actions";
+import FETCH_STRAIN_FAILURE from "../actions";
 
-//FROM PREVIOUS PROJECT
-// export const initialState = { 
-//     todos: [
-//         {
-//     item: 'Learn About Reducers',
-//     completed: false,
-//     id: 1
-//     },
-//         {
-//     item: 'Finish Reducer Project',
-//     completed: false,
-//     id: 2
-//     }
-//     ]
-// }
+import FETCH_STATS_START from "../actions";
+import FETCH_STATS_SUCCESS from "../actions";
+import FETCH_STATS_FAILURE from "../actions";
 
-// const toggleItem = (id, todoList) => {
-//     const newList = todoList.map(item => {
-//         if (item.id === id) {
-//             return {
-//                 ...item,
-//                 completed: !item.completed
-//             }
-//         } else {
-//             return item;
-//         }
-//     })
-//     return newList
-// }
+import CREATE_SAVEDSTRAIN_START from "../actions";
+import CREATE_SAVEDSTRAIN_SUCCESS from "../actions";
+import CREATE_SAVEDSTRAIN_FAILURE from "../actions";
 
-// const removeItems = (todoList) => {
-//     const nonCompletedList = todoList.filter(item => {
-//         return item.completed === false;
-//     })
-//     return nonCompletedList
-// }
+import FETCH_SAVEDSTRAIN_START from "../actions";
+import FETCH_SAVEDSTRAIN_SUCCESS from "../actions";
+import FETCH_SAVEDSTRAIN_FAILURE from "../actions";
 
-//ADD FUNCTIONS NECESSARY FOR ACTIONS WITHIN APP:
-    
+import DELETE_SAVEDSTRAIN_START from "../actions";
+import DELETE_SAVEDSTRAIN_SUCCESS from "../actions";
+import DELETE_SAVEDSTRAIN_FAILURE from "../actions";
 
 
-//REDUCER
-// export const indexReducer = (state, action) => {
-//     switch(action.type) {
-//ADD CASES:
+export const initialState =  {  
+    strains: [],
+    isFetching: false,
+    error: '',
+    }
 
 
+export const indexReducer = (state, action) => {
+    switch(action.type) {
+        //fetch strains from DS
+        case FETCH_STRAIN_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: null 
+            }
+        case FETCH_STRAIN_SUCCESS:
+            return {
+                ...state,
+                strains: [...state],
+                error: null
+            }
+        case FETCH_STRAIN_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                strains: []
+            }
 
-
-
-            //From previous project
-//         case 'ADD_TODO':
-//             const newItem ={
-//             item: action.payload,
-//             completed: false,
-//             id: Date.now()
-//             }
-//             return {
-//                 ...state, todos: [...state.todos, newItem]
-//             };
-
-//         case 'TOGGLE_COMPLETED':
-//             return {
-//                 todos: toggleItem(action.payload, state.todos)
-//             };
+        //fetch stats from DS
+        case FETCH_STATS_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: null 
+            }
+        case FETCH_STATS_SUCCESS:
+            return {
+                ...state,
+                strains: [...state],
+                error: null
+            }
+        case FETCH_STATS_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                strains: []
+            }
         
-//         case 'REMOVE_COMPLETED':
-//             return {
-//                 todos: removeItems(state.todos)
-//             }
-    
-//         default: 
-//         return state;
-//     };
-// }
+        //save strains to saved strains
+        case CREATE_SAVEDSTRAIN_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: null 
+            }
+        case CREATE_SAVEDSTRAIN_SUCCESS:
+            return {
+                ...state,
+                strains: [...state],
+                error: null
+            }
+        case CREATE_SAVEDSTRAIN_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                strains: []
+            }
 
+        //display saved strains
+        case FETCH_SAVEDSTRAIN_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: null 
+            }
+        case FETCH_SAVEDSTRAIN_SUCCESS:
+            return {
+                ...state,
+                strains: [...state],
+                error: null
+            }
+        case FETCH_SAVEDSTRAIN_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                strains: []
+            }
 
+        //delete saved strains
+        case DELETE_SAVEDSTRAIN_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: null 
+            }
+        case DELETE_SAVEDSTRAIN_SUCCESS:
+            return {
+                ...state,
+                strains: [...state],
+                error: null
+            }
+        case DELETE_SAVEDSTRAIN_FAILURE:
+            return {
+                ...state,
+                error: action.payload,
+                strains: []
+            }
+
+        default: 
+        return state;
+    };
+}

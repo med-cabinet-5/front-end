@@ -55,7 +55,7 @@ Use user data along with strain data to build ML models to guide recommendations
 
 - What 3rd party frameworks/libraries are you considering using?
     - React Hook Form (form validation instead of Formik) https://react-hook-form.com – React I
-    - Redux or Context? – React II
+    - Context – React II
     - Express – Backend
     - Node – Backend
     - API for strains
