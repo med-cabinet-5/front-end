@@ -26,8 +26,8 @@ flex-direction: column;
 justify-content: flex-start;
 padding-top: 8%;
 color: black;
-min-height: 600px;
-max-height: 600px;
+min-height: 500px;
+max-height: 500px;
 background-color: rgb(0,181,205, 0.7);
 border-radius:36px;
 max-width: 400px;
@@ -125,7 +125,7 @@ function LoginForm({values, errors, touched, status}) {
 
 
         <SignUp> Don't have an account? 
-            <Link to="/signup" style={{color: "#1497AB", textDecoration: "underline", }}> Sign-Up</Link>
+            <Link to="/signup" style={{color: "#323232", textDecoration: "underline", }}> Sign-Up</Link>
         </SignUp>
         </LoginBody>
 
