@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios'
 
 //actions
 import { fetchRecs, fetchStats } from "../actions"
+
+//contexts
+import { ResultsContext }  from "../contexts/ResultsContext";
 
 //styling
 import styled from "styled-components";
@@ -53,6 +56,8 @@ border-radius: 8px;
 
     const UserInfoForm = props => {
         const { id } = useParams()
+        const [strainData, setStrainData, statsData, setStatsData] = useContext(ResultsContext)
+        console.log(strainData, statsData);
 
         const [newUserInfo, setNewUserInfo] = useState({
             ailments: '',
@@ -84,9 +89,10 @@ border-radius: 8px;
             try {
                 const strains = await axios.post('https://med-cab-ds.herokuapp.com/json', JSON.stringify(joinedInput));
                 const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
-                console.log("Try Block", strains, stats)
-                //set results to context to use as {strains, stats} dispatch
-                
+                console.log("Try Block", strains.data, stats.data)
+                //set results to context to use as provider value={strains, stats} dispatch
+                setStrainData(strains.data)
+                setStatsData(stats.data)
                 props.history.push(`dashboard/${id}`)
             } catch (e) {
                 console.log(e.message)

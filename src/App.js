@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
 
 //Private Route
@@ -21,7 +21,7 @@ import UserInfoForm from "./components/UserInfoForm";
 
 //contexts
 // import { SavedStrainContext } from "./contexts/SavedStrainContext";
-// import { ResultsContext } from "./contexts/ResultsContext";
+import { ResultsContext } from "./contexts/ResultsContext";
 // import { UserContext } from "./contexts/UserContext";
 // import { StoresContext } from "./contexts/StoresContext";
 
@@ -35,11 +35,13 @@ display: flex;
 justify-content: center;
 max-height: 200px;
 padding: 5% 0 0;
-margin-bottom:8%;
+margin-bottom: 8%;
 `
 
 function App() {
   
+  const [strainData, setStrainData] = useState([]);
+  const [statsData, setStatsData] = useState([]);
 
   const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
 
@@ -56,10 +58,11 @@ function App() {
           <Route exact path ="/" component={MarketingLanding} />
           <Route path="/login" component={FormikLoginForm} />
           <Route path="/signup" component={FormikSignupForm} />
-
+          <ResultsContext.Provider value={[strainData, setStrainData, statsData, setStatsData ]}>
           <PrivateRoute path="/infoform" component={UserInfoForm} />
           <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
           {/* <PrivateRoute path="/search" component={StrainSearch} /> */}
+          </ResultsContext.Provider>
         </Switch>
 
     </div>

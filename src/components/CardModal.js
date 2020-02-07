@@ -4,10 +4,11 @@ import React, { useState, useContext } from "react"
 import StrainMiniCard from "./StrainMiniCard";
 import StrainDetailCard from "./StrainDetailCard";
 
-// import {results context}
+//context
+import { ResultsContext } from "../contexts/ResultsContext"
 
 //styles
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
 import styled from "styled-components";
 
 const StrainButton = styled.button`
@@ -19,16 +20,12 @@ padding: 1%;
 border-radius: 8px;
 `
 
-
-
 function CardModal() {
+    const [ strainData ] = useContext(ResultsContext) 
+    console.log(strainData)
 
-    // useEffect(() => {
-    //     useContext(resultsContext)
-    // }, []);
 
     const [visible, setVisible] = useState(false);
-    // const [editVisible, setEditVisible] = useState(false)
 
     const showModal = () => {
         setVisible(true)
@@ -42,28 +39,32 @@ function CardModal() {
     return (
         
     <div>
-        {/* map */}
-        <div>
-            {/* <StrainMiniCard /> */}
-        <Button onClick={showModal}>
-            More Info
-        </Button>
-        </div>
-
-        <Modal
-            title="Basic Modal"
-            visible={visible}
-            onCancel={handleCancel}
-            footer={[
-            <Button key="back" onClick={handleCancel}>
-                Close
-            </Button>]}
-        >   
+        {strainData.map(data => {
+            return(
             <div>
-            <StrainDetailCard />
+                <StrainMiniCard data={data}/>
+                <StrainButton onClick={showModal}>
+                    More Info
+                </StrainButton>
+            
+                <Modal
+                    title="Details"
+                    visible={visible}
+                    onCancel={handleCancel}
+                    footer={[
+                    <StrainButton key="back" onClick={handleCancel}>
+                        Close
+                    </StrainButton>]}
+                    >   
+                    <div>
+                    <StrainDetailCard data={data} />
+                    </div>
+                </Modal>
             </div>
-        </Modal>
-        </div>
+            )
+        } 
+        )}
+    </div>
     );
 
     

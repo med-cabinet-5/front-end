@@ -1,10 +1,6 @@
 //Danika
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-//import axios from "axios";
-//import useState
-//import SavedStrains
-//import userlist
 
 //Styled components
 const CardsContainer = styled.div`
@@ -39,6 +35,7 @@ color: white;
 
 
 export default function StrainMiniCard(props) {
+    console.log("mini", props)
 
     //SET STATE FOR CARDS 
     //const [cards, setCards] = useState([]);
@@ -88,7 +85,7 @@ return (
         <CardsContainer>
             <CardBody>
                 <CardHeader>
-                <p>{props.strain}</p>  
+                <p>{props.data.strain}</p>  
                 <i /*onClick(setColor())*/class="far fa-heart"></i>
                 </CardHeader>
                 <div className="card-main">
@@ -99,5 +96,5 @@ return (
                 </div>
         </CardBody> 
         </CardsContainer>
-       )
+    )
     }

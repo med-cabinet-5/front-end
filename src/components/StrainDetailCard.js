@@ -1,22 +1,30 @@
 //Kennith
 import React from 'react'
 
-function StrainDetailCard(props){
+function StrainDetailCard(props) {
+    console.log(props.data)
 return(
 <div>
+<h2>{props.data.strain}</h2>
+    <div>
+        <h3>Strain Type:</h3>
+        <p>{props.data.type}</p>
+    </div>
+    <div>
+        <h3>Ailments:</h3>
+        <p>{props.data.ailments}</p>
+    </div>
     <div>
         <h3>Common Effects</h3>
-        {/* possibly mapping depends on information from api*/}
-        {/* <p>{props.strain_name.common_effects}</p> */}
+        <p>{props.data.effects}</p>
     </div>
     <div>
         <h3>Taste and Flavors</h3>
-        {/* possibly mapping depends on information from api*/}
-        {/* <p>{props.strain_name.flavors}</p> */}
+        <p>{props.data.flavor}</p>
     </div>
     <div>
         <h3>Details</h3>
-        {/* <p>{props,strain_name.details}</p> */}
+        <p>{props.data.description}</p>
     </div>
 </div>
 )

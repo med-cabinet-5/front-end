@@ -61,15 +61,15 @@ function MarketingLanding () {
         <Carousel autoplay effect="fade">
             
     <LandingBody>
-       <Carouselpic> <FontAwesomeIcon icon={ faCannabis}/></Carouselpic>
-   
-            <CarouselHeader>Find your strain</CarouselHeader>
+        <Carouselpic> <FontAwesomeIcon icon={ faCannabis}/></Carouselpic>
+
+            <CarouselHeader>Find Your Strain</CarouselHeader>
         <CarouselP> Be matched with strains that address your needs. You'll be given recommendations based on desired effects and taste from a database of thousands of strains</CarouselP>
     </LandingBody>
             
     <LandingBody>
         <Carouselpic><Icon type="book" /></Carouselpic>
-        <CarouselHeader>Locate your strain</CarouselHeader>
+        <CarouselHeader>Locate Your Strain</CarouselHeader>
         <CarouselP>Locate nearby dispensaries or medical practitioners that can give expert insights.</CarouselP>
     </LandingBody>
             
