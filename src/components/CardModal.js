@@ -1,14 +1,31 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 //card components
 import StrainMiniCard from "./StrainMiniCard";
 import StrainDetailCard from "./StrainDetailCard";
 
-import { Modal, Button } from 'antd';
-
 // import {results context}
 
+//styles
+import { Modal, Button } from 'antd';
+import styled from "styled-components";
+
+const StrainButton = styled.button`
+margin: 5%;
+width: 35%;
+background-color: #1497AB;
+color: white;
+padding: 1%;
+border-radius: 8px;
+`
+
+
+
 function CardModal() {
+
+    // useEffect(() => {
+    //     useContext(resultsContext)
+    // }, []);
 
     const [visible, setVisible] = useState(false);
     // const [editVisible, setEditVisible] = useState(false)
@@ -28,7 +45,7 @@ function CardModal() {
         {/* map */}
         <div>
             {/* <StrainMiniCard /> */}
-        <Button type="primary" onClick={showModal}>
+        <Button onClick={showModal}>
             More Info
         </Button>
         </div>
