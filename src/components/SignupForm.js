@@ -26,7 +26,6 @@ background-color: rgb(0,181,205, 0.7);
 border-radius:36px;
 color: black;
 min-height: 500px;
-max-height: 500px;
 max-width: 400px;
 min-width: 400px;
 `
@@ -68,6 +67,8 @@ margin-bottom: 1%;
 
 const Error = styled.p`
 color:red;
+margin: 0;
+padding: 0;
 `
 
 function SignupForm({values, errors, touched, status}){
