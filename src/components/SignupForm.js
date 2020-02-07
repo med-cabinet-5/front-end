@@ -43,9 +43,7 @@ color: white;
 padding: 1%;
 border-radius: 8px;
 
-
 &:hover{
-
 }
 `
 
@@ -196,13 +194,24 @@ validationSchema: Yup.object().shape({
 
 handleSubmit (values, { setStatus, props }) {
     axios
-        .post("https://med-cabinet-server.herokuapp.com/api/auth/register", values)
-        .then(response => {
-            console.log("Sign-Up", response);
-            setStatus(response.data);
+    .post("https://med-cabinet-server.herokuapp.com/api/auth/register", values)
+    .then(response => {
+        console.log("Sign-Up", response);
+        console.log("SignupForm 207", props)
+        setStatus(response.data);
+        const credentials = {
+            username: values.username,
+            password: values.password,
+        }
+        axios.post("https://med-cabinet-server.herokuapp.com/api/auth/login", credentials).then(response => {
+            console.log("Response", response.data)
+            localStorage.setItem("token", response.data.token)
             props.history.push('/infoform')
         })
-        .catch(err => console.log(err.response));
+            .catch(err => console.log(err.message))
+
+    })
+    .catch(err => console.log(err.response));
 }
 })(SignupForm);
 

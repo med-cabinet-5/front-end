@@ -64,20 +64,20 @@ border-radius: 8px;
             );
         };
 
-    const addUserInfo = e => {
+    const addUserInfo = async e => {
         e.preventDefault();
-        const joinedInput = {
+        const joinedInput = { 
             "USER_INPUT_STRING": `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
         }
-        console.log(joinedInput)
-        axios
-        .get('https://med-cabinet-5.herokuapp.com/json', JSON.stringify(joinedInput))
-        .then(res => {
-            console.log('success', res);
-            props.history.push('/strains/');
-        })
-        .catch(err => console.log(err));
-    };
+        try {
+            const strains = await axios.post('https://med-cab-ds.herokuapp.com/json', JSON.stringify(joinedInput));
+            const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
+            //set results to context to use as {strains, stats} dispatch
+            props.history.push('dashboard')
+        } catch (e) {
+            console.log(e.message)
+        };
+    }
 
         return (
             <InfoBody >

@@ -127,6 +127,7 @@ handleSubmit(values, { setStatus, props }) {
       .then(response => {
           console.log(response);
           setStatus(response.data);
+          localStorage.setItem("token", response.data.token)
           props.history.push(`/dashboard`)
       })
       .catch(err => console.log(err.response));
