@@ -5,7 +5,9 @@ import axios from 'axios';
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
 
-const LoginContainer = styled.div `
+
+const LoginFormContainer = styled.div `
+margin-top: 5%; 
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -15,11 +17,12 @@ justify-content: center;
 padding: 5rem;
 `
 
-const LoginBody = styled.div`
+const LogInBody = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
-background-color: #918383;
+background-color: rgb(0,181,205, 0.7);
+border-radius:36px;
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
@@ -48,6 +51,14 @@ border-radius: 8px;
 const SignUp = styled.p`
 font-size: 0.7rem;
 `
+const Columns = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+margin-bottom:1%;
+`
+
 
 const Error = styled.p`
 color:red;
@@ -63,39 +74,38 @@ function LoginForm({values, errors, touched, status}) {
   },[status])
 
   return (
-    <div className="LoginForm">
-      <LoginHeader>Login </LoginHeader>
-        <LoginContainer>
+      
+          <LoginFormContainer>
+            
+            <LogInBody>
+            <h1>Login </h1>
         <Form>
-            <div className="user-username">
-              <LoginLabels>
-              <label htmlFor="user_username">Username: </label>
-              </LoginLabels>
-              <Field
-                type="text"
-                name="username"
-                placeholder="Enter Your Username"
-              />
-                {touched.username && errors.username && (
-                  <Error className="errors"> {errors.username}</Error>
+        <Columns>
+          <label htmlFor="user_username">Username: </label>
+          <Field
+            type="text"
+            name="username"
+            placeholder="Enter your username here"
+          
+          />
+            {touched.username && errors.username && (
+              <p className="errors"> {errors.username}</p>
+            )}
+          <ErrorMessage name="username" component="div" className="error"/>
+          </Columns>
+         <Columns>
+          <label htmlFor="user_password">Password: </label>
+          <Field
+            type="password"
+            name="password"
+            placeholder="Enter your password here"
+            />
+              {touched.password && errors.password && (
+                <p className="errors"> {errors.password}</p>
               )}
-            {/* <ErrorMessage name="username" component="div" className="error"/> */}
-            </div>
-
-            <div className="user-password">
-              <LoginLabels>
-              <label htmlFor="user_password">Password: </label>
-              </LoginLabels>
-              <Field
-                type="password"
-                name="password"
-                placeholder="Enter Your Password"
-              />
-                {touched.password && errors.password && (
-                  <Error className="errors"> {errors.password}</Error>
-                )}
-            {/* <ErrorMessage name="password" component="div" className="error"/> */}
-            </div>
+          
+          <ErrorMessage name="password" component="div" className="error"/>
+          </Columns>
 
           <LoginButton type="submit">Submit</LoginButton>
           
@@ -104,9 +114,9 @@ function LoginForm({values, errors, touched, status}) {
           </SignUp>
           
         </Form>
-        
-        </LoginContainer>
-        </div>
+        </LogInBody>
+        </LoginFormContainer>
+
   );
 };
 
