@@ -25,10 +25,20 @@ justify-content: center;
 background-color: rgb(0,181,205, 0.7);
 border-radius:36px;
 color: black;
-min-height: 600px;
-max-height: 600px;
+min-height: 500px;
+max-height: 500px;
 max-width: 400px;
 min-width: 400px;
+
+const SignupLabels = styled.p`
+color: white;
+margin-top: 2%;
+margin-bottom: 1%;
+`
+
+const SignupHeader = styled.h1`
+color: white;
+margin-top: 3%;
 `
 
 const SignUpButton = styled.button`
@@ -156,8 +166,10 @@ return(
 
                 <SignUpButton type='submit' onClick={success}>Submit</SignUpButton>
                 
-                <Login>Already have an account? 
-                    <Link to="/login"> Log In Here</Link>
+                <Login>Already have an account? Log In 
+                    <Link to="/login" style={{color: "#323232", textDecoration: "underline", }}> Here</Link> 
+       
+
                 </Login>
 
             </Form>
