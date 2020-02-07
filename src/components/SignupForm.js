@@ -28,7 +28,7 @@ color: black;
 min-height: 500px;
 max-width: 400px;
 min-width: 400px;
-`
+
 const SignupLabels = styled.p`
 color: white;
 margin-top: 2%;
@@ -47,9 +47,6 @@ background-color: #323232;
 color: white;
 padding: 1%;
 border-radius: 8px;
-
-&:hover{
-}
 `
 
 const Login = styled.p`
@@ -58,13 +55,12 @@ color: white;
 `
 
 const Columns = styled.div`
-display: flex;
+display:flex;
 flex-direction:column;
-justify-content: center;
-align-items: center;
-margin-bottom: 1%;
+align-items:center;
+justify-content:center;
+margin-bottom:1%;
 `
-
 const Error = styled.p`
 color:red;
 margin: 0;
@@ -72,6 +68,8 @@ padding: 0;
 `
 
 function SignupForm({values, errors, touched, status}){
+
+    
     const [user, setUser]= useState([])
 
     const success = () => {
@@ -90,15 +88,13 @@ return(
     <SignupContainer>
 
         <SignupBody>
-        <SignupHeader>Sign-Up</SignupHeader>
+        <h1>Sign-Up</h1>
             
                 <Form>
                 <Columns>
-                <SignupLabels>
                 <label>
                     First Name: 
-                </label>
-                </SignupLabels>
+                    </label>
                 <Field
                     type='text'
                     name='first_name'
@@ -107,14 +103,13 @@ return(
                 {touched.first_name && errors.first_name && (
                 <Error className='errors'>{errors.first_name}</Error>
                 )}
+                
                 </Columns>
                 
                 <Columns>
-                <SignupLabels>
                 <label>
                     Last Name: 
-                </label>
-                </SignupLabels>
+                    </label>
                 <Field
                     type='text' 
                     name='last_name'
@@ -123,14 +118,13 @@ return(
                 {touched.last_name && errors.last_name && (
                 <Error className='errors'>{errors.last_name}</Error>
                 )}
+                
                 </Columns>
 
                 <Columns>
-                <SignupLabels>
                 <label>
                     E-mail: 
-                </label>
-                </SignupLabels>
+                    </label>
                 <Field
                     type='email'
                     name='email'
@@ -139,14 +133,13 @@ return(
                 {touched.email && errors.email && (
                 <Error className='errors'>{errors.email}</Error>
                 )}
+                
                 </Columns>
                 
                 <Columns>
-                <SignupLabels>
                 <label>
                     Username: 
-                </label>
-                </SignupLabels>
+                    </label>
                 <Field
                     type='text'
                     name='username'
@@ -158,11 +151,9 @@ return(
                 </Columns>
 
                 <Columns>
-                <SignupLabels>
                 <label>
                     Password: 
-                </label>
-                </SignupLabels>
+                    </label>
                 <Field
                     type='password'
                     name='password'
@@ -171,13 +162,15 @@ return(
                 {touched.password && errors.password && (
                 <Error className='errors'>{errors.password}</Error>
                 )}
+                
                 </Columns>
 
                 <SignUpButton type='submit' onClick={success}>Submit</SignUpButton>
                 
                 <Login>Already have an account? Log In 
                     <Link to="/login" style={{color: "#323232", textDecoration: "underline", }}> Here</Link> 
-                    
+       
+
                 </Login>
 
             </Form>
