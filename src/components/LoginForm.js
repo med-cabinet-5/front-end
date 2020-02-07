@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 import styled from "styled-components";
 import { message } from 'antd';
 
+
 const LoginContainer = styled.div `
 margin-top: 5%;
 display: flex;
@@ -19,15 +20,17 @@ align-items: center;
 justify-content: center;
 `
 
-const LoginBody = styled.div`
+const LogInBody = styled.div`
 display: flex;
 flex-direction: column;
+
 justify-content: flex-start;
 padding-top: 8%;
 color: black;
-background-color: rgb(145, 131, 131, 0.7);
 min-height: 600px;
 max-height: 600px;
+background-color: rgb(0,181,205, 0.7);
+border-radius:36px;
 max-width: 400px;
 min-width: 400px;
 `
@@ -56,10 +59,16 @@ const SignUp = styled.p`
 font-size: 0.7rem;
 color: white;
 `
+const Columns = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+margin-bottom:1%;
+`
 
 const Error = styled.p`
 color:red;
-
 `
 
 function LoginForm({values, errors, touched, status}) {
@@ -78,44 +87,43 @@ function LoginForm({values, errors, touched, status}) {
   },[status])
 
   return (
+
     <div className="LoginForm">
       <LoginContainer>
       <LoginBody>
       <LoginHeader>Login </LoginHeader>
         
         <Form>
-            <div className="user-username">
-              <LoginLabels>
-              <label htmlFor="user_username">Username: </label>
-              </LoginLabels>
-              <Field
-                type="text"
-                name="username"
-                placeholder="Enter Your Username"
-              />
-                {touched.username && errors.username && (
-                  <Error className="errors"> {errors.username}</Error>
+        <Columns>
+          <label htmlFor="user_username">Username: </label>
+          <Field
+            type="text"
+            name="username"
+            placeholder="Enter your username here"
+          
+          />
+            {touched.username && errors.username && (
+              <p className="errors"> {errors.username}</p>
+            )}
+          <ErrorMessage name="username" component="div" className="error"/>
+          </Columns>
+         <Columns>
+          <label htmlFor="user_password">Password: </label>
+          <Field
+            type="password"
+            name="password"
+            placeholder="Enter your password here"
+            />
+              {touched.password && errors.password && (
+                <p className="errors"> {errors.password}</p>
               )}
-            {/* <ErrorMessage name="username" component="div" className="error"/> */}
-            </div>
-
-            <div className="user-password">
-              <LoginLabels>
-              <label htmlFor="user_password">Password: </label>
-              </LoginLabels>
-              <Field
-                type="password"
-                name="password"
-                placeholder="Enter Your Password"
-              />
-                {touched.password && errors.password && (
-                  <Error className="errors"> {errors.password}</Error>
-                )}
-            {/* <ErrorMessage name="password" component="div" className="error"/> */}
-            </div>
+          
+          <ErrorMessage name="password" component="div" className="error"/>
+          </Columns>
 
           <LoginButton type="submit" onClick={success}>Submit</LoginButton>
         </Form>
+
 
         <SignUp> Don't have an account? 
             <Link to="/signup" style={{color: "#1497AB", textDecoration: "underline", }}> Sign-Up</Link>
@@ -124,6 +132,9 @@ function LoginForm({values, errors, touched, status}) {
 
         </LoginContainer>
         </div>
+        </LogInBody>
+        </LoginFormContainer>
+
   );
 };
 
