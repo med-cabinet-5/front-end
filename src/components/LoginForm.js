@@ -20,10 +20,9 @@ align-items: center;
 justify-content: center;
 `
 
-const LogInBody = styled.div`
+const LoginBody = styled.div`
 display: flex;
 flex-direction: column;
-
 justify-content: flex-start;
 padding-top: 8%;
 color: black;
@@ -105,7 +104,7 @@ function LoginForm({values, errors, touched, status}) {
             {touched.username && errors.username && (
               <p className="errors"> {errors.username}</p>
             )}
-          <ErrorMessage name="username" component="div" className="error"/>
+          <Error name="username" component="div" className="error"/>
           </Columns>
           <Columns>
           <label htmlFor="user_password">Password: </label>
@@ -118,7 +117,7 @@ function LoginForm({values, errors, touched, status}) {
                 <p className="errors"> {errors.password}</p>
               )}
           
-          <ErrorMessage name="password" component="div" className="error"/>
+          <Error name="password" component="div" className="error"/>
           </Columns>
 
           <LoginButton type="submit" onClick={success}>Submit</LoginButton>
@@ -132,8 +131,6 @@ function LoginForm({values, errors, touched, status}) {
 
         </LoginContainer>
         </div>
-    
-
   );
 };
 
