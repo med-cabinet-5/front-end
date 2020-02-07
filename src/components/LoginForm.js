@@ -34,7 +34,7 @@ max-width: 400px;
 min-width: 400px;
 `
 
-const LoginLabels = styled.p`
+const LoginLabels = styled.label`
 color: white;
 margin-top: 4%;
 margin-bottom: 1%;
@@ -68,6 +68,8 @@ margin-bottom:1%;
 
 const Error = styled.p`
 color:red;
+padding: 0;
+margin: 0;
 `
 
 function LoginForm({values, errors, touched, status}) {
@@ -94,11 +96,11 @@ function LoginForm({values, errors, touched, status}) {
         
         <Form>
         <Columns>
-          <label htmlFor="user_username">Username: </label>
+          <LoginLabels htmlFor="user_username">Username: </LoginLabels>
           <Field
             type="text"
             name="username"
-            placeholder="Enter your username here"
+            placeholder="Enter username"
           
           />
             {touched.username && errors.username && (
@@ -107,11 +109,11 @@ function LoginForm({values, errors, touched, status}) {
           <Error name="username" component="div" className="error"/>
           </Columns>
           <Columns>
-          <label htmlFor="user_password">Password: </label>
+          <LoginLabels htmlFor="user_password">Password: </LoginLabels>
           <Field
             type="password"
             name="password"
-            placeholder="Enter your password here"
+            placeholder="Enter password"
             />
               {touched.password && errors.password && (
                 <p className="errors"> {errors.password}</p>

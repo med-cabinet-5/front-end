@@ -26,9 +26,8 @@ background-color: rgb(0,181,205, 0.7);
 border-radius:36px;
 color: black;
 min-height: 500px;
-max-height: 500px;
 max-width: 400px;
-min-width: 400px;
+min-width: 400px;`
 
 const SignupLabels = styled.p`
 color: white;
@@ -64,6 +63,8 @@ margin-bottom:1%;
 `
 const Error = styled.p`
 color:red;
+margin: 0;
+padding: 0;
 `
 
 function SignupForm({values, errors, touched, status}){
@@ -87,13 +88,13 @@ return(
     <SignupContainer>
 
         <SignupBody>
-        <h1>Sign-Up</h1>
+        <SignupHeader>Sign-Up</SignupHeader>
             
                 <Form>
                 <Columns>
-                <label>
+                <SignupLabels>
                     First Name: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='text'
                     name='first_name'
@@ -106,9 +107,9 @@ return(
                 </Columns>
                 
                 <Columns>
-                <label>
+                <SignupLabels>
                     Last Name: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='text' 
                     name='last_name'
@@ -121,9 +122,9 @@ return(
                 </Columns>
 
                 <Columns>
-                <label>
+                <SignupLabels>
                     E-mail: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='email'
                     name='email'
@@ -136,9 +137,9 @@ return(
                 </Columns>
                 
                 <Columns>
-                <label>
+                <SignupLabels>
                     Username: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='text'
                     name='username'
@@ -150,9 +151,9 @@ return(
                 </Columns>
 
                 <Columns>
-                <label>
+                <SignupLabels>
                     Password: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='password'
                     name='password'
