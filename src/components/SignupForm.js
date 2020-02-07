@@ -27,7 +27,7 @@ border-radius:36px;
 color: black;
 min-height: 500px;
 max-width: 400px;
-min-width: 400px;
+min-width: 400px;`
 
 const SignupLabels = styled.p`
 color: white;
@@ -88,13 +88,13 @@ return(
     <SignupContainer>
 
         <SignupBody>
-        <h1>Sign-Up</h1>
+        <SignupHeader>Sign-Up</SignupHeader>
             
                 <Form>
                 <Columns>
-                <label>
+                <SignupLabels>
                     First Name: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='text'
                     name='first_name'
@@ -107,9 +107,9 @@ return(
                 </Columns>
                 
                 <Columns>
-                <label>
+                <SignupLabels>
                     Last Name: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='text' 
                     name='last_name'
@@ -122,9 +122,9 @@ return(
                 </Columns>
 
                 <Columns>
-                <label>
+                <SignupLabels>
                     E-mail: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='email'
                     name='email'
@@ -137,9 +137,9 @@ return(
                 </Columns>
                 
                 <Columns>
-                <label>
+                <SignupLabels>
                     Username: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='text'
                     name='username'
@@ -151,9 +151,9 @@ return(
                 </Columns>
 
                 <Columns>
-                <label>
+                <SignupLabels>
                     Password: 
-                    </label>
+                    </SignupLabels>
                 <Field
                     type='password'
                     name='password'
