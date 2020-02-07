@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import StrainMiniCard from "./StrainMiniCard";
+import StrainMiniCard from "../components/StrainMiniCard";
 
 export default function SearchForm() {
     const [searchTerm, setSearchTerm] = useState("");
