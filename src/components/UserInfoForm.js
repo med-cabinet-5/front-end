@@ -2,9 +2,6 @@ import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios'
 
-//actions
-import { fetchRecs, fetchStats } from "../actions"
-
 //contexts
 import { ResultsContext }  from "../contexts/ResultsContext";
 
@@ -57,7 +54,7 @@ border-radius: 8px;
     const UserInfoForm = props => {
         const { id } = useParams()
         const [strainData, setStrainData, statsData, setStatsData] = useContext(ResultsContext)
-        console.log(strainData, statsData);
+        console.log("checking context infoform 57", strainData, statsData);
 
         const [newUserInfo, setNewUserInfo] = useState({
             ailments: '',

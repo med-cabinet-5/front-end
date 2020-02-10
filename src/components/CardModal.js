@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react"
 
-//card components
-import StrainMiniCard from "./StrainMiniCard";
-import StrainDetailCard from "./StrainDetailCard";
+// //card components
+// import StrainMiniCard from "../unusedcomponents/StrainMiniCard";
+// import StrainDetailCard from "../unusedcomponents/StrainDetailCard";
 
 //context
 import { ResultsContext } from "../contexts/ResultsContext"
@@ -24,7 +24,6 @@ function CardModal() {
     const [ strainData ] = useContext(ResultsContext) 
     console.log(strainData)
 
-
     const [visible, setVisible] = useState(false);
 
     const showModal = () => {
@@ -42,11 +41,16 @@ function CardModal() {
         {strainData.map(data => {
             return(
             <div>
-                <StrainMiniCard data={data}/>
+                <div>
+                    <h2>{data.strain}</h2>
+                    <div>
+                        <h3>Strain Type:</h3>
+                        <p>{data.type}</p>
+                    </div>
+                </div>
                 <StrainButton onClick={showModal}>
                     More Info
                 </StrainButton>
-            
                 <Modal
                     title="Details"
                     visible={visible}
@@ -55,10 +59,22 @@ function CardModal() {
                     <StrainButton key="back" onClick={handleCancel}>
                         Close
                     </StrainButton>]}
-                    >   
+                >   
                     <div>
-                    <StrainDetailCard data={data} />
+                    <h2>{data.strain}</h2>
+                        <div>
+                            <h4>{data.type}</h4>
+                            <h3>Ailments:</h3>
+                            <p>{data.ailments}</p>
+                            <h3>Common Effects</h3>
+                            <p>{data.effects}</p>
+                            <h3>Taste and Flavors</h3>
+                            <p>{data.flavor}</p>
+                            <h3>Details</h3>
+                            <p>{data.description}</p>
+                        </div>
                     </div>
+                
                 </Modal>
             </div>
             )

@@ -2,11 +2,7 @@ import { axiosWithAuth } from "../utils/AxiosWithAuth";
 // import axios from "axios";
 
 //Additional actions not dispatched, but alternatively located in app: 
-//sign-up, login, posting user input to DS;
-
-//DS ACTION EXPORTS//
-export const FETCH_STRAIN = 'FETCH_STRAIN';
-export const FETCH_STATS = 'FETCH_STATS';
+//sign-up, login, posting user input to DS, retrieving context from DS;
 
 //STRAIN ACTION EXPORTS//
 
@@ -37,19 +33,6 @@ export const UPDATE_USERPROFILE_FAILURE = 'UPDATE_USERPROFILE_FAILURE';
 
 
 //ACTIONS//
-
-// RETURNS FROM DS//
-//fetch strain recommendations from DS
-export const fetchRecs = () => dispatch => {
-
-}
-
-//fetch user stats from DS
-export const fetchStats = () => dispatch => {
-    
-
-}
-
 
 
 //SAVED STRAINS-BACKEND//
