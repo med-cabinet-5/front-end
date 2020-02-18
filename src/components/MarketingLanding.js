@@ -2,10 +2,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components"
-import { Carousel, Icon } from 'antd';
+import { Carousel} from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCannabis} from '@fortawesome/free-solid-svg-icons'
-import {faJoint} from '@fortawesome/free-solid-svg-icons'
+import {faUserCircle} from '@fortawesome/free-solid-svg-icons'
+import {faSearchLocation} from '@fortawesome/free-solid-svg-icons'
+import {faLaptopMedical} from '@fortawesome/free-solid-svg-icons'
 
 
 const LandingBody = styled.div`
@@ -37,6 +38,7 @@ margin-top:5%;
 
 const CarouselHeader= styled.h1`
 color:white;
+background-color: rgb(50,50,50, 0.3);
 `
 
 const CarouselDiv= styled.div`
@@ -45,8 +47,9 @@ flex-direction:column;
 margin-left:35%;
 `
 const CarouselP= styled.p`
-color:white;
-font-size: 1.4rem;
+color: white;
+font-size: 1.3rem;
+padding: 2% 5%;
 `
 
 const Carouselpic=styled.h1`
@@ -61,20 +64,20 @@ function MarketingLanding () {
         <Carousel autoplay effect="fade">
             
     <LandingBody>
-        <Carouselpic> <FontAwesomeIcon icon={ faCannabis}/></Carouselpic>
+        <Carouselpic> <FontAwesomeIcon icon={ faLaptopMedical}/></Carouselpic>
 
             <CarouselHeader>Find Your Strain</CarouselHeader>
         <CarouselP> Be matched with strains that address your needs. You'll be given recommendations based on desired effects and taste from a database of thousands of strains</CarouselP>
     </LandingBody>
             
     <LandingBody>
-        <Carouselpic><Icon type="book" /></Carouselpic>
+        <Carouselpic><FontAwesomeIcon icon={ faSearchLocation} /></Carouselpic>
         <CarouselHeader>Locate Your Strain</CarouselHeader>
         <CarouselP>Locate nearby dispensaries or medical practitioners that can give expert insights.</CarouselP>
     </LandingBody>
             
     <LandingBody>
-    <Carouselpic><FontAwesomeIcon icon={ faJoint}/></Carouselpic>
+    <Carouselpic><FontAwesomeIcon icon={ faUserCircle}/></Carouselpic>
         <CarouselHeader>Welcome!</CarouselHeader>
         <CarouselP>Explore what Med Cabinet has to offer!</CarouselP>
         <CarouselDiv>

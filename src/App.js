@@ -6,8 +6,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 //images
 import logo from "./images/logo.png"
-import desktopImage from "./images/infodesktop.jpg";
-import mobileImage from "./images/infomobile.jpg";
+import desktopImage from "./images/desktop.jpg";
+import mobileImage from "./images/mobile.jpg";
 import { useWindowWidth } from "./utils/useWindowWidth"
 
 //Components
