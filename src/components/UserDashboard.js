@@ -8,8 +8,6 @@ import { NavLink } from "react-router-dom";
 //components
 import SavedStrains from "./SavedStrains";
 import StrainSelector from "./StrainSelector";
-import StrainDetailCard from "./StrainDetailCard";
-import StrainMiniCard from "./StrainMiniCard";
 
 //actions
 import { fetchSavedStrains, deleteSavedStrains, updateUser } from "../actions";

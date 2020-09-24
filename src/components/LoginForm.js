@@ -7,69 +7,9 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 //styles
-import styled from "styled-components";
 import { message } from 'antd';
-
-
-const LoginContainer = styled.div `
-margin-top: 5%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-`
-
-const LoginBody = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-padding-top: 5%;
-color: black;
-min-height: 500px;
-max-height: 500px;
-background-color: rgb(0,181,205, 0.7);
-border-radius:36px;
-max-width: 400px;
-min-width: 400px;
-`
-
-const LoginLabels = styled.label`
-color: white;
-margin-top: 4%;
-margin-bottom: 1%;
-`
-
-const LoginHeader = styled.h1`
-color: white;
-margin-top: 3%;
-`
-
-const LoginButton = styled.button`
-margin: 5%;
-width: 35%;
-background-color: #323232;
-color: white;
-padding: 1%;
-border-radius: 8px;
-`
-
-const SignUp = styled.p`
-font-size: 0.7rem;
-color: white;
-`
-const Columns = styled.div`
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-margin-bottom:1%;
-`
-
-const Error = styled.p`
-color:red;
-padding: 0;
-margin: 0;
-`
+import Nav from './Nav';
+import { LandingBody, ButtonPrimary, Error, LoginLabels, SignupLoginHeader, SignupLoginContainer, Columns, SignUp } from '../styles' 
 
 function LoginForm({values, errors, touched, status}) {
   
@@ -89,9 +29,10 @@ function LoginForm({values, errors, touched, status}) {
   return (
 
     <div className="LoginForm">
-      <LoginContainer>
-      <LoginBody>
-      <LoginHeader>Login </LoginHeader>
+      <Nav />
+      <SignupLoginContainer>
+      <LandingBody>
+      <SignupLoginHeader>Login </SignupLoginHeader>
         
         <Form>
         <Columns>
@@ -100,7 +41,12 @@ function LoginForm({values, errors, touched, status}) {
             type="text"
             name="username"
             placeholder="Enter username"
-          
+            style={{
+              borderRadius: '8px',
+              padding: '0.1rem 0.5rem',
+              width: '100%',
+              border: 'solid 1px #444a44'
+            }}
           />
             {touched.username && errors.username && (
               <Error className="errors"> {errors.username}</Error>
@@ -113,22 +59,29 @@ function LoginForm({values, errors, touched, status}) {
             type="password"
             name="password"
             placeholder="Enter password"
+            style={{
+              borderRadius: '8px',
+              padding: '0.1rem 0.5rem',
+              width: '100%',
+              border: 'solid 1px #444a44',
+              marginBottom: '1.5rem'
+            }}
             />
               {touched.password && errors.password && (
                 <Error className="errors"> {errors.password}</Error>
               )}
           </Columns>
 
-          <LoginButton type="submit" onClick={success}>Submit</LoginButton>
+          <ButtonPrimary type="submit" onClick={success}>Submit</ButtonPrimary>
         </Form>
 
 
         <SignUp> Don't have an account? 
-            <Link to="/signup" style={{color: "#323232", textDecoration: "underline", }}> Sign-Up</Link>
+            <Link to="/signup" style={{color: "#444a44", textDecoration: "underline", }}> Sign-Up</Link>
         </SignUp>
-        </LoginBody>
+        </LandingBody>
 
-        </LoginContainer>
+        </SignupLoginContainer>
         </div>
   );
 };

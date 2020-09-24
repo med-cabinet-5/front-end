@@ -1,10 +1,4 @@
-import FETCH_STRAIN_START from "../actions";
-import FETCH_STRAIN_SUCCESS from "../actions";
-import FETCH_STRAIN_FAILURE from "../actions";
 
-import FETCH_STATS_START from "../actions";
-import FETCH_STATS_SUCCESS from "../actions";
-import FETCH_STATS_FAILURE from "../actions";
 
 import CREATE_SAVEDSTRAIN_START from "../actions";
 import CREATE_SAVEDSTRAIN_SUCCESS from "../actions";
@@ -17,6 +11,46 @@ import FETCH_SAVEDSTRAIN_FAILURE from "../actions";
 import DELETE_SAVEDSTRAIN_START from "../actions";
 import DELETE_SAVEDSTRAIN_SUCCESS from "../actions";
 import DELETE_SAVEDSTRAIN_FAILURE from "../actions";
+
+import EDIT_USER from "../actions";
+// import TOGGLE_EDIT from "../actions"; ?
+import UPDATE_USERPROFILE_START from "../actions";
+import UPDATE_USERPROFILE_SUCCESS from "../actions";
+import UPDATE_USERPROFILE_FAILURE from "../actions";
+
+
+export const initialState =  {  
+    user: [],
+    isFetching: false,
+    error: '',
+}
+
+
+export const userReducer = (state, action) => {
+    switch(action.type) {
+    case UPDATE_USERPROFILE_START:
+        return {
+            ...state,
+            isFetching: true,
+            error: null 
+        }
+    case UPDATE_USERPROFILE_SUCCESS:
+        return {
+            ...state,
+            user: [...state],
+            error: null
+        }
+    case UPDATE_USERPROFILE_FAILURE:
+        return {
+            ...state,
+            error: action.payload,
+            user: []
+        }
+
+    default: 
+    return state;
+};
+}
 
 
 export const initialState =  {  

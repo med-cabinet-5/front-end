@@ -1,58 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios'
 
-//actions
-import { fetchRecs, fetchStats } from "../actions"
+//contexts
+import { ResultsContext }  from "../contexts/ResultsContext";
 
 //styling
-import styled from "styled-components";
+import { InfoHeader, InfoLabels, InfoInstructions, InfoForm, ButtonPrimary, DashboardContainer, DashboardSideBar } from '../styles' 
 import { message } from 'antd';
+import Sidebar from './DashboardSideBar'
 
-const InfoBody = styled.div`
-margin: 5%;
-color: white;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
 
-const InfoHeader = styled.h1`
-color: white
-`
-
-const InfoLabels = styled.p`
-color: white;
-text-align: left;
-margin-top: 7%;
-margin-bottom: 1%;
-`
-const InfoInstructions = styled.div`
-padding-bottom: 3%;
-border-bottom: #323232 solid 2px;
-`
-
-const InfoForm = styled.form`
-display: flex;
-flex-direction: column;
-width: 50%;
-background-color: #918383;
-color: black;
-padding: 5%;
-`
-
-const InfoButton = styled.button`
-margin: 13% 0 3%;
-width: 35%;
-background-color: #1497AB;
-color: white;
-padding: 1%;
-border-radius: 8px;
-`
-
-    const UserInfoForm = props => {
+const UserInfoForm = props => {
         const { id } = useParams()
+        const [strainData, setStrainData, statsData, setStatsData] = useContext(ResultsContext)
+        console.log("checking context infoform 57", strainData, statsData);
 
         const [newUserInfo, setNewUserInfo] = useState({
             ailments: '',
@@ -81,12 +43,13 @@ border-radius: 8px;
                 "USER_INPUT_STRING": `${newUserInfo.ailments} ${newUserInfo.feelings} ${newUserInfo.taste}`
             }
 
-            try {
-                const strains = await axios.post('https://med-cab-ds.herokuapp.com/json', JSON.stringify(joinedInput));
-                const stats = await axios.post('https://med-cab-ds.herokuapp.com/stats', JSON.stringify(joinedInput));
-                console.log("Try Block", strains, stats)
-                //set results to context to use as {strains, stats} dispatch
-                
+            try {   
+                const strains = await axios.post('https://med-nlp.herokuapp.com/json', JSON.stringify(joinedInput));
+                const stats = await axios.post('https://med-nlp.herokuapp.com/stats', JSON.stringify(joinedInput));
+                console.log("Try Block", strains.data, stats.data)
+                //set results to context to use as provider value={strains, stats} dispatch
+                setStrainData(strains.data)
+                setStatsData(stats.data)
                 props.history.push(`dashboard/${id}`)
             } catch (e) {
                 console.log(e.message)
@@ -94,7 +57,18 @@ border-radius: 8px;
         }
 
         return (
-            <InfoBody >
+            <div
+            style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%'
+            }}>
+            <DashboardContainer>
+                <Sidebar /> 
+
+
                 <InfoForm onSubmit={addUserInfo}>
                 <InfoHeader>User Information</InfoHeader>
                     <InfoInstructions>
@@ -127,9 +101,10 @@ border-radius: 8px;
                     value={newUserInfo.taste}
                     onChange={handleChange}
                 />
-                <InfoButton onClick={success}> Submit </InfoButton>
+                <ButtonPrimary onClick={success}> Submit </ButtonPrimary>
                 </InfoForm>
-            </InfoBody>
+            </DashboardContainer>
+            </div>
         );
     };
     

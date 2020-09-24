@@ -1,13 +1,13 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
+import React, { useState } from 'react';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 
 //Private Route
 import PrivateRoute from "./utils/PrivateRoute";
 
 //images
-import logo from "./images/logo.png"
-import desktopImage from "./images/infodesktop.jpg";
-import mobileImage from "./images/infomobile.jpg";
+
+import desktopImage from "./images/desktop.jpg";
+import mobileImage from "./images/mobile.jpg";
 import { useWindowWidth } from "./utils/useWindowWidth"
 
 //Components
@@ -21,48 +21,51 @@ import UserInfoForm from "./components/UserInfoForm";
 
 //contexts
 // import { SavedStrainContext } from "./contexts/SavedStrainContext";
-// import { ResultsContext } from "./contexts/ResultsContext";
+import { ResultsContext } from "./contexts/ResultsContext";
 // import { UserContext } from "./contexts/UserContext";
 // import { StoresContext } from "./contexts/StoresContext";
 
 //styling
 import 'antd/dist/antd.css'
 import './App.css'
-import styled from "styled-components"
+import styled from 'styled-components';
 
-const NavLogo = styled.img`
-display: flex;
-justify-content: center;
-max-height: 200px;
-padding: 5% 0 0;
-margin-bottom:8%;
+const AppContainer = styled.div`
+  background-size: cover;
+  background-attachment: fixed;
+
+  @media(max-width: 700px){
+    height: auto;
+  }
 `
 
 function App() {
   
+  const [strainData, setStrainData] = useState([]);
+  const [statsData, setStatsData] = useState([]);
 
   const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
 
   return (
     <Router>
-    <div className="App" style={{backgroundImage: `url(${imageUrl})` }}>
-      <header className="App-header">
-        <Link to="/">
-            <NavLogo src={logo} alt="Logo" />
-        </Link>
-      </header>
+    <AppContainer 
+      className="App" 
+      style={{
+        backgroundImage: `url(${imageUrl})`
+      }}>
 
       <Switch>
           <Route exact path ="/" component={MarketingLanding} />
           <Route path="/login" component={FormikLoginForm} />
           <Route path="/signup" component={FormikSignupForm} />
-
+          <ResultsContext.Provider value={[strainData, setStrainData, statsData, setStatsData ]}>
           <PrivateRoute path="/infoform" component={UserInfoForm} />
           <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
           {/* <PrivateRoute path="/search" component={StrainSearch} /> */}
-        </Switch>
+          </ResultsContext.Provider>
+      </Switch>
 
-    </div>
+    </AppContainer>
     </Router> 
 
   );
