@@ -41,6 +41,7 @@ function CardModal() {
         {strainData.map(data => {
             return(
             <div>
+                {/* mini card */}
                 <div>
                     <h2>{data.strain}</h2>
                     <div>
@@ -51,10 +52,13 @@ function CardModal() {
                 <StrainButton onClick={showModal}>
                     More Info
                 </StrainButton>
+
+                
                 <Modal
                     title="Details"
                     visible={visible}
                     onCancel={handleCancel}
+                    // destroyOnClose={true}
                     footer={[
                     <StrainButton key="back" onClick={handleCancel}>
                         Close

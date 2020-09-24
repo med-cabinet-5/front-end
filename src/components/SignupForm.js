@@ -7,65 +7,10 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 //styles
-import styled from "styled-components";
 import { message } from 'antd';
+import Nav from './Nav'
+import { LandingBody, Error, SignupLoginHeader, Columns, SignupLabels, SignupLoginContainer, ButtonPrimary, SignUp } from '../styles'
 
-const SignupContainer = styled.div`
-margin-top: 5%; 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-justify-content: center;
-`
-const SignupBody = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-background-color: rgb(0,181,205, 0.7);
-border-radius:36px;
-color: black;
-min-height: 500px;
-max-width: 400px;
-min-width: 400px;`
-
-const SignupLabels = styled.p`
-color: white;
-margin-top: 2%;
-margin-bottom: 1%;
-`
-
-const SignupHeader = styled.h1`
-color: white;
-margin-top: 3%;
-`
-
-const SignUpButton = styled.button`
-margin: 5%;
-width: 35%;
-background-color: #323232;
-color: white;
-padding: 1%;
-border-radius: 8px;
-`
-
-const Login = styled.p`
-font-size: 0.7rem;
-color: white;
-`
-
-const Columns = styled.div`
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-margin-bottom:1%;
-`
-const Error = styled.p`
-color:red;
-margin: 0;
-padding: 0;
-`
 
 function SignupForm({values, errors, touched, status}){
 
@@ -85,10 +30,13 @@ function SignupForm({values, errors, touched, status}){
 
 
 return(
-    <SignupContainer>
+    <div>
 
-        <SignupBody>
-        <SignupHeader>Sign-Up</SignupHeader>
+    <Nav />
+    
+    <SignupLoginContainer>
+        <LandingBody>
+        <SignupLoginHeader>Sign-Up</SignupLoginHeader>
             
                 <Form>
                 <Columns>
@@ -99,6 +47,12 @@ return(
                     type='text'
                     name='first_name'
                     placeholder='First Name'
+                    style={{
+                        borderRadius: '8px',
+                        padding: '0.1rem 0.5rem',
+                        width: '100%',
+                        border: 'solid 1px #444a44'
+                    }}
                 />
                 {touched.first_name && errors.first_name && (
                 <Error className='errors'>{errors.first_name}</Error>
@@ -114,6 +68,12 @@ return(
                     type='text' 
                     name='last_name'
                     placeholder='Last Name'
+                    style={{
+                        borderRadius: '8px',
+                        padding: '0.1rem 0.5rem',
+                        width: '100%',
+                        border: 'solid 1px #444a44'
+                    }}
                 />
                 {touched.last_name && errors.last_name && (
                 <Error className='errors'>{errors.last_name}</Error>
@@ -129,6 +89,12 @@ return(
                     type='email'
                     name='email'
                     placeholder='E-mail'
+                    style={{
+                        borderRadius: '8px',
+                        padding: '0.1rem 0.5rem',
+                        width: '100%',
+                        border: 'solid 1px #444a44'
+                    }}
                 />
                 {touched.email && errors.email && (
                 <Error className='errors'>{errors.email}</Error>
@@ -144,6 +110,12 @@ return(
                     type='text'
                     name='username'
                     placeholder='Username'
+                    style={{
+                        borderRadius: '8px',
+                        padding: '0.1rem 0.5rem',
+                        width: '100%',
+                        border: 'solid 1px #444a44'
+                    }}
                     />
                 {touched.username && errors.username && (
                 <Error className='errors'>{errors.username}</Error>
@@ -158,6 +130,13 @@ return(
                     type='password'
                     name='password'
                     placeholder='Password'
+                    style={{
+                        borderRadius: '8px',
+                        padding: '0.1rem 0.5rem',
+                        width: '100%',
+                        border: 'solid 1px #444a44', 
+                        marginBottom: '1.5rem'
+                    }}
                 />
                 {touched.password && errors.password && (
                 <Error className='errors'>{errors.password}</Error>
@@ -165,17 +144,17 @@ return(
                 
                 </Columns>
 
-                <SignUpButton type='submit' onClick={success}>Submit</SignUpButton>
+                <ButtonPrimary type='submit' onClick={success}>Submit</ButtonPrimary>
                 
-                <Login>Already have an account? Log In 
-                    <Link to="/login" style={{color: "#323232", textDecoration: "underline", }}> Here</Link> 
-       
+                <SignUp>Already have an account? Log In 
+                    <Link to="/login" style={{color: "#444a44", textDecoration: "underline", }}> Here</Link> 
 
-                </Login>
+                </SignUp>
 
             </Form>
-        </SignupBody>
-</SignupContainer>
+        </LandingBody>
+</SignupLoginContainer>
+</div>
 
 )
 }

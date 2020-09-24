@@ -7,58 +7,52 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUserCircle} from '@fortawesome/free-solid-svg-icons'
 import {faSearchLocation} from '@fortawesome/free-solid-svg-icons'
 import {faLaptopMedical} from '@fortawesome/free-solid-svg-icons'
+import Nav from './Nav';
 
-
-const LandingBody = styled.div`
-display: flex;
-flex-direction: column;
-// justify-content: center;
-// align-items: center;
-background-color: rgb(0,181,205, 0.7);
-min-height: 500px;
-max-width: 400px;
-min-width: 400px;
-border-radius:36px;
-`
-
-const LandingButton = styled.button`
-margin: 5%;
-width: 35%;
-background-color: #323232;
-color: white;
-text-decoration: none;
-padding: 1%;
-border-radius: 8px;
-`
+import { ButtonPrimary, LandingBody } from '../styles'
 
 const CarouselBody = styled.div`
-text-align:center;
-margin-top:5%;
+    margin: 5rem 0;
 `
 
 const CarouselHeader= styled.h1`
-color:white;
-background-color: rgb(50,50,50, 0.3);
+    color: #fafaf1;
+    background-color: rgb(50,50,50, 0.3);
+    padding: 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.9rem;
 `
 
 const CarouselDiv= styled.div`
-display:flex;
-flex-direction:column;
-margin-left:35%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
 `
 const CarouselP= styled.p`
-color: white;
-font-size: 1.3rem;
-padding: 2% 5%;
+    color: #fafaf1;
+    font-size: 1.3rem;
+    padding: 2% 5%;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 0.09rem;
 `
 
-const Carouselpic=styled.h1`
-margin-top:10%;
-color:white;
-font-size:4.5rem;
+const Carouselpic = styled.h1`
+    margin-top: 10%;
+    color: #fafaf1;
+    font-size: 4rem;
 `
+
+
+
 function MarketingLanding () {
     return(
+    <div>
+
+    <Nav />
 
     <CarouselBody>
         <Carousel autoplay effect="fade">
@@ -80,20 +74,23 @@ function MarketingLanding () {
     <Carouselpic><FontAwesomeIcon icon={ faUserCircle}/></Carouselpic>
         <CarouselHeader>Welcome!</CarouselHeader>
         <CarouselP>Explore what Med Cabinet has to offer!</CarouselP>
+        
         <CarouselDiv>
-        <LandingButton>
+        <ButtonPrimary>
         <Link to="/signup" style={{textDecoration: 'none', color: 'white' }}> Sign-Up</Link>
-        </LandingButton>
+        </ButtonPrimary>
 
-        <LandingButton>
-        <Link to="/login"style={{textDecoration: 'none', color: 'white' }}> Login</Link>
-        </LandingButton>
+        <ButtonPrimary>
+            <Link to="/login"style={{textDecoration: 'none', color: 'white' }}> Login</Link>
+        </ButtonPrimary>
+
         </CarouselDiv>
     </LandingBody>
     
     </Carousel>
     
     </CarouselBody>
+    </div>
     )
 };
 
