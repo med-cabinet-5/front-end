@@ -16,7 +16,8 @@ import FormikSignupForm from "./components/SignupForm";
 import MarketingLanding from "./components/MarketingLanding";
 import UserDashboard from "./components/UserDashboard";
 import UserInfoForm from "./components/UserInfoForm";
-// import StrainSelector from "./components/StrainSelector";
+import StrainSelector from "./components/StrainSelector";
+import SavedStrains from './components/SavedStrains'
 // import StrainSearch from "./components/StrainSearch";
 
 //contexts
@@ -59,8 +60,10 @@ function App() {
           <Route path="/login" component={FormikLoginForm} />
           <Route path="/signup" component={FormikSignupForm} />
           <ResultsContext.Provider value={[strainData, setStrainData, statsData, setStatsData ]}>
-          <PrivateRoute path="/infoform" component={UserInfoForm} />
-          <PrivateRoute path="/dashboard/:id" component={UserDashboard} />
+          <PrivateRoute path="/dashboard/info" component={UserInfoForm} />
+          <PrivateRoute path="/dashboard/:id/favorites" component={SavedStrains} />
+          <PrivateRoute path="/dashboard/:id/recommendations" component={StrainSelector} />
+          <PrivateRoute path="/dashboard/:id/settings" component={UserDashboard}/>
           {/* <PrivateRoute path="/search" component={StrainSearch} /> */}
           </ResultsContext.Provider>
       </Switch>

@@ -1,42 +1,87 @@
 import React from 'react';
 import { DashboardSideBar, DashboardButton } from '../styles'
-import { NavLink } from 'react-router-dom' 
+import { NavLink, Link } from 'react-router-dom' 
 import logo from '../images/logo.png'
+
+import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import SettingsIcon from '@material-ui/icons/Settings';
+import ContactsIcon from '@material-ui/icons/Contacts';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Sidebar(){
     return(
 
         <DashboardSideBar>
-            <div>
-                <img src={logo} />
+            <div className="heading">
+                <Link to="/" >
+                    <img src={logo} />
+                </Link>
             </div>
             
-            <NavLink to="/" className="sidebar">
-                Recommendations
-            </NavLink>
+            <div className="hello">
+                <h3>Hello, [name]!</h3>
+            </div>
+            
 
-
+            <div>    
             <NavLink 
-                to="/" 
+                to="/dashboard/:id/recommendations" 
+                className="sidebar top"
+                activeStyle={{
+                    color: 'white',
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                }}>
+                <ContactsIcon 
+                style={{
+                    margin: '0.75rem'
+                }}/> Preferences
+            </NavLink>
+            
+            <NavLink 
+                to="/dashboard/:id/recommendations" 
                 className="sidebar"
                 activeStyle={{
-                    color: 'white'
+                    color: 'white',
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                }}>
+                <FeaturedPlayListIcon   
+                style={{
+                    margin: '0.75rem'
+                }}/> Recommendations
+            </NavLink>
+
+
+            <NavLink 
+                to="/dashboard/:id/favorites" 
+                className="sidebar"
+                activeStyle={{
+                    color: 'white',
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
                 }}
                 >
-                &#9825; Favorites
+                <FavoriteBorderIcon   
+                style={{
+                    margin: '0.5rem'
+                }}/> Favorites
             </NavLink>
 
             <NavLink 
-                to="/dashboard" 
+                to="/dashboard/:id/settings" 
                 className="sidebar"
-                style={{
-
+                activeStyle={{
+                    color: 'white',
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
                 }}>
-                Account Settings
+                <SettingsIcon   
+                style={{
+                    margin: '0.5rem'
+                }}/>Account Settings
             </NavLink>
+            </div>
 
-            <div>
-                <DashboardButton> Logout </DashboardButton>
+            <div className="logout">
+                <DashboardButton> Logout <ExitToAppIcon/> </DashboardButton>
             </div>
 
         </DashboardSideBar>
