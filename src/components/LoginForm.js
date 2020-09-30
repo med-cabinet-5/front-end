@@ -108,7 +108,7 @@ handleSubmit(values, { setStatus, props }) {
           localStorage.setItem("token", response.data.token)
           // const { id } = useParams()
           // props.history.push(`/dashboard/${id}`)
-          props.history.push(`/dashboard`)
+          props.history.push(`/dashboard/info`)
 
       })
       .catch(err => console.log(err.response));

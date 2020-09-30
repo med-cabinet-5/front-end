@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const AppBody = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+`
+
 // marketing / login / sign up
 export const LandingBody = styled.div`
     display: flex;
@@ -97,6 +105,7 @@ export const DashboardContainer = styled.div`
     height: 90vh;
     border-radius: 30px;
 
+
     @media(max-width: 1050px){
         margin-top: 3rem;
     }
@@ -106,6 +115,16 @@ export const DashboardContainer = styled.div`
     }
 `
 
+export const DashboardBody = styled.div`
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #767f76;
+`
+
 export const DashboardSideBar = styled.div`
     background-color: #444a44;
     width: 25%;
@@ -113,16 +132,56 @@ export const DashboardSideBar = styled.div`
     border-bottom-left-radius: 30px;
     display: flex;
     flex-direction: column;
+    padding: 2rem 0;
+    border-right: 1px solid #3d6a25;
 
-    img {
-        width: 100px;
+    .heading {
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 85px;
+        }
+    }
+
+    .hello {
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        h3{
+            color: #fafaf1;
+            font-family: 'Abril Fatface', cursive;
+            font-size: 2.4rem;
+            letter-spacing: 0.1rem;
+        }
+    }
+
+    .top {
+        border-top: solid 1px #3d6a25;
     }
 
     .sidebar {
-        height: 2rem;
-        border-bottom: #a2d586;
+        height: 4rem;
+        border-bottom: solid 1px #3d6a25;
         font-family: 'Roboto Condensed', sans-serif;
-        
+        font-size: 1.3rem;
+        text-decoration: none;
+        color: #fafaf1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; 
+        width: 100%;
+        padding-left: 1.5rem;
+    }
+
+    .logout {
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end; 
+        width: 100%;
     }
 `
 
@@ -130,36 +189,72 @@ export const DashboardButton = styled.button`
     color: #444a44;
     background-color: #fafaf1;
     border-radius: 10px;
-    padding: 0.15rem 1rem 0.1rem;
+    padding: 0.3rem 1.5rem;
+    width: 8.5rem;
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05rem;
     text-decoration: none;
     border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 `
 
 // info form styling
 export const InfoHeader = styled.h1`
-    color: #444a44;
+    color: #fafaf1;
+    font-weight: 900;
+    letter-spacing: 0.1rem;
 `
 
 export const InfoLabels = styled.p`
-    color: white;
+    color: #fafaf1;
     text-align: left;
     margin-top: 7%;
     margin-bottom: 1%;
+    letter-spacing: 0.02rem;
+    font-size: 1rem;
+    text-transform: uppercase;
 `
+
 export const InfoInstructions = styled.div`
     padding-bottom: 3%;
-    border-bottom: #323232 solid 2px;
+    border-bottom: #444a44 solid 2px;
+    font-size: 1.1rem;
+    letter-spacing: 0.01rem;
+
+    p {
+        color: #fafaf1;
+        text-align: left;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.02rem;
+        font-size: 1rem;
+    }
+`
+
+export const InfoInput = styled.input`
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background-color: #fafaf1;
+    padding: 0.1rem 0.3rem;
 `
 
 export const InfoForm = styled.form`
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto Condensed', sans-serif;
     width: 50%;
-    background-color: #918383;
+    background-color: #767f76;
     color: black;
     padding: 5%;
+    height: 100%;
+
+    button{
+        margin-top: 2rem;
+        width: 50%;
+    }
 `

@@ -6,7 +6,7 @@ import axios from 'axios'
 import { ResultsContext }  from "../contexts/ResultsContext";
 
 //styling
-import { InfoHeader, InfoLabels, InfoInstructions, InfoForm, ButtonPrimary, DashboardContainer, DashboardSideBar } from '../styles' 
+import { InfoHeader, InfoLabels, InfoInstructions, InfoForm, InfoInput, ButtonPrimary, DashboardContainer, DashboardBody, AppBody } from '../styles' 
 import { message } from 'antd';
 import Sidebar from './DashboardSideBar'
 
@@ -57,28 +57,22 @@ const UserInfoForm = props => {
         }
 
         return (
-            <div
-            style={{
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100%'
-            }}>
+            <AppBody>
             <DashboardContainer>
                 <Sidebar /> 
 
+                <DashboardBody>
 
                 <InfoForm onSubmit={addUserInfo}>
                 <InfoHeader>User Information</InfoHeader>
                     <InfoInstructions>
-                        <InfoLabels>
+                            <p>
                             We'll need to get some information from you about the ailments you're experiencing, your desired effects, and what your preferences for taste are. This will help us give you better recommendations based on the information you provide.
-                        </InfoLabels>
+                            </p>
                     </InfoInstructions>
 
                 <InfoLabels>Ailments:</InfoLabels>
-                <input
+                <InfoInput
                     type="text"
                     name="ailments"
                     placeholder=" Tell us more about what is bothering you"
@@ -86,7 +80,7 @@ const UserInfoForm = props => {
                     onChange={handleChange}
                 />
                 <InfoLabels>Feelings:</InfoLabels>
-                <input
+                <InfoInput
                     type="text"
                     name="feelings"
                     placeholder=" Tell us what effects you're hoping to experience"
@@ -94,17 +88,22 @@ const UserInfoForm = props => {
                     onChange={handleChange}
                 />
                 <InfoLabels>Preferred Taste:</InfoLabels>
-                <input
+                <InfoInput
                     type="text"
                     name="taste"
                     placeholder=" Tell us if you have any preferences of taste"
                     value={newUserInfo.taste}
                     onChange={handleChange}
                 />
-                <ButtonPrimary onClick={success}> Submit </ButtonPrimary>
+                <div>
+                    <ButtonPrimary onClick={success}> Submit </ButtonPrimary>
+                </div>
                 </InfoForm>
+
+                </DashboardBody>
             </DashboardContainer>
-            </div>
+            </AppBody>
+            
         );
     };
     
