@@ -10,14 +10,13 @@ const NavLogo = styled.img`
         max-height: 100px;
     }
 `
-
 const Header = styled.header`
     height: 15rem;
     padding: 0;
     margin: 0;
 
     @media(max-width: 700px){
-        max-height: 10rem;
+        height: 7.75rem;
     }
 `
 

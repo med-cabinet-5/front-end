@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 //Private Route
 import PrivateRoute from "./utils/PrivateRoute";
@@ -21,9 +21,9 @@ import SavedStrains from './components/SavedStrains'
 // import StrainSearch from "./components/StrainSearch";
 
 //contexts
-// import { SavedStrainContext } from "./contexts/SavedStrainContext";
+
 import { ResultsContext } from "./contexts/ResultsContext";
-// import { UserContext } from "./contexts/UserContext";
+import { UserContext } from "./contexts/UserContext";
 // import { StoresContext } from "./contexts/StoresContext";
 
 //styling
@@ -34,6 +34,7 @@ import styled from 'styled-components';
 const AppContainer = styled.div`
   background-size: cover;
   background-attachment: fixed;
+  min-height: 100vh;
 
   @media(max-width: 700px){
     height: auto;
@@ -60,11 +61,13 @@ function App() {
           <Route path="/login" component={FormikLoginForm} />
           <Route path="/signup" component={FormikSignupForm} />
           <ResultsContext.Provider value={[strainData, setStrainData, statsData, setStatsData ]}>
-          <PrivateRoute path="/dashboard/info" component={UserInfoForm} />
+          {/* <UserContext.Provider> */}
+          <PrivateRoute path="/dashboard/:id/info" component={UserInfoForm} />
           <PrivateRoute path="/dashboard/:id/favorites" component={SavedStrains} />
           <PrivateRoute path="/dashboard/:id/recommendations" component={StrainSelector} />
           <PrivateRoute path="/dashboard/:id/settings" component={UserDashboard}/>
           {/* <PrivateRoute path="/search" component={StrainSearch} /> */}
+          {/* </UserContext.Provider> */}
           </ResultsContext.Provider>
       </Switch>
 

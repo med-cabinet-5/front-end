@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect , useState }from 'react';
 import { DashboardSideBar, DashboardButton } from '../styles'
-import { NavLink, Link } from 'react-router-dom' 
+import { NavLink, Link, Redirect } from 'react-router-dom' 
 import logo from '../images/logo.png'
+import { axiosWithAuth } from '../utils/AxiosWithAuth'
+import { useParams } from 'react-router';
 
 import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -10,8 +12,33 @@ import ContactsIcon from '@material-ui/icons/Contacts';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Sidebar(){
-    return(
+    
+    const [user, setUser] = useState([])
 
+    // useEffect(() => {
+    //     axiosWithAuth()
+    //         .get(' https://med-cabinet-server.herokuapp.com/api/user/')
+    //         .then(res => {
+    //             console.log('success', res);
+    //             setUser(res)
+    //         })
+    //         .catch(err => console.log(err));
+
+    // }, []);
+
+    // console.log('dashboard user' ,user)
+
+
+    // const logout = () => {
+    //     localStorage.removeItem("token");
+    //     return <Redirect to="/login" />;
+    // }
+
+    const { id } = useParams()
+
+    return(
+        
+        // click out/expand for mobile?
         <DashboardSideBar>
             <div className="heading">
                 <Link to="/" >
@@ -20,13 +47,13 @@ function Sidebar(){
             </div>
             
             <div className="hello">
-                <h3>Hello, [name]!</h3>
+                <h3>Hello, John!</h3>
             </div>
             
 
             <div>    
             <NavLink 
-                to="/dashboard/:id/recommendations" 
+                to={`/dashboard/${id}/info`}
                 className="sidebar top"
                 activeStyle={{
                     color: 'white',
@@ -39,7 +66,7 @@ function Sidebar(){
             </NavLink>
             
             <NavLink 
-                to="/dashboard/:id/recommendations" 
+                to={`/dashboard/${id}/recommendations`}
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
@@ -53,7 +80,7 @@ function Sidebar(){
 
 
             <NavLink 
-                to="/dashboard/:id/favorites" 
+                to={`/dashboard/${id}/favorites`} 
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
@@ -67,7 +94,7 @@ function Sidebar(){
             </NavLink>
 
             <NavLink 
-                to="/dashboard/:id/settings" 
+                to={`/dashboard/${id}/settings`}
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
@@ -81,7 +108,9 @@ function Sidebar(){
             </div>
 
             <div className="logout">
-                <DashboardButton> Logout <ExitToAppIcon/> </DashboardButton>
+                <DashboardButton 
+                    // onclick={Logout()}
+                > Logout <ExitToAppIcon/> </DashboardButton>
             </div>
 
         </DashboardSideBar>

@@ -14,14 +14,14 @@ import Sidebar from './DashboardSideBar'
 const UserInfoForm = props => {
         const { id } = useParams()
         const [strainData, setStrainData, statsData, setStatsData] = useContext(ResultsContext)
-        console.log("checking context infoform 57", strainData, statsData);
+        console.log("checking context infoform", strainData, statsData);
 
         const [newUserInfo, setNewUserInfo] = useState({
             ailments: '',
             feelings: '',
             taste: '',
         });
-
+        
         const handleChange = e => {
             setNewUserInfo(
                 {
@@ -34,7 +34,7 @@ const UserInfoForm = props => {
         const success = () => {
             const hide = message.loading('Submitting Your Responses...', 0);
             // Dismiss manually and asynchronously
-            setTimeout(hide, 2500);
+            setTimeout(hide, 3000);
         };
 
         const addUserInfo = async e => {
@@ -50,7 +50,7 @@ const UserInfoForm = props => {
                 //set results to context to use as provider value={strains, stats} dispatch
                 setStrainData(strains.data)
                 setStatsData(stats.data)
-                props.history.push(`dashboard/${id}`)
+                props.history.push(`/dashboard/${id}/recommendations`)
             } catch (e) {
                 console.log(e.message)
             };

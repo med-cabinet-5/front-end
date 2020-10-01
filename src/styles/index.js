@@ -22,7 +22,7 @@ export const LandingBody = styled.div`
     margin: 0.75rem 0 2.5rem;
 
     @media(max-width: 700px){
-        margin: 0.5rem 0 5rem;
+        margin: 0.5rem 0 1.65rem;
     }
 `
 
@@ -82,12 +82,15 @@ export const LoginLabels = styled.label`
 `
 
 export const SignupLoginContainer = styled.div`
-margin-top: 5%; 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 0;
+    
+    @media(max-width: 700px){
+        padding: 0.75rem 0 0;
+    }
 `
 
 export const SignupLoginHeader = styled.h1`
@@ -105,13 +108,14 @@ export const DashboardContainer = styled.div`
     height: 90vh;
     border-radius: 30px;
 
-
     @media(max-width: 1050px){
         margin-top: 3rem;
+        width: 90%;
     }
 
-    @media(max-width: 1050px){
+    @media(max-width: 700px){
         margin: 1rem 0;
+        width: 95%;
     }
 `
 
@@ -123,11 +127,13 @@ export const DashboardBody = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #767f76;
+    width: 100%;
 `
 
 export const DashboardSideBar = styled.div`
     background-color: #444a44;
     width: 25%;
+    min-width: 210px;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     display: flex;
@@ -173,7 +179,22 @@ export const DashboardSideBar = styled.div`
         justify-content: flex-start;
         align-items: center; 
         width: 100%;
-        padding-left: 1.5rem;
+        padding-left: 0.75rem;
+
+        @media(max-width: 1300px){
+            padding-left: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        @media(max-width: 1050px){
+            padding-left: 0.25rem;
+            
+        }
+    
+        @media(max-width: 700px){
+            padding-left: 0.1rem;
+            font-size: 1.1rem;
+        }
     }
 
     .logout {
@@ -234,6 +255,15 @@ export const InfoInstructions = styled.div`
         letter-spacing: 0.02rem;
         font-size: 1rem;
     }
+
+    @media(max-width: 1050px){
+
+    }
+
+    @media(max-width: 700px){
+
+    }
+    
 `
 
 export const InfoInput = styled.input`
@@ -241,20 +271,45 @@ export const InfoInput = styled.input`
     font-size: 1.1rem;
     background-color: #fafaf1;
     padding: 0.1rem 0.3rem;
+    border: solid 1px #444a44;
+
+    @media(max-width: 1050px){
+        padding: 0rem 0.1rem;
+    }
+
+    @media(max-width: 700px){
+
+    }
 `
 
 export const InfoForm = styled.form`
     display: flex;
     flex-direction: column;
     font-family: 'Roboto Condensed', sans-serif;
-    width: 50%;
+    width: 55%;
     background-color: #767f76;
     color: black;
     padding: 5%;
     height: 100%;
 
-    button{
-        margin-top: 2rem;
-        width: 50%;
+    @media(max-width: 1050px){
+        width: 75%;
     }
+
+    @media(max-width: 700px){
+        width: 80%;
+    }
+
+    button {
+        margin-top: 2rem;
+        width: 55%;
+    }
+`
+
+export const StrainCardContainer = styled.div`
+
+`
+
+export const CardContainer = styled.div`
+
 `

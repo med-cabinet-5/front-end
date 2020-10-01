@@ -192,7 +192,7 @@ handleSubmit (values, { setStatus, props }) {
         axios.post("https://med-cabinet-server.herokuapp.com/api/auth/login", credentials).then(response => {
             console.log("Response", response.data)
             localStorage.setItem("token", response.data.token)
-            props.history.push('/infoform')
+            props.history.push(`/dashboard/${response.data.user.id}/info`)
         })
             .catch(err => console.log(err.message))
 

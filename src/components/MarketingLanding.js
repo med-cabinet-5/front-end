@@ -4,15 +4,20 @@ import { Link } from "react-router-dom";
 import styled from "styled-components"
 import { Carousel} from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUserCircle} from '@fortawesome/free-solid-svg-icons'
-import {faSearchLocation} from '@fortawesome/free-solid-svg-icons'
-import {faLaptopMedical} from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faSearchLocation } from '@fortawesome/free-solid-svg-icons'
+import { faLaptopMedical } from '@fortawesome/free-solid-svg-icons'
 import Nav from './Nav';
 
 import { ButtonPrimary, LandingBody } from '../styles'
 
 const CarouselBody = styled.div`
-    margin: 5rem 0;
+    height: 100%;
+    padding: 2rem 0 0;
+
+    @media(max-width: 700px){
+        padding: 0.75rem 0 0;
+    }
 `
 
 const CarouselHeader= styled.h1`
