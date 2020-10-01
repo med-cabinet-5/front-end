@@ -16,17 +16,9 @@ function Sidebar(){
     const [user, setUser] = useState([])
 
     // useEffect(() => {
-    //     axiosWithAuth()
-    //         .get(' https://med-cabinet-server.herokuapp.com/api/user/')
-    //         .then(res => {
-    //             console.log('success', res);
-    //             setUser(res)
-    //         })
-    //         .catch(err => console.log(err));
 
     // }, []);
 
-    // console.log('dashboard user' ,user)
 
 
     // const logout = () => {
@@ -47,7 +39,7 @@ function Sidebar(){
             </div>
             
             <div className="hello">
-                <h3>Hello, John!</h3>
+                <h3>Hello, !</h3>
             </div>
             
 
