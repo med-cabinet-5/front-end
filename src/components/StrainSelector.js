@@ -1,6 +1,8 @@
 //dependencies & hooks
 import React, { useEffect, useContext }from "react";
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import { useParams } from 'react-router'
+
 
 import { ResultsContext } from '../contexts/ResultsContext'
 import StrainCard from './StrainCard'
@@ -12,8 +14,20 @@ import { DashboardContainer, DashboardBody, AppBody } from '../styles'
 import Sidebar from './DashboardSideBar'
 
 //.get request of top five strains returned from DS Kingdom
-//.post to backend to save strains
 
+
+const { id } = useParams()
+//function to set as onclick to .post to backend to save strains
+    {
+        axios
+            .post(`https://med-cabinet-server.herokuapp.com/api/savedstrains/user/${id}`)
+            .then(response => {
+
+            })
+            .catch(err => {
+
+            })
+    }
 
 function StrainSelector() {
 

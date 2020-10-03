@@ -14,7 +14,6 @@ import { LandingBody, Error, SignupLoginHeader, Columns, SignupLabels, SignupLog
 
 function SignupForm({values, errors, touched, status}){
 
-    
     const [user, setUser]= useState([])
 
     const success = () => {
@@ -160,6 +159,8 @@ return(
 }
 
 const FormikSignupForm = withFormik({
+
+
 mapPropsToValues({first_name, last_name, email, username, password}){
     return {
     first_name: first_name || '',

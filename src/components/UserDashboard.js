@@ -11,10 +11,6 @@ import avatar from "../icons/avatar.png";
 import edit from "../icons/edit.png";
 
 
-
-
-
-
 function UserDashboard() {
 
     return (
