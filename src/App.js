@@ -21,8 +21,8 @@ import SavedStrains from './components/SavedStrains'
 // import StrainSearch from "./components/StrainSearch";
 
 //contexts
-
-import { ResultsContext } from "./contexts/ResultsContext";
+import { StatsResultsContext } from "./contexts/StatsResultsContext";
+import { StrainResultsContext } from "./contexts/StrainResultsContext";
 import { UserContext } from "./contexts/UserContext";
 // import { StoresContext } from "./contexts/StoresContext";
 
@@ -46,10 +46,17 @@ function App() {
   const [strainData, setStrainData] = useState([]);
   const [statsData, setStatsData] = useState([]);
 
+  const [user, setUser] = useState([])
+
   const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
 
   return (
     <Router>
+    
+    <UserContext.Provider value={[user, setUser]}>
+    <StrainResultsContext.Provider value={[ strainData, setStrainData ]}>
+    <StatsResultsContext.Provider value={[ statsData, setStatsData ]}>
+
     <AppContainer 
       className="App" 
       style={{
@@ -57,21 +64,22 @@ function App() {
       }}>
 
       <Switch>
-          <Route exact path ="/" component={MarketingLanding} />
+          <Route exact path="/" component={MarketingLanding} />
           <Route path="/login" component={FormikLoginForm} />
           <Route path="/signup" component={FormikSignupForm} />
-          <ResultsContext.Provider value={[strainData, setStrainData, statsData, setStatsData ]}>
-          {/* <UserContext.Provider> */}
+
           <PrivateRoute path="/dashboard/:id/info" component={UserInfoForm} />
           <PrivateRoute path="/dashboard/:id/favorites" component={SavedStrains} />
           <PrivateRoute path="/dashboard/:id/recommendations" component={StrainSelector} />
           <PrivateRoute path="/dashboard/:id/settings" component={UserDashboard}/>
           {/* <PrivateRoute path="/search" component={StrainSearch} /> */}
-          {/* </UserContext.Provider> */}
-          </ResultsContext.Provider>
       </Switch>
 
     </AppContainer>
+    </StatsResultsContext.Provider>
+    </StrainResultsContext.Provider>
+    </UserContext.Provider>
+
     </Router> 
 
   );

@@ -87,7 +87,7 @@ export const SignupLoginContainer = styled.div`
     justify-content: center;
     align-items: center;
     padding: 2rem 0 0;
-    
+
     @media(max-width: 700px){
         padding: 0.75rem 0 0;
     }
@@ -156,11 +156,12 @@ export const DashboardSideBar = styled.div`
         justify-content: center;
         align-items: center;
         
-        h3{
+        h3 {
             color: #fafaf1;
             font-family: 'Abril Fatface', cursive;
-            font-size: 2.4rem;
+            font-size: 2rem;
             letter-spacing: 0.1rem;
+            text-transform: capitalize;
         }
     }
 
@@ -254,16 +255,7 @@ export const InfoInstructions = styled.div`
         margin-bottom: 0.5rem;
         letter-spacing: 0.02rem;
         font-size: 1rem;
-    }
-
-    @media(max-width: 1050px){
-
-    }
-
-    @media(max-width: 700px){
-
-    }
-    
+    }    
 `
 
 export const InfoInput = styled.input`
@@ -272,6 +264,8 @@ export const InfoInput = styled.input`
     background-color: #fafaf1;
     padding: 0.1rem 0.3rem;
     border: solid 1px #444a44;
+    width: 100%;
+    margin-bottom: 1rem;
 
     @media(max-width: 1050px){
         padding: 0rem 0.1rem;
@@ -304,12 +298,110 @@ export const InfoForm = styled.form`
         margin-top: 2rem;
         width: 55%;
     }
-`
 
-export const StrainCardContainer = styled.div`
-
+    .inputs {
+        width: 100%;
+        margin-bottom: 3rem;
+    }
 `
 
 export const CardContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+`
 
+export const StrainCardContainer = styled.div`
+    background-color: #fafaf1;
+    color:  #444a44;
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 30%;
+    border-radius: 20px;
+    height: 23rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem; 
+`
+
+export const CardHeader = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #444a44;
+    padding: 0.75rem 0.25rem;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    width: 100%;
+
+    h3{
+        color: #fafaf1;
+        font-weight: 800;
+        font-size: 1.3rem;
+        margin: auto 0;
+    }
+
+    button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #444a44;
+        color: #fafaf1;
+
+        img {
+            width: 60px;
+        }
+    }
+`
+
+export const CardContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    margin: 1rem 0 1.25rem;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h4 {
+        font-weight: 800;
+        text-align: left;
+        width: 30%;
+        letter-spacing: 0.01rem;
+    }
+
+    p {
+        padding-left: 0.2rem;
+        text-align: left;
+        width: 68%;
+    }
+`
+
+export const CardButton = styled.button`
+    background-image: linear-gradient(to right, #3d6a25, #7FC559);
+    color: #fafaf1;
+    border-radius: 10px;
+    border: none;
+    padding: 0.4rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02rem;
 `

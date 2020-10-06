@@ -5,7 +5,7 @@ import React, { useState, useContext } from "react"
 // import StrainDetailCard from "../unusedcomponents/StrainDetailCard";
 
 //context
-import { ResultsContext } from "../contexts/ResultsContext"
+import { StrainResultsContext } from "../contexts/StrainResultsContext"
 
 //styles
 import { Modal } from 'antd';
@@ -21,7 +21,7 @@ border-radius: 8px;
 `
 
 function CardModal() {
-    const [ strainData ] = useContext(ResultsContext) 
+    const [ strainData ] = useContext(StrainResultsContext) 
     console.log(strainData)
 
     const [visible, setVisible] = useState(false);

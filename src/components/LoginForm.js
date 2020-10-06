@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import { UserContext } from '../contexts/UserContext' 
 
 //Formik
 import { withFormik, Form, Field } from 'formik';
@@ -13,7 +14,7 @@ import { LandingBody, ButtonPrimary, Error, LoginLabels, SignupLoginHeader, Sign
 
 function LoginForm({values, errors, touched, status}) {
 
-  const [user, setUser]= useState([])
+  const [user, setUser] = useContext(UserContext)
   
   const success = () => {
       const hide = message.loading('Logging in...', 0);
@@ -25,8 +26,6 @@ function LoginForm({values, errors, touched, status}) {
     console.log('status', status)
     status && setUser(users =>[...users, status])
     },[status])
-
-    console.log('user', user)
 
   return (
 
@@ -105,7 +104,7 @@ handleSubmit(values, { setStatus, props }) {
   axios
       .post("https://med-cabinet-server.herokuapp.com/api/auth/login", values)
       .then(response => {
-          console.log('handleSubmit', response);
+          console.log('Login handleSubmit', response);
           setStatus(response.data);
           localStorage.setItem("token", response.data.token)
           props.history.push(`/dashboard/${response.data.user.id}/info`)

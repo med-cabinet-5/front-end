@@ -1,9 +1,10 @@
-import React, { useEffect , useState }from 'react';
+import React, { useContext }from 'react';
 import { DashboardSideBar, DashboardButton } from '../styles'
 import { NavLink, Link, Redirect } from 'react-router-dom' 
 import logo from '../images/logo.png'
-import { axiosWithAuth } from '../utils/AxiosWithAuth'
 import { useParams } from 'react-router';
+import { UserContext } from '../contexts/UserContext'
+
 
 import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -13,19 +14,13 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Sidebar(){
     
-    const [user, setUser] = useState([])
-
-    // useEffect(() => {
-
-    // }, []);
-
-
 
     // const logout = () => {
     //     localStorage.removeItem("token");
     //     return <Redirect to="/login" />;
     // }
 
+    const [ user, setUser ] = useContext(UserContext)
     const { id } = useParams()
 
     return(
@@ -39,7 +34,11 @@ function Sidebar(){
             </div>
             
             <div className="hello">
-                <h3>Hello, !</h3>
+                { user[0] === undefined ? <p> No user logged in </p> : 
+                    <h3>
+                        Hello { user[0].saved !== undefined ? user[0].saved.first_name : user[0].user.first_name}!
+                    </h3>
+                } 
             </div>
             
 
@@ -49,7 +48,7 @@ function Sidebar(){
                 className="sidebar top"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}>
                 <ContactsIcon 
                 style={{
@@ -62,7 +61,7 @@ function Sidebar(){
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}>
                 <FeaturedPlayListIcon   
                 style={{
@@ -76,7 +75,7 @@ function Sidebar(){
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}
                 >
                 <FavoriteBorderIcon   
@@ -90,7 +89,7 @@ function Sidebar(){
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}>
                 <SettingsIcon   
                 style={{
