@@ -150,13 +150,15 @@ function StrainCard(props){
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center'
-
                 }}
                 style={{
                     fontFamily: 'Roboto Condensed',
                 }}
             >   
-            <div>
+            <div
+                style = {{
+                    width: '100%'
+                }}>
                 <ModalHeader>
                     <div>
                         <span></span>
@@ -170,15 +172,21 @@ function StrainCard(props){
                     </div>
                 </ModalHeader>
                 <ModalContent>
-                    <h2>{props.type}</h2>
+                    <p>{props.description}</p>
+
+                    <h3>Strain Type:</h3>
+                    <p>{props.type}</p>
+                    
                     <h3>Ailments:</h3>
                     <p>{props.ailments}</p>
-                    <h3>Common Effects</h3>
+                    
+                    <h3>Common Effects:</h3>
                     <p>{props.effects}</p>
-                    <h3>Taste and Flavors</h3>
+                    
+                    <h3>Taste and Flavors:</h3>
                     <p>{props.flavor}</p>
-                    <h3>Details</h3>
-                    <p>{props.description}</p>
+                    
+                    
                 </ModalContent>
             </div>
         </Modal>

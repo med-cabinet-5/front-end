@@ -564,4 +564,14 @@ export const ModalContent = styled.div`
     width: 100%;
     padding: 1.5rem;
     color: #334733;
+
+    h3 {
+        padding: 0;
+        margin: 0;
+        line-height: ;
+    }
+
+    p {
+        padding-bottom: 0.5rem;
+    }
 `
