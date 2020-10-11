@@ -48,8 +48,6 @@ function App() {
 
   const [user, setUser] = useState([])
 
-  const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
-
   return (
     <Router>
     
@@ -60,7 +58,7 @@ function App() {
     <AppContainer 
       className="App" 
       style={{
-        backgroundImage: `url(${imageUrl})`
+        backgroundImage: `url(${desktopImage})`
       }}>
 
       <Switch>

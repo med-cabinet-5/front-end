@@ -63,7 +63,7 @@ const UserInfoForm = props => {
                 <DashboardBody>
 
                 <InfoForm onSubmit={addUserInfo}>
-                <InfoHeader>User Information</InfoHeader>
+                <InfoHeader>Preferences Information</InfoHeader>
                     <InfoInstructions>
                         <p>
                         We'll need to get some information from you about the ailments you're experiencing, your desired effects, and what your preferences for taste are. This will help us give you better recommendations based on the information you provide.

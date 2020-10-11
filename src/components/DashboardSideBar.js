@@ -80,7 +80,7 @@ function Sidebar(){
                 >
                 <FavoriteBorderIcon   
                 style={{
-                    margin: '0.5rem'
+                    margin: '0.75rem'
                 }}/> Favorites
             </NavLink>
 
@@ -93,7 +93,7 @@ function Sidebar(){
                 }}>
                 <SettingsIcon   
                 style={{
-                    margin: '0.5rem'
+                    margin: '0.75rem'
                 }}/>Account Settings
             </NavLink>
             </div>

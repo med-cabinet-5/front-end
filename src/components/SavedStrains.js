@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import axios from 'axios'
 
 //components
-import CardModal from "./CardModal"
+
 import Sidebar from './DashboardSideBar'
 
 

@@ -22,7 +22,7 @@ function SignupForm({values, errors, touched, status}){
     const success = () => {
         const hide = message.loading('Signing In...', 0);
         // Dismiss manually and asynchronously
-        setTimeout(hide, 2500);
+        setTimeout(hide, 2700);
     };
 
     useEffect (()=>{
