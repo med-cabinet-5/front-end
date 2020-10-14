@@ -1,47 +1,51 @@
 //landing from front-end dev/marketing page
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
+
+import axios from 'axios'
 
 //components
-import CardModal from "./CardModal"
 
-//actions
+import Sidebar from './DashboardSideBar'
+
 
 
 //styles
-import styled from "styled-components"
+import { AppBody, DashboardContainer, DashboardBody, StrainCardContainer, CardContainer } from '../styles'
 
 
-const SavedContainer = styled.div`
-margin-top: 5%; 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-color: white;
-justify-content: center;
-`
-
-const SavedBody = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-background-color: #918383;
-min-height: 500px;
-max-width: 400px;
-min-width: 400px;
-`
-
-//.get to retrieve saved strains, display cards with saved strain info
+// display cards with saved strain info
 
 function SavedStrains () {
+    const { id } = useParams()
+    const [savedStrains, setSavedStrains ] = useState([])
+
+    useEffect(() => {
+        axios
+            .get(`https://med-cabinet-server.herokuapp.com/api/savedstrains/user/${id}`)
+            .then((res) => {
+                setSavedStrains(res.data);
+            })
+            .catch((err) => console.log(err));
+    }, [id]);
+    
     return(
-    <SavedContainer>
-    <SavedBody>
-        <h3>Saved Strains!</h3>
-        <p> display card modal of saved strains </p>
-    </SavedBody>
-    </SavedContainer>
+        <AppBody>
+            <DashboardContainer>
+                <Sidebar /> 
+
+                <DashboardBody>
+
+                <h3>Saved Strains!</h3>
+                <p> display card modal of saved strains </p>
+
+                <CardContainer>
+
+                </CardContainer>
+
+                </DashboardBody>
+            </DashboardContainer>
+        </AppBody>
     )
 };
 

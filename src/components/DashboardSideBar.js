@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext }from 'react';
 import { DashboardSideBar, DashboardButton } from '../styles'
-import { NavLink, Link } from 'react-router-dom' 
+import { NavLink, Link, Redirect } from 'react-router-dom' 
 import logo from '../images/logo.png'
+import { useParams } from 'react-router';
+import { UserContext } from '../contexts/UserContext'
+
 
 import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -10,8 +13,19 @@ import ContactsIcon from '@material-ui/icons/Contacts';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Sidebar(){
-    return(
+    
 
+    // const logout = () => {
+    //     localStorage.removeItem("token");
+    //     return <Redirect to="/login" />;
+    // }
+
+    const [ user, setUser ] = useContext(UserContext)
+    const { id } = useParams()
+
+    return(
+        
+        // click out/expand for mobile?
         <DashboardSideBar>
             <div className="heading">
                 <Link to="/" >
@@ -20,17 +34,21 @@ function Sidebar(){
             </div>
             
             <div className="hello">
-                <h3>Hello, [name]!</h3>
+                { user[0] === undefined ? <p> No user logged in </p> : 
+                    <h3>
+                        Hello { user[0].saved !== undefined ? user[0].saved.first_name : user[0].user.first_name}!
+                    </h3>
+                } 
             </div>
             
 
             <div>    
             <NavLink 
-                to="/dashboard/:id/recommendations" 
+                to={`/dashboard/${id}/info`}
                 className="sidebar top"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}>
                 <ContactsIcon 
                 style={{
@@ -39,11 +57,11 @@ function Sidebar(){
             </NavLink>
             
             <NavLink 
-                to="/dashboard/:id/recommendations" 
+                to={`/dashboard/${id}/recommendations`}
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}>
                 <FeaturedPlayListIcon   
                 style={{
@@ -53,35 +71,37 @@ function Sidebar(){
 
 
             <NavLink 
-                to="/dashboard/:id/favorites" 
+                to={`/dashboard/${id}/favorites`} 
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}
                 >
                 <FavoriteBorderIcon   
                 style={{
-                    margin: '0.5rem'
+                    margin: '0.75rem'
                 }}/> Favorites
             </NavLink>
 
             <NavLink 
-                to="/dashboard/:id/settings" 
+                to={`/dashboard/${id}/settings`}
                 className="sidebar"
                 activeStyle={{
                     color: 'white',
-                    backgroundImage: 'linear-gradient(to right, #3d6a25, #a2d586)'
+                    backgroundImage: 'linear-gradient(to right, #3d6a25, #7FC559)'
                 }}>
                 <SettingsIcon   
                 style={{
-                    margin: '0.5rem'
+                    margin: '0.75rem'
                 }}/>Account Settings
             </NavLink>
             </div>
 
             <div className="logout">
-                <DashboardButton> Logout <ExitToAppIcon/> </DashboardButton>
+                <DashboardButton 
+                    // onclick={Logout()}
+                > Logout <ExitToAppIcon/> </DashboardButton>
             </div>
 
         </DashboardSideBar>

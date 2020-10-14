@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import axios from "axios";
+
+import { UserContext } from '../contexts/UserContext';
 import { Link } from "react-router-dom";
+
 
 //Formik
 import { withFormik, Form, Field } from 'formik';
@@ -14,20 +17,18 @@ import { LandingBody, Error, SignupLoginHeader, Columns, SignupLabels, SignupLog
 
 function SignupForm({values, errors, touched, status}){
 
-    
-    const [user, setUser]= useState([])
+    const [ user, setUser ] = useContext(UserContext)
 
     const success = () => {
         const hide = message.loading('Signing In...', 0);
         // Dismiss manually and asynchronously
-        setTimeout(hide, 2500);
+        setTimeout(hide, 2700);
     };
 
     useEffect (()=>{
     console.log('status', status)
     status && setUser(users =>[...users, status])
-    },[status])
-
+    },[status, setUser])
 
 return(
     <div>
@@ -160,6 +161,7 @@ return(
 }
 
 const FormikSignupForm = withFormik({
+
 mapPropsToValues({first_name, last_name, email, username, password}){
     return {
     first_name: first_name || '',
@@ -192,7 +194,7 @@ handleSubmit (values, { setStatus, props }) {
         axios.post("https://med-cabinet-server.herokuapp.com/api/auth/login", credentials).then(response => {
             console.log("Response", response.data)
             localStorage.setItem("token", response.data.token)
-            props.history.push('/infoform')
+            props.history.push(`/dashboard/${response.data.user.id}/info`)
         })
             .catch(err => console.log(err.message))
 

@@ -4,20 +4,25 @@ import { Link } from "react-router-dom";
 import styled from "styled-components"
 import { Carousel} from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUserCircle} from '@fortawesome/free-solid-svg-icons'
-import {faSearchLocation} from '@fortawesome/free-solid-svg-icons'
-import {faLaptopMedical} from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faSearchLocation } from '@fortawesome/free-solid-svg-icons'
+import { faLaptopMedical } from '@fortawesome/free-solid-svg-icons'
 import Nav from './Nav';
 
 import { ButtonPrimary, LandingBody } from '../styles'
 
 const CarouselBody = styled.div`
-    margin: 5rem 0;
+    height: 100%;
+    padding: 2rem 0 0;
+
+    @media(max-width: 700px){
+        padding: 0.75rem 0 0;
+    }
 `
 
 const CarouselHeader= styled.h1`
-    color: #fafaf1;
-    background-color: rgb(50,50,50, 0.3);
+    color: #334733;
+    background-color: rgb(166, 214, 141, 0.5);
     padding: 0.75rem 0;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
@@ -33,7 +38,7 @@ const CarouselDiv= styled.div`
 
 `
 const CarouselP= styled.p`
-    color: #fafaf1;
+    color: #334733;
     font-size: 1.3rem;
     padding: 2% 5%;
     font-family: 'Roboto Condensed', sans-serif;
@@ -42,7 +47,7 @@ const CarouselP= styled.p`
 
 const Carouselpic = styled.h1`
     margin-top: 10%;
-    color: #fafaf1;
+    color: #334733;
     font-size: 4rem;
 `
 
@@ -73,7 +78,7 @@ function MarketingLanding () {
     <LandingBody>
     <Carouselpic><FontAwesomeIcon icon={ faUserCircle}/></Carouselpic>
         <CarouselHeader>Welcome!</CarouselHeader>
-        <CarouselP>Explore what Med Cabinet has to offer!</CarouselP>
+        <CarouselP>Explore what we have to offer!</CarouselP>
         
         <CarouselDiv>
         <ButtonPrimary>

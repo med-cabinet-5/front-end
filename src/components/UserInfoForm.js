@@ -3,7 +3,8 @@ import { useParams } from 'react-router';
 import axios from 'axios'
 
 //contexts
-import { ResultsContext }  from "../contexts/ResultsContext";
+import { StrainResultsContext }  from "../contexts/StrainResultsContext";
+import { StatsResultsContext }  from "../contexts/StatsResultsContext";
 
 //styling
 import { InfoHeader, InfoLabels, InfoInstructions, InfoForm, InfoInput, ButtonPrimary, DashboardContainer, DashboardBody, AppBody } from '../styles' 
@@ -13,15 +14,15 @@ import Sidebar from './DashboardSideBar'
 
 const UserInfoForm = props => {
         const { id } = useParams()
-        const [strainData, setStrainData, statsData, setStatsData] = useContext(ResultsContext)
-        console.log("checking context infoform 57", strainData, statsData);
+        const [ strainData, setStrainData ] = useContext(StrainResultsContext)
+        const [ statsData, setStatsData ] = useContext(StatsResultsContext)
 
         const [newUserInfo, setNewUserInfo] = useState({
             ailments: '',
             feelings: '',
             taste: '',
         });
-
+        
         const handleChange = e => {
             setNewUserInfo(
                 {
@@ -34,7 +35,7 @@ const UserInfoForm = props => {
         const success = () => {
             const hide = message.loading('Submitting Your Responses...', 0);
             // Dismiss manually and asynchronously
-            setTimeout(hide, 2500);
+            setTimeout(hide, 2000);
         };
 
         const addUserInfo = async e => {
@@ -46,11 +47,9 @@ const UserInfoForm = props => {
             try {   
                 const strains = await axios.post('https://med-nlp.herokuapp.com/json', JSON.stringify(joinedInput));
                 const stats = await axios.post('https://med-nlp.herokuapp.com/stats', JSON.stringify(joinedInput));
-                console.log("Try Block", strains.data, stats.data)
-                //set results to context to use as provider value={strains, stats} dispatch
                 setStrainData(strains.data)
                 setStatsData(stats.data)
-                props.history.push(`dashboard/${id}`)
+                props.history.push(`/dashboard/${id}/recommendations`)
             } catch (e) {
                 console.log(e.message)
             };
@@ -64,13 +63,14 @@ const UserInfoForm = props => {
                 <DashboardBody>
 
                 <InfoForm onSubmit={addUserInfo}>
-                <InfoHeader>User Information</InfoHeader>
+                <InfoHeader>Preferences Information</InfoHeader>
                     <InfoInstructions>
-                            <p>
-                            We'll need to get some information from you about the ailments you're experiencing, your desired effects, and what your preferences for taste are. This will help us give you better recommendations based on the information you provide.
-                            </p>
+                        <p>
+                        We'll need to get some information from you about the ailments you're experiencing, your desired effects, and what your preferences for taste are. This will help us give you better recommendations based on the information you provide.
+                        </p>
                     </InfoInstructions>
-
+                
+                <div className="inputs">
                 <InfoLabels>Ailments:</InfoLabels>
                 <InfoInput
                     type="text"
@@ -95,6 +95,8 @@ const UserInfoForm = props => {
                     value={newUserInfo.taste}
                     onChange={handleChange}
                 />
+
+                </div>
                 <div>
                     <ButtonPrimary onClick={success}> Submit </ButtonPrimary>
                 </div>
